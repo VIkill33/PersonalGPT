@@ -13,6 +13,23 @@
 		E7D5A98929B106F300825AFD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7D5A98829B106F300825AFD /* Preview Assets.xcassets */; };
 		E7D5A98B29B106F300825AFD /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A98A29B106F300825AFD /* Persistence.swift */; };
 		E7D5A98E29B106F300825AFD /* PersonalGPT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A98C29B106F300825AFD /* PersonalGPT.xcdatamodeld */; };
+		E7D5A99629B1071900825AFD /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A99529B1071900825AFD /* ChatView.swift */; };
+		E7D5A99E29B108CB00825AFD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E7D5A99D29B108CB00825AFD /* Alamofire */; };
+		E7D5A9A129B108EA00825AFD /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = E7D5A9A029B108EA00825AFD /* SwiftyJSON */; };
+		E7D5A9A529B10AA900825AFD /* GPT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A9A429B10AA900825AFD /* GPT.swift */; };
+		E7D5A9A829B133DB00825AFD /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = E7D5A9A729B133DB00825AFD /* Toast */; };
+		E7D5A9B029B1350B00825AFD /* MacPersonalGPTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A9AF29B1350B00825AFD /* MacPersonalGPTApp.swift */; };
+		E7D5A9B229B1350B00825AFD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A9B129B1350B00825AFD /* ContentView.swift */; };
+		E7D5A9B429B1350D00825AFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7D5A9B329B1350D00825AFD /* Assets.xcassets */; };
+		E7D5A9B729B1350D00825AFD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7D5A9B629B1350D00825AFD /* Preview Assets.xcassets */; };
+		E7D5A9B929B1350D00825AFD /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A9B829B1350D00825AFD /* Persistence.swift */; };
+		E7D5A9BC29B1350D00825AFD /* MacPersonalGPT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A9BA29B1350D00825AFD /* MacPersonalGPT.xcdatamodeld */; };
+		E7D5A9C129B1354400825AFD /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A99529B1071900825AFD /* ChatView.swift */; };
+		E7D5A9C429B1357200825AFD /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = E7D5A9C329B1357200825AFD /* SwiftyJSON */; };
+		E7D5A9C629B1357500825AFD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E7D5A9C529B1357500825AFD /* Alamofire */; };
+		E7D5A9C929B135DE00825AFD /* GPT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A9A429B10AA900825AFD /* GPT.swift */; };
+		E7D5A9CC29B1435800825AFD /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A9CB29B1435800825AFD /* WelcomeView.swift */; };
+		E7D5A9CD29B1448600825AFD /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A9CB29B1435800825AFD /* WelcomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +41,17 @@
 		E7D5A98A29B106F300825AFD /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		E7D5A98D29B106F300825AFD /* PersonalGPT.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonalGPT.xcdatamodel; sourceTree = "<group>"; };
 		E7D5A98F29B106F300825AFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7D5A99529B1071900825AFD /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		E7D5A9A429B10AA900825AFD /* GPT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPT.swift; sourceTree = "<group>"; };
+		E7D5A9AD29B1350B00825AFD /* MacPersonalGPT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacPersonalGPT.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7D5A9AF29B1350B00825AFD /* MacPersonalGPTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacPersonalGPTApp.swift; sourceTree = "<group>"; };
+		E7D5A9B129B1350B00825AFD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E7D5A9B329B1350D00825AFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E7D5A9B629B1350D00825AFD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E7D5A9B829B1350D00825AFD /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		E7D5A9BB29B1350D00825AFD /* MacPersonalGPT.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MacPersonalGPT.xcdatamodel; sourceTree = "<group>"; };
+		E7D5A9BD29B1350D00825AFD /* MacPersonalGPT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacPersonalGPT.entitlements; sourceTree = "<group>"; };
+		E7D5A9CB29B1435800825AFD /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +59,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7D5A9A829B133DB00825AFD /* Toast in Frameworks */,
+				E7D5A9A129B108EA00825AFD /* SwiftyJSON in Frameworks */,
+				E7D5A99E29B108CB00825AFD /* Alamofire in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7D5A9AA29B1350B00825AFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7D5A9C429B1357200825AFD /* SwiftyJSON in Frameworks */,
+				E7D5A9C629B1357500825AFD /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,8 +80,11 @@
 		E7D5A97529B106F000825AFD = {
 			isa = PBXGroup;
 			children = (
+				E7D5A99729B1073C00825AFD /* Packages */,
 				E7D5A98029B106F000825AFD /* PersonalGPT */,
+				E7D5A9AE29B1350B00825AFD /* MacPersonalGPT */,
 				E7D5A97F29B106F000825AFD /* Products */,
+				E7D5A9C229B1357200825AFD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -49,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				E7D5A97E29B106F000825AFD /* PersonalGPT.app */,
+				E7D5A9AD29B1350B00825AFD /* MacPersonalGPT.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -56,8 +100,9 @@
 		E7D5A98029B106F000825AFD /* PersonalGPT */ = {
 			isa = PBXGroup;
 			children = (
+				E7D5A9A329B10A0900825AFD /* Models */,
+				E7D5A9A229B109FB00825AFD /* Views */,
 				E7D5A98129B106F000825AFD /* PersonalGPTApp.swift */,
-				E7D5A98329B106F000825AFD /* ContentView.swift */,
 				E7D5A98529B106F300825AFD /* Assets.xcassets */,
 				E7D5A98A29B106F300825AFD /* Persistence.swift */,
 				E7D5A98F29B106F300825AFD /* Info.plist */,
@@ -73,6 +118,60 @@
 				E7D5A98829B106F300825AFD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E7D5A99729B1073C00825AFD /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		E7D5A9A229B109FB00825AFD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E7D5A98329B106F000825AFD /* ContentView.swift */,
+				E7D5A99529B1071900825AFD /* ChatView.swift */,
+				E7D5A9CB29B1435800825AFD /* WelcomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E7D5A9A329B10A0900825AFD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E7D5A9A429B10AA900825AFD /* GPT.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E7D5A9AE29B1350B00825AFD /* MacPersonalGPT */ = {
+			isa = PBXGroup;
+			children = (
+				E7D5A9AF29B1350B00825AFD /* MacPersonalGPTApp.swift */,
+				E7D5A9B129B1350B00825AFD /* ContentView.swift */,
+				E7D5A9B329B1350D00825AFD /* Assets.xcassets */,
+				E7D5A9B829B1350D00825AFD /* Persistence.swift */,
+				E7D5A9BD29B1350D00825AFD /* MacPersonalGPT.entitlements */,
+				E7D5A9BA29B1350D00825AFD /* MacPersonalGPT.xcdatamodeld */,
+				E7D5A9B529B1350D00825AFD /* Preview Content */,
+			);
+			path = MacPersonalGPT;
+			sourceTree = "<group>";
+		};
+		E7D5A9B529B1350D00825AFD /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				E7D5A9B629B1350D00825AFD /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E7D5A9C229B1357200825AFD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -91,8 +190,34 @@
 			dependencies = (
 			);
 			name = PersonalGPT;
+			packageProductDependencies = (
+				E7D5A99D29B108CB00825AFD /* Alamofire */,
+				E7D5A9A029B108EA00825AFD /* SwiftyJSON */,
+				E7D5A9A729B133DB00825AFD /* Toast */,
+			);
 			productName = PersonalGPT;
 			productReference = E7D5A97E29B106F000825AFD /* PersonalGPT.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E7D5A9AC29B1350B00825AFD /* MacPersonalGPT */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E7D5A9BE29B1350D00825AFD /* Build configuration list for PBXNativeTarget "MacPersonalGPT" */;
+			buildPhases = (
+				E7D5A9A929B1350B00825AFD /* Sources */,
+				E7D5A9AA29B1350B00825AFD /* Frameworks */,
+				E7D5A9AB29B1350B00825AFD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MacPersonalGPT;
+			packageProductDependencies = (
+				E7D5A9C329B1357200825AFD /* SwiftyJSON */,
+				E7D5A9C529B1357500825AFD /* Alamofire */,
+			);
+			productName = MacPersonalGPT;
+			productReference = E7D5A9AD29B1350B00825AFD /* MacPersonalGPT.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -108,6 +233,9 @@
 					E7D5A97D29B106F000825AFD = {
 						CreatedOnToolsVersion = 14.2;
 					};
+					E7D5A9AC29B1350B00825AFD = {
+						CreatedOnToolsVersion = 14.2;
+					};
 				};
 			};
 			buildConfigurationList = E7D5A97929B106F000825AFD /* Build configuration list for PBXProject "PersonalGPT" */;
@@ -119,11 +247,17 @@
 				Base,
 			);
 			mainGroup = E7D5A97529B106F000825AFD;
+			packageReferences = (
+				E7D5A99C29B108CB00825AFD /* XCRemoteSwiftPackageReference "Alamofire" */,
+				E7D5A99F29B108EA00825AFD /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				E7D5A9A629B133DB00825AFD /* XCRemoteSwiftPackageReference "toast-swift" */,
+			);
 			productRefGroup = E7D5A97F29B106F000825AFD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				E7D5A97D29B106F000825AFD /* PersonalGPT */,
+				E7D5A9AC29B1350B00825AFD /* MacPersonalGPT */,
 			);
 		};
 /* End PBXProject section */
@@ -138,6 +272,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E7D5A9AB29B1350B00825AFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7D5A9B729B1350D00825AFD /* Preview Assets.xcassets in Resources */,
+				E7D5A9B429B1350D00825AFD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -147,8 +290,25 @@
 			files = (
 				E7D5A98B29B106F300825AFD /* Persistence.swift in Sources */,
 				E7D5A98429B106F000825AFD /* ContentView.swift in Sources */,
+				E7D5A99629B1071900825AFD /* ChatView.swift in Sources */,
 				E7D5A98229B106F000825AFD /* PersonalGPTApp.swift in Sources */,
 				E7D5A98E29B106F300825AFD /* PersonalGPT.xcdatamodeld in Sources */,
+				E7D5A9A529B10AA900825AFD /* GPT.swift in Sources */,
+				E7D5A9CC29B1435800825AFD /* WelcomeView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7D5A9A929B1350B00825AFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7D5A9B929B1350D00825AFD /* Persistence.swift in Sources */,
+				E7D5A9B229B1350B00825AFD /* ContentView.swift in Sources */,
+				E7D5A9C129B1354400825AFD /* ChatView.swift in Sources */,
+				E7D5A9B029B1350B00825AFD /* MacPersonalGPTApp.swift in Sources */,
+				E7D5A9BC29B1350D00825AFD /* MacPersonalGPT.xcdatamodeld in Sources */,
+				E7D5A9C929B135DE00825AFD /* GPT.swift in Sources */,
+				E7D5A9CD29B1448600825AFD /* WelcomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +445,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -314,6 +475,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -324,6 +486,64 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E7D5A9BF29B1350D00825AFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MacPersonalGPT/MacPersonalGPT.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MacPersonalGPT/Preview Content\"";
+				DEVELOPMENT_TEAM = BF3L252F9X;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vikill.MacPersonalGPT;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		E7D5A9C029B1350D00825AFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MacPersonalGPT/MacPersonalGPT.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MacPersonalGPT/Preview Content\"";
+				DEVELOPMENT_TEAM = BF3L252F9X;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vikill.MacPersonalGPT;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -348,7 +568,71 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		E7D5A9BE29B1350D00825AFD /* Build configuration list for PBXNativeTarget "MacPersonalGPT" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7D5A9BF29B1350D00825AFD /* Debug */,
+				E7D5A9C029B1350D00825AFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E7D5A99C29B108CB00825AFD /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		E7D5A99F29B108EA00825AFD /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		E7D5A9A629B133DB00825AFD /* XCRemoteSwiftPackageReference "toast-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BastiaanJansen/toast-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E7D5A99D29B108CB00825AFD /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E7D5A99C29B108CB00825AFD /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		E7D5A9A029B108EA00825AFD /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E7D5A99F29B108EA00825AFD /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		E7D5A9A729B133DB00825AFD /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E7D5A9A629B133DB00825AFD /* XCRemoteSwiftPackageReference "toast-swift" */;
+			productName = Toast;
+		};
+		E7D5A9C329B1357200825AFD /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E7D5A99F29B108EA00825AFD /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		E7D5A9C529B1357500825AFD /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E7D5A99C29B108CB00825AFD /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E7D5A98C29B106F300825AFD /* PersonalGPT.xcdatamodeld */ = {
@@ -358,6 +642,16 @@
 			);
 			currentVersion = E7D5A98D29B106F300825AFD /* PersonalGPT.xcdatamodel */;
 			path = PersonalGPT.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		E7D5A9BA29B1350D00825AFD /* MacPersonalGPT.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E7D5A9BB29B1350D00825AFD /* MacPersonalGPT.xcdatamodel */,
+			);
+			currentVersion = E7D5A9BB29B1350D00825AFD /* MacPersonalGPT.xcdatamodel */;
+			path = MacPersonalGPT.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
