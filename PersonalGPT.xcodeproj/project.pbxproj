@@ -30,6 +30,8 @@
 		E7D5A9C929B135DE00825AFD /* GPT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A9A429B10AA900825AFD /* GPT.swift */; };
 		E7D5A9CC29B1435800825AFD /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A9CB29B1435800825AFD /* WelcomeView.swift */; };
 		E7D5A9CD29B1448600825AFD /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A9CB29B1435800825AFD /* WelcomeView.swift */; };
+		E7D5A9CF29B1B8D400825AFD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A9CE29B1B8D400825AFD /* User.swift */; };
+		E7D5A9D029B1B9A300825AFD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A9CE29B1B8D400825AFD /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,7 @@
 		E7D5A9BB29B1350D00825AFD /* MacPersonalGPT.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MacPersonalGPT.xcdatamodel; sourceTree = "<group>"; };
 		E7D5A9BD29B1350D00825AFD /* MacPersonalGPT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacPersonalGPT.entitlements; sourceTree = "<group>"; };
 		E7D5A9CB29B1435800825AFD /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		E7D5A9CE29B1B8D400825AFD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				E7D5A9A429B10AA900825AFD /* GPT.swift */,
+				E7D5A9CE29B1B8D400825AFD /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -292,6 +296,7 @@
 				E7D5A98429B106F000825AFD /* ContentView.swift in Sources */,
 				E7D5A99629B1071900825AFD /* ChatView.swift in Sources */,
 				E7D5A98229B106F000825AFD /* PersonalGPTApp.swift in Sources */,
+				E7D5A9CF29B1B8D400825AFD /* User.swift in Sources */,
 				E7D5A98E29B106F300825AFD /* PersonalGPT.xcdatamodeld in Sources */,
 				E7D5A9A529B10AA900825AFD /* GPT.swift in Sources */,
 				E7D5A9CC29B1435800825AFD /* WelcomeView.swift in Sources */,
@@ -306,6 +311,7 @@
 				E7D5A9B229B1350B00825AFD /* ContentView.swift in Sources */,
 				E7D5A9C129B1354400825AFD /* ChatView.swift in Sources */,
 				E7D5A9B029B1350B00825AFD /* MacPersonalGPTApp.swift in Sources */,
+				E7D5A9D029B1B9A300825AFD /* User.swift in Sources */,
 				E7D5A9BC29B1350D00825AFD /* MacPersonalGPT.xcdatamodeld in Sources */,
 				E7D5A9C929B135DE00825AFD /* GPT.swift in Sources */,
 				E7D5A9CD29B1448600825AFD /* WelcomeView.swift in Sources */,

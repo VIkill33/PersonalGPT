@@ -11,6 +11,7 @@ import Toast
 #endif
 
 struct ChatView: View {
+    @EnvironmentObject var user: User
     @AppStorage("isFirstLauch") var isFirstLauch = true
     private enum Field: Int, CaseIterable {
             case promptText
