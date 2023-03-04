@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E729D55329B226890084F483 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = E729D55229B226890084F483 /* MarkdownUI */; };
+		E729D55529B226D60084F483 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = E729D55429B226D60084F483 /* MarkdownUI */; };
 		E7D5A98229B106F000825AFD /* PersonalGPTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A98129B106F000825AFD /* PersonalGPTApp.swift */; };
 		E7D5A98429B106F000825AFD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A98329B106F000825AFD /* ContentView.swift */; };
 		E7D5A98629B106F300825AFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7D5A98529B106F300825AFD /* Assets.xcassets */; };
@@ -65,6 +67,7 @@
 				E7D5A9A829B133DB00825AFD /* Toast in Frameworks */,
 				E7D5A9A129B108EA00825AFD /* SwiftyJSON in Frameworks */,
 				E7D5A99E29B108CB00825AFD /* Alamofire in Frameworks */,
+				E729D55329B226890084F483 /* MarkdownUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E729D55529B226D60084F483 /* MarkdownUI in Frameworks */,
 				E7D5A9C429B1357200825AFD /* SwiftyJSON in Frameworks */,
 				E7D5A9C629B1357500825AFD /* Alamofire in Frameworks */,
 			);
@@ -198,6 +202,7 @@
 				E7D5A99D29B108CB00825AFD /* Alamofire */,
 				E7D5A9A029B108EA00825AFD /* SwiftyJSON */,
 				E7D5A9A729B133DB00825AFD /* Toast */,
+				E729D55229B226890084F483 /* MarkdownUI */,
 			);
 			productName = PersonalGPT;
 			productReference = E7D5A97E29B106F000825AFD /* PersonalGPT.app */;
@@ -219,6 +224,7 @@
 			packageProductDependencies = (
 				E7D5A9C329B1357200825AFD /* SwiftyJSON */,
 				E7D5A9C529B1357500825AFD /* Alamofire */,
+				E729D55429B226D60084F483 /* MarkdownUI */,
 			);
 			productName = MacPersonalGPT;
 			productReference = E7D5A9AD29B1350B00825AFD /* MacPersonalGPT.app */;
@@ -255,6 +261,7 @@
 				E7D5A99C29B108CB00825AFD /* XCRemoteSwiftPackageReference "Alamofire" */,
 				E7D5A99F29B108EA00825AFD /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				E7D5A9A629B133DB00825AFD /* XCRemoteSwiftPackageReference "toast-swift" */,
+				E729D55129B226890084F483 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
 			);
 			productRefGroup = E7D5A97F29B106F000825AFD /* Products */;
 			projectDirPath = "";
@@ -456,7 +463,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vikill.PersonalGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -486,7 +493,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vikill.PersonalGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -586,6 +593,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E729D55129B226890084F483 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		E7D5A99C29B108CB00825AFD /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -613,6 +628,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E729D55229B226890084F483 /* MarkdownUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E729D55129B226890084F483 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
+			productName = MarkdownUI;
+		};
+		E729D55429B226D60084F483 /* MarkdownUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E729D55129B226890084F483 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
+			productName = MarkdownUI;
+		};
 		E7D5A99D29B108CB00825AFD /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E7D5A99C29B108CB00825AFD /* XCRemoteSwiftPackageReference "Alamofire" */;

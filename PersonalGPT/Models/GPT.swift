@@ -45,12 +45,13 @@ extension ChatView {
             apiKey = "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"
             url = "https://api.openai.com/v1/chat/completions"
             
-            user.messsages.append(["content": promptText, "role": "user"])
+            user.chats.append(Chat(messsages: ["content": promptText, "role": "user"], answers: ""))
+            // user.chat.messsages.append(["content": promptText, "role": "user"])
             let messsages: [String: Any] = ["content": promptText, "role": "user"]
             
             parameters = [
                 "model": "gpt-3.5-turbo",
-                "messages": user.messsages,
+                "messages": user.messageArray(),
                 "max_tokens": 1000,
                 "user": user.id.uuidString
             ]
@@ -86,6 +87,8 @@ extension ChatView {
                                 // 处理得到的消息内容
                                 DispatchQueue.main.async {
                                     generatedText = trimStr(message)
+                                    user.chats[user.chats.count - 1].answers = generatedText
+                                    print(user.chats.last?.answers)
                                     promptText_shown = promptText
                                     promptText = ""
                                 }

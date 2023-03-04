@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MarkdownUI
 #if os(iOS)
 import Toast
 #endif
@@ -13,6 +14,7 @@ import Toast
 struct ChatView: View {
     @EnvironmentObject var user: User
     @AppStorage("isFirstLauch") var isFirstLauch = true
+    @AppStorage("isShowMarkdown") var isShowMarkdown = true
     private enum Field: Int, CaseIterable {
             case promptText
     }
@@ -32,35 +34,29 @@ struct ChatView: View {
     var body: some View {
         
         VStack {
-            if generatedText != "" {
-                HStack {
-                    TextField("", text: .constant(promptText_shown))
-                        .textFieldStyle(.plain)
-                        .font(.callout.bold())
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .multilineTextAlignment(.leading)
-                    .padding()
-                }
-                .onTapGesture {
-                    focusedField = nil
-                }
-                .gesture(simpleDrag)
-                Divider()
-                    .padding(.horizontal)
-                    .onTapGesture {
-                        focusedField = nil
-                    }
-                    .gesture(simpleDrag)
-            }
             ZStack {
-                //ScrollView {
                 if generatedText != "" {
-                    VStack {
-                        TextEditor(text: .constant(generatedText ))
-                            .textFieldStyle(.plain)
-                            .lineLimit(nil)
-                            .frame(maxHeight: .infinity, alignment: .leading)
-                            .padding()
+                    ScrollView {
+                        ForEach(user.chats) { chat in
+                            TextField("", text: .constant(chat.messsages["content"] as! String))
+                                .textFieldStyle(.plain)
+                                .font(.callout.bold())
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .multilineTextAlignment(.leading)
+                                .padding([.horizontal, .top])
+                            Divider()
+                            if isShowMarkdown {
+                                Markdown(chat.answers)
+                                    .padding([.horizontal, .bottom])
+                            } else {
+                                TextEditor(text: .constant(chat.answers))
+                                    .textFieldStyle(.plain)
+                                    .lineLimit(nil)
+                                    .frame(minHeight: 50.0, maxHeight: .infinity, alignment: .leading)
+                                    .multilineTextAlignment(.leading)
+                                    .padding([.horizontal, .bottom])
+                            }
+                        }
                     }
                     VStack {
                         Spacer()
@@ -83,9 +79,21 @@ struct ChatView: View {
                                 .buttonStyle(.borderless)
                                 .padding()
                                 Spacer()
+                                Button(action: {
+                                    isShowMarkdown.toggle()
+                                }, label: {
+                                    if isShowMarkdown {
+                                        Image(systemName: "t.square.fill")
+                                    } else {
+                                        Image(systemName: "m.square.fill")
+                                    }
+                                })
+                                .buttonStyle(.borderless)
+                                .padding()
                             }
                             Button(action: {
                                 promptText = promptText_shown
+                                //user.chat.answers.remove(at: user.chat.answers.count - 1)
                                 generateText()
                             }, label: {
                                 Text("Regenerate Answer")
@@ -98,7 +106,6 @@ struct ChatView: View {
                 else {
                     Spacer()
                 }
-                //}
             }
             .onTapGesture {
                 focusedField = nil

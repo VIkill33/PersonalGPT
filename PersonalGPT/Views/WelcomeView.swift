@@ -24,10 +24,13 @@ struct WelcomeView: View {
             }
             #endif
             Spacer()
-            Text("Welcome to PersonalGPT")
+            Text("Welcome to ChatBOT")
                 .font(.title.bold())
             Spacer()
             Text("Created By Vikill & ChatGPT")
+            Text("powered by ChatGPT 3.5")
+                .font(.footnote)
+                .foregroundColor(.secondary)
             Text("This app is for learning and communication purposes only.")
                 .font(.footnote)
                 .foregroundColor(.secondary)
