@@ -39,10 +39,10 @@ struct SettingView: View {
                     Text("Assistant")
                 }
                 .disabled(true)
-                Section(header: Text("API Key"), footer: Text("You can paste your own API key here, or use author's for free :)")) {
+                Section(header: Text("API Key"), footer: Text("You can paste your own API key here")) {
                     SecureField("API key", text: $settings.api_key)
                     Button(action: {
-                        settings.api_key = "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"
+                        settings.api_key = ""
                     }, label: {
                         Text("Reset API key")
                     })
