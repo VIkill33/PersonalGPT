@@ -13,10 +13,9 @@ import Toast
 
 struct ChatView: View {
     @EnvironmentObject var user: User
-    @AppStorage("isFirstLauch") var isFirstLauch = true
-    @AppStorage("isShowMarkdown") var isShowMarkdown = true
+    @EnvironmentObject var settings: Settings
     private enum Field: Int, CaseIterable {
-            case promptText
+        case promptText
     }
     @FocusState private var focusedField: Field?
     @State var promptText = ""
@@ -32,29 +31,20 @@ struct ChatView: View {
     }
     
     var body: some View {
-        
         VStack {
             ZStack {
                 if generatedText != "" {
                     ScrollView {
                         ForEach(user.chats) { chat in
                             TextField("", text: .constant(chat.messsages["content"] as! String))
-                                .textFieldStyle(.plain)
-                                .font(.callout.bold())
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .multilineTextAlignment(.leading)
-                                .padding([.horizontal, .top])
+                                .messageStyle()
                             Divider()
-                            if isShowMarkdown {
+                            if settings.isMarkdown {
                                 Markdown(chat.answers)
                                     .padding([.horizontal, .bottom])
                             } else {
                                 TextEditor(text: .constant(chat.answers))
-                                    .textFieldStyle(.plain)
-                                    .lineLimit(nil)
-                                    .frame(minHeight: 50.0, maxHeight: .infinity, alignment: .leading)
-                                    .multilineTextAlignment(.leading)
-                                    .padding([.horizontal, .bottom])
+                                    .answerStyle()
                             }
                         }
                     }
@@ -63,16 +53,16 @@ struct ChatView: View {
                         ZStack {
                             HStack {
                                 Button(action: {
-                                    #if os(iOS)
+#if os(iOS)
                                     UIPasteboard.general.string = generatedText
                                     let toast = Toast.text("Copy to clipborad successfully")
                                     toast.show()
-                                    #endif
-                                    #if os(macOS)
+#endif
+#if os(macOS)
                                     let pasteBoard = NSPasteboard.general
                                     pasteBoard.clearContents()
                                     pasteBoard.setString(generatedText, forType: .string)
-                                    #endif
+#endif
                                 }, label: {
                                     Image(systemName: "doc.on.clipboard.fill")
                                 })
@@ -80,9 +70,9 @@ struct ChatView: View {
                                 .padding()
                                 Spacer()
                                 Button(action: {
-                                    isShowMarkdown.toggle()
+                                    settings.isMarkdown.toggle()
                                 }, label: {
-                                    if isShowMarkdown {
+                                    if settings.isMarkdown {
                                         Image(systemName: "t.square.fill")
                                     } else {
                                         Image(systemName: "m.square.fill")
@@ -137,8 +127,9 @@ struct ChatView: View {
             .disabled(isLoading)
             .padding()
         }
-        .sheet(isPresented: $isFirstLauch) {
-            WelcomeView(isFirstLauch: $isFirstLauch)
+        
+        .sheet(isPresented: $settings.isFirstLauch) {
+            WelcomeView(isFirstLauch: $settings.isFirstLauch)
         }
     }
     

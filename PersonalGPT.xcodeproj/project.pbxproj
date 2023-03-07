@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		E729D55329B226890084F483 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = E729D55229B226890084F483 /* MarkdownUI */; };
 		E729D55529B226D60084F483 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = E729D55429B226D60084F483 /* MarkdownUI */; };
+		E76D2AB829B7AFB500F32703 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76D2AB729B7AFB500F32703 /* Settings.swift */; };
+		E76D2AB929B7AFB500F32703 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76D2AB729B7AFB500F32703 /* Settings.swift */; };
+		E76D2ABA29B7BE0900F32703 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E782F01B29B3C0D0006E72BF /* SettingView.swift */; };
+		E782F01929B3B58D006E72BF /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E782F01829B3B58D006E72BF /* extensions.swift */; };
+		E782F01A29B3B7AC006E72BF /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E782F01829B3B58D006E72BF /* extensions.swift */; };
+		E782F01C29B3C0D0006E72BF /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E782F01B29B3C0D0006E72BF /* SettingView.swift */; };
 		E7D5A98229B106F000825AFD /* PersonalGPTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A98129B106F000825AFD /* PersonalGPTApp.swift */; };
 		E7D5A98429B106F000825AFD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A98329B106F000825AFD /* ContentView.swift */; };
 		E7D5A98629B106F300825AFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7D5A98529B106F300825AFD /* Assets.xcassets */; };
@@ -37,6 +43,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E76D2AB729B7AFB500F32703 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		E782F01829B3B58D006E72BF /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
+		E782F01B29B3C0D0006E72BF /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		E7D5A97E29B106F000825AFD /* PersonalGPT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalGPT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7D5A98129B106F000825AFD /* PersonalGPTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalGPTApp.swift; sourceTree = "<group>"; };
 		E7D5A98329B106F000825AFD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -84,9 +93,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E782F01529B3B537006E72BF /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				E782F01629B3B55A006E72BF /* Views */,
+				E7D5A9A329B10A0900825AFD /* Models */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		E782F01629B3B55A006E72BF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E782F01729B3B575006E72BF /* Extensions */,
+				E7D5A99529B1071900825AFD /* ChatView.swift */,
+				E7D5A9CB29B1435800825AFD /* WelcomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E782F01729B3B575006E72BF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E782F01829B3B58D006E72BF /* extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		E7D5A97529B106F000825AFD = {
 			isa = PBXGroup;
 			children = (
+				E782F01529B3B537006E72BF /* Shared */,
 				E7D5A99729B1073C00825AFD /* Packages */,
 				E7D5A98029B106F000825AFD /* PersonalGPT */,
 				E7D5A9AE29B1350B00825AFD /* MacPersonalGPT */,
@@ -107,7 +144,6 @@
 		E7D5A98029B106F000825AFD /* PersonalGPT */ = {
 			isa = PBXGroup;
 			children = (
-				E7D5A9A329B10A0900825AFD /* Models */,
 				E7D5A9A229B109FB00825AFD /* Views */,
 				E7D5A98129B106F000825AFD /* PersonalGPTApp.swift */,
 				E7D5A98529B106F300825AFD /* Assets.xcassets */,
@@ -138,8 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				E7D5A98329B106F000825AFD /* ContentView.swift */,
-				E7D5A99529B1071900825AFD /* ChatView.swift */,
-				E7D5A9CB29B1435800825AFD /* WelcomeView.swift */,
+				E782F01B29B3C0D0006E72BF /* SettingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -149,6 +184,7 @@
 			children = (
 				E7D5A9A429B10AA900825AFD /* GPT.swift */,
 				E7D5A9CE29B1B8D400825AFD /* User.swift */,
+				E76D2AB729B7AFB500F32703 /* Settings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -300,12 +336,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7D5A98B29B106F300825AFD /* Persistence.swift in Sources */,
+				E782F01C29B3C0D0006E72BF /* SettingView.swift in Sources */,
 				E7D5A98429B106F000825AFD /* ContentView.swift in Sources */,
 				E7D5A99629B1071900825AFD /* ChatView.swift in Sources */,
 				E7D5A98229B106F000825AFD /* PersonalGPTApp.swift in Sources */,
 				E7D5A9CF29B1B8D400825AFD /* User.swift in Sources */,
+				E782F01929B3B58D006E72BF /* extensions.swift in Sources */,
 				E7D5A98E29B106F300825AFD /* PersonalGPT.xcdatamodeld in Sources */,
 				E7D5A9A529B10AA900825AFD /* GPT.swift in Sources */,
+				E76D2AB829B7AFB500F32703 /* Settings.swift in Sources */,
 				E7D5A9CC29B1435800825AFD /* WelcomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,10 +357,13 @@
 				E7D5A9B229B1350B00825AFD /* ContentView.swift in Sources */,
 				E7D5A9C129B1354400825AFD /* ChatView.swift in Sources */,
 				E7D5A9B029B1350B00825AFD /* MacPersonalGPTApp.swift in Sources */,
+				E76D2AB929B7AFB500F32703 /* Settings.swift in Sources */,
 				E7D5A9D029B1B9A300825AFD /* User.swift in Sources */,
+				E782F01A29B3B7AC006E72BF /* extensions.swift in Sources */,
 				E7D5A9BC29B1350D00825AFD /* MacPersonalGPT.xcdatamodeld in Sources */,
 				E7D5A9C929B135DE00825AFD /* GPT.swift in Sources */,
 				E7D5A9CD29B1448600825AFD /* WelcomeView.swift in Sources */,
+				E76D2ABA29B7BE0900F32703 /* SettingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,7 +505,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.12;
+				MARKETING_VERSION = 1.21;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vikill.PersonalGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -493,7 +535,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.12;
+				MARKETING_VERSION = 1.21;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vikill.PersonalGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

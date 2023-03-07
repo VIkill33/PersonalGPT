@@ -27,7 +27,7 @@ extension ChatView {
         
         switch apiType {
         case .completion:
-            apiKey = "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"
+            apiKey = settings.api_key
             url = "https://api.openai.com/v1/completions"
             
             parameters = [
@@ -42,7 +42,7 @@ extension ChatView {
             ]
         case .chat:
             
-            apiKey = "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"
+            apiKey = settings.api_key
             url = "https://api.openai.com/v1/chat/completions"
             
             user.chats.append(Chat(messsages: ["content": promptText, "role": "user"], answers: ""))
