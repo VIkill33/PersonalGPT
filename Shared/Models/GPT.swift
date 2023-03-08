@@ -45,9 +45,18 @@ extension ChatView {
             apiKey = settings.api_key
             url = "https://api.openai.com/v1/chat/completions"
             
+            if user.chats.isEmpty {
+                if settings.isSystemPrompt {
+                    user.chats.append(Chat(messsages: ["role": "system", "content": settings.systemPrompt], answers: ""))
+                }
+                if settings.isAssistantPrompt {
+                    user.chats.append(Chat(messsages: ["role": "assistant", "content": settings.assistantPrompt], answers: ""))
+                }
+            }
+            
             user.chats.append(Chat(messsages: ["content": promptText, "role": "user"], answers: ""))
             // user.chat.messsages.append(["content": promptText, "role": "user"])
-            let messsages: [String: Any] = ["content": promptText, "role": "user"]
+            let messsages: [String: Any] = ["role": "user", "content": promptText]
             
             parameters = [
                 "model": "gpt-3.5-turbo",

@@ -9,9 +9,7 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @StateObject private var user = User()
     var body: some View {
         ChatView()
-            .environmentObject(user)
     }
 }

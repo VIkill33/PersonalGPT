@@ -15,6 +15,7 @@ class User: ObservableObject {
         for chat in chats {
             message_array.append(chat.messsages)
         }
+        print(message_array)
         return message_array
     }
     func answerArray() -> [String] {

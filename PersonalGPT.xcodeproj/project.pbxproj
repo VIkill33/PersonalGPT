@@ -12,6 +12,8 @@
 		E76D2AB829B7AFB500F32703 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76D2AB729B7AFB500F32703 /* Settings.swift */; };
 		E76D2AB929B7AFB500F32703 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76D2AB729B7AFB500F32703 /* Settings.swift */; };
 		E76D2ABA29B7BE0900F32703 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E782F01B29B3C0D0006E72BF /* SettingView.swift */; };
+		E76D2ABC29B8460700F32703 /* Menus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76D2ABB29B8460700F32703 /* Menus.swift */; };
+		E76D2ABD29B8460700F32703 /* Menus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76D2ABB29B8460700F32703 /* Menus.swift */; };
 		E782F01929B3B58D006E72BF /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E782F01829B3B58D006E72BF /* extensions.swift */; };
 		E782F01A29B3B7AC006E72BF /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E782F01829B3B58D006E72BF /* extensions.swift */; };
 		E782F01C29B3C0D0006E72BF /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E782F01B29B3C0D0006E72BF /* SettingView.swift */; };
@@ -44,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		E76D2AB729B7AFB500F32703 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		E76D2ABB29B8460700F32703 /* Menus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menus.swift; sourceTree = "<group>"; };
 		E782F01829B3B58D006E72BF /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		E782F01B29B3C0D0006E72BF /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		E7D5A97E29B106F000825AFD /* PersonalGPT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalGPT.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,6 +202,7 @@
 				E7D5A9BD29B1350D00825AFD /* MacPersonalGPT.entitlements */,
 				E7D5A9BA29B1350D00825AFD /* MacPersonalGPT.xcdatamodeld */,
 				E7D5A9B529B1350D00825AFD /* Preview Content */,
+				E76D2ABB29B8460700F32703 /* Menus.swift */,
 			);
 			path = MacPersonalGPT;
 			sourceTree = "<group>";
@@ -337,6 +341,7 @@
 			files = (
 				E7D5A98B29B106F300825AFD /* Persistence.swift in Sources */,
 				E782F01C29B3C0D0006E72BF /* SettingView.swift in Sources */,
+				E76D2ABC29B8460700F32703 /* Menus.swift in Sources */,
 				E7D5A98429B106F000825AFD /* ContentView.swift in Sources */,
 				E7D5A99629B1071900825AFD /* ChatView.swift in Sources */,
 				E7D5A98229B106F000825AFD /* PersonalGPTApp.swift in Sources */,
@@ -355,6 +360,7 @@
 			files = (
 				E7D5A9B929B1350D00825AFD /* Persistence.swift in Sources */,
 				E7D5A9B229B1350B00825AFD /* ContentView.swift in Sources */,
+				E76D2ABD29B8460700F32703 /* Menus.swift in Sources */,
 				E7D5A9C129B1354400825AFD /* ChatView.swift in Sources */,
 				E7D5A9B029B1350B00825AFD /* MacPersonalGPTApp.swift in Sources */,
 				E76D2AB929B7AFB500F32703 /* Settings.swift in Sources */,
@@ -505,7 +511,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.21;
+				MARKETING_VERSION = 1.22;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vikill.PersonalGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -535,7 +541,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.21;
+				MARKETING_VERSION = 1.22;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vikill.PersonalGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

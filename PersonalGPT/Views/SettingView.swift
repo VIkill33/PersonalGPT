@@ -26,6 +26,7 @@ struct SettingView: View {
                     }
                     HStack {
                         Text("Temperature")
+                        Spacer()
                         Picker("", selection: $settings.temperature) {
                             ForEach(0...20, id: \.self) {
                                 Text(String(Double($0)/10)).tag(Double($0)/10)
@@ -33,13 +34,25 @@ struct SettingView: View {
                         }
                     }
                 }
-                Section(header: Text("Roles (Not availible yet)")) {
-                    Text("System")
-                    Text("User")
-                    Text("Assistant")
+                Section(header: Text("Roles")) {
+                    #if os(iOS)
+                    NavigationLink(destination: {
+                        systemPrompt_SettingView()
+                    }, label: {
+                        Text("System")
+                    })
+                    NavigationLink(destination: {
+                        assistantPrompt_SettingView()
+                    }, label: {
+                        Text("Assistant")
+                    })
+                    #endif
+                    #if os(macOS)
+                    systemPrompt_SettingView()
+                    assistantPrompt_SettingView()
+                    #endif
                 }
-                .disabled(true)
-                Section(header: Text("API Key"), footer: Text("You can paste your own API key here")) {
+                Section(header: Text("API Key"), footer: Text("You can paste your own API key here, or use author's for free :)")) {
                     SecureField("API key", text: $settings.api_key)
                     Button(action: {
                         settings.api_key = ""
@@ -64,6 +77,42 @@ struct SettingView: View {
             .formStyle(.grouped)
             .frame(minWidth: 300.0, minHeight: 700.0)
             #endif
+        }
+    }
+}
+
+struct systemPrompt_SettingView: View {
+    @EnvironmentObject var settings: Settings
+    var body: some View {
+        Form {
+            Section {
+                HStack {
+                    Text("System Prompt")
+                    Spacer()
+                    Toggle("", isOn: $settings.isSystemPrompt)
+                }
+                if settings.isSystemPrompt {
+                    TextEditor(text: $settings.systemPrompt)
+                }
+            }
+        }
+    }
+}
+
+struct assistantPrompt_SettingView: View {
+    @EnvironmentObject var settings: Settings
+    var body: some View {
+        Form {
+            Section {
+                HStack {
+                    Text("Assistant Prompt")
+                    Spacer()
+                    Toggle("", isOn: $settings.isAssistantPrompt)
+                }
+                if settings.isAssistantPrompt {
+                    TextEditor(text: $settings.assistantPrompt)
+                }
+            }
         }
     }
 }

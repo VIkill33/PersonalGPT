@@ -12,4 +12,8 @@ class Settings: ObservableObject {
     @AppStorage("isFirstLauch") var isFirstLauch: Bool = true
     @AppStorage("temperature") var temperature: Double = 1.0
     @AppStorage("api_key") var api_key: String = ""
+    @AppStorage("isSystemPrompt") var isSystemPrompt: Bool = false
+    @AppStorage("isAssistantPrompt") var isAssistantPrompt: Bool = false
+    @AppStorage("systemPrompt") var systemPrompt: String = ""
+    @AppStorage("assistantPrompt") var assistantPrompt: String = ""
 }

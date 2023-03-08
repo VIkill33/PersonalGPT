@@ -10,8 +10,8 @@ import SwiftUI
 @main
 struct MacPersonalGPTApp: App {
     let persistenceController = PersistenceController.shared
-    @StateObject private var user = User()
-    @StateObject private var settings = Settings()
+    @StateObject var user = User()
+    @StateObject var settings = Settings()
 
     var body: some Scene {
         WindowGroup {
@@ -19,6 +19,9 @@ struct MacPersonalGPTApp: App {
                 .environmentObject(user)
                 .environmentObject(settings)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+        }
+        .commands {
+            Menus(user: self.user)
         }
 #if os(macOS)
         SwiftUI.Settings {

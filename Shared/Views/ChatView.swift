@@ -36,15 +36,17 @@ struct ChatView: View {
                 if generatedText != "" {
                     ScrollView {
                         ForEach(user.chats) { chat in
-                            TextField("", text: .constant(chat.messsages["content"] as! String))
-                                .messageStyle()
-                            Divider()
-                            if settings.isMarkdown {
-                                Markdown(chat.answers)
-                                    .padding([.horizontal, .bottom])
-                            } else {
-                                TextEditor(text: .constant(chat.answers))
-                                    .answerStyle()
+                            if chat.answers != "" {
+                                TextField("", text: .constant(chat.messsages["content"] as! String))
+                                    .messageStyle()
+                                Divider()
+                                if settings.isMarkdown {
+                                    Markdown(chat.answers)
+                                        .padding([.horizontal, .bottom])
+                                } else {
+                                    TextEditor(text: .constant(chat.answers))
+                                        .answerStyle()
+                                }
                             }
                         }
                     }
