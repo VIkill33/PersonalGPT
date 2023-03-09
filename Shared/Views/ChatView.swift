@@ -33,6 +33,10 @@ struct ChatView: View {
             }
     }
     
+    init() {
+        UIScrollView.appearance().bounces = false
+    }
+    
     var body: some View {
         VStack {
             ZStack {
