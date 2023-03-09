@@ -17,6 +17,8 @@
 		E782F01929B3B58D006E72BF /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E782F01829B3B58D006E72BF /* extensions.swift */; };
 		E782F01A29B3B7AC006E72BF /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E782F01829B3B58D006E72BF /* extensions.swift */; };
 		E782F01C29B3C0D0006E72BF /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E782F01B29B3C0D0006E72BF /* SettingView.swift */; };
+		E794730629B9FCA600436BB7 /* ObservableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E794730529B9FCA600436BB7 /* ObservableScrollView.swift */; };
+		E794730729B9FCA600436BB7 /* ObservableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E794730529B9FCA600436BB7 /* ObservableScrollView.swift */; };
 		E7D5A98229B106F000825AFD /* PersonalGPTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A98129B106F000825AFD /* PersonalGPTApp.swift */; };
 		E7D5A98429B106F000825AFD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A98329B106F000825AFD /* ContentView.swift */; };
 		E7D5A98629B106F300825AFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7D5A98529B106F300825AFD /* Assets.xcassets */; };
@@ -49,6 +51,7 @@
 		E76D2ABB29B8460700F32703 /* Menus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menus.swift; sourceTree = "<group>"; };
 		E782F01829B3B58D006E72BF /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		E782F01B29B3C0D0006E72BF /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		E794730529B9FCA600436BB7 /* ObservableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableScrollView.swift; sourceTree = "<group>"; };
 		E7D5A97E29B106F000825AFD /* PersonalGPT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalGPT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7D5A98129B106F000825AFD /* PersonalGPTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalGPTApp.swift; sourceTree = "<group>"; };
 		E7D5A98329B106F000825AFD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -111,6 +114,7 @@
 				E782F01729B3B575006E72BF /* Extensions */,
 				E7D5A99529B1071900825AFD /* ChatView.swift */,
 				E7D5A9CB29B1435800825AFD /* WelcomeView.swift */,
+				E794730529B9FCA600436BB7 /* ObservableScrollView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -302,6 +306,7 @@
 				E7D5A99F29B108EA00825AFD /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				E7D5A9A629B133DB00825AFD /* XCRemoteSwiftPackageReference "toast-swift" */,
 				E729D55129B226890084F483 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
+				E794730029B9F9D800436BB7 /* XCRemoteSwiftPackageReference "trackable-scroll-view" */,
 			);
 			productRefGroup = E7D5A97F29B106F000825AFD /* Products */;
 			projectDirPath = "";
@@ -349,6 +354,7 @@
 				E782F01929B3B58D006E72BF /* extensions.swift in Sources */,
 				E7D5A98E29B106F300825AFD /* PersonalGPT.xcdatamodeld in Sources */,
 				E7D5A9A529B10AA900825AFD /* GPT.swift in Sources */,
+				E794730629B9FCA600436BB7 /* ObservableScrollView.swift in Sources */,
 				E76D2AB829B7AFB500F32703 /* Settings.swift in Sources */,
 				E7D5A9CC29B1435800825AFD /* WelcomeView.swift in Sources */,
 			);
@@ -368,6 +374,7 @@
 				E782F01A29B3B7AC006E72BF /* extensions.swift in Sources */,
 				E7D5A9BC29B1350D00825AFD /* MacPersonalGPT.xcdatamodeld in Sources */,
 				E7D5A9C929B135DE00825AFD /* GPT.swift in Sources */,
+				E794730729B9FCA600436BB7 /* ObservableScrollView.swift in Sources */,
 				E7D5A9CD29B1448600825AFD /* WelcomeView.swift in Sources */,
 				E76D2ABA29B7BE0900F32703 /* SettingView.swift in Sources */,
 			);
@@ -569,7 +576,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vikill.MacPersonalGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -598,7 +605,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vikill.MacPersonalGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -646,6 +653,14 @@
 			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui.git";
 			requirement = {
 				branch = main;
+				kind = branch;
+			};
+		};
+		E794730029B9F9D800436BB7 /* XCRemoteSwiftPackageReference "trackable-scroll-view" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maxnatchanon/trackable-scroll-view.git";
+			requirement = {
+				branch = master;
 				kind = branch;
 			};
 		};

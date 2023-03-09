@@ -52,7 +52,7 @@ struct SettingView: View {
                     assistantPrompt_SettingView()
                     #endif
                 }
-                Section(header: Text("API Key"), footer: Text("You can paste your own API key here, or use author's for free :)")) {
+                Section(header: Text("API Key"), footer: Text("You can paste your own API key here.")) {
                     SecureField("API key", text: $settings.api_key)
                     Button(action: {
                         settings.api_key = ""
@@ -74,10 +74,29 @@ struct SettingView: View {
             }
             #if os(macOS)
             .padding()
-            .formStyle(.grouped)
+            .customFormStyle()
             .frame(minWidth: 300.0, minHeight: 700.0)
             #endif
         }
+    }
+}
+
+struct customFormStyleModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        Group {
+            if #available(macOS 13.0, *) {
+                content
+                    .formStyle(.grouped)
+            } else {
+                content
+            }
+        }
+    }
+}
+
+extension View {
+    func customFormStyle() -> some View {
+        modifier(customFormStyleModifier())
     }
 }
 

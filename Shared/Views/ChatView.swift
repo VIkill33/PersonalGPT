@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MarkdownUI
+import Combine
 #if os(iOS)
 import Toast
 #endif
@@ -18,6 +19,8 @@ struct ChatView: View {
         case promptText
     }
     @FocusState private var focusedField: Field?
+    @State var isShowButtonGroups: Bool = true
+    @State var scrollOffset = CGFloat.zero
     @State var promptText = ""
     @State var promptText_shown = ""
     @State var generatedText = ""
@@ -34,7 +37,7 @@ struct ChatView: View {
         VStack {
             ZStack {
                 if generatedText != "" {
-                    ScrollView {
+                    ObservableScrollView(scrollOffset: $scrollOffset) { proxy in
                         ForEach(user.chats) { chat in
                             if chat.answers != "" {
                                 TextField("", text: .constant(chat.messsages["content"] as! String))
@@ -50,48 +53,64 @@ struct ChatView: View {
                             }
                         }
                     }
-                    VStack {
-                        Spacer()
-                        ZStack {
-                            HStack {
-                                Button(action: {
+                    .onChange(of: scrollOffset, perform: { [scrollOffset] newOffset in
+                        if newOffset > scrollOffset {
+                            // scroll down
+                            withAnimation {
+                                isShowButtonGroups = false
+                            }
+                        } else {
+                            // scroll up
+                            withAnimation {
+                                isShowButtonGroups = true
+                            }
+                        }
+                    })
+                    if isShowButtonGroups {
+                        VStack {
+                            // MARK:  Paste, regenerate & markdown buttons
+                            Spacer()
+                            ZStack {
+                                HStack {
+                                    Button(action: {
 #if os(iOS)
-                                    UIPasteboard.general.string = generatedText
-                                    let toast = Toast.text("Copy to clipborad successfully")
-                                    toast.show()
+                                        UIPasteboard.general.string = generatedText
+                                        let toast = Toast.text("Copy to clipborad successfully")
+                                        toast.show()
 #endif
 #if os(macOS)
-                                    let pasteBoard = NSPasteboard.general
-                                    pasteBoard.clearContents()
-                                    pasteBoard.setString(generatedText, forType: .string)
+                                        let pasteBoard = NSPasteboard.general
+                                        pasteBoard.clearContents()
+                                        pasteBoard.setString(generatedText, forType: .string)
 #endif
-                                }, label: {
-                                    Image(systemName: "doc.on.clipboard.fill")
-                                })
-                                .buttonStyle(.borderless)
-                                .padding()
-                                Spacer()
+                                    }, label: {
+                                        Image(systemName: "doc.on.clipboard.fill")
+                                    })
+                                    .buttonStyle(.borderless)
+                                    .padding()
+                                    Spacer()
+                                    Button(action: {
+                                        settings.isMarkdown.toggle()
+                                    }, label: {
+                                        if settings.isMarkdown {
+                                            Image(systemName: "t.square.fill")
+                                        } else {
+                                            Image(systemName: "m.square.fill")
+                                        }
+                                    })
+                                    .buttonStyle(.borderless)
+                                    .padding()
+                                }
                                 Button(action: {
-                                    settings.isMarkdown.toggle()
+                                    promptText = promptText_shown
+                                    //user.chat.answers.remove(at: user.chat.answers.count - 1)
+                                    generateText()
                                 }, label: {
-                                    if settings.isMarkdown {
-                                        Image(systemName: "t.square.fill")
-                                    } else {
-                                        Image(systemName: "m.square.fill")
-                                    }
+                                    Text("Regenerate Answer")
                                 })
                                 .buttonStyle(.borderless)
                                 .padding()
                             }
-                            Button(action: {
-                                promptText = promptText_shown
-                                //user.chat.answers.remove(at: user.chat.answers.count - 1)
-                                generateText()
-                            }, label: {
-                                Text("Regenerate Answer")
-                            })
-                            .buttonStyle(.borderless)
-                            .padding()
                         }
                     }
                 }
