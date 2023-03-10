@@ -21,6 +21,8 @@
 		E794730729B9FCA600436BB7 /* ObservableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E794730529B9FCA600436BB7 /* ObservableScrollView.swift */; };
 		E794730929BADA6900436BB7 /* ChatBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E794730829BADA6900436BB7 /* ChatBoxView.swift */; };
 		E794730A29BADA6900436BB7 /* ChatBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E794730829BADA6900436BB7 /* ChatBoxView.swift */; };
+		E7A0804929BB6186003C818D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E7A0804829BB6186003C818D /* README.md */; };
+		E7A0804A29BB6186003C818D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E7A0804829BB6186003C818D /* README.md */; };
 		E7D5A98229B106F000825AFD /* PersonalGPTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A98129B106F000825AFD /* PersonalGPTApp.swift */; };
 		E7D5A98429B106F000825AFD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A98329B106F000825AFD /* ContentView.swift */; };
 		E7D5A98629B106F300825AFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7D5A98529B106F300825AFD /* Assets.xcassets */; };
@@ -55,6 +57,7 @@
 		E782F01B29B3C0D0006E72BF /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		E794730529B9FCA600436BB7 /* ObservableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableScrollView.swift; sourceTree = "<group>"; };
 		E794730829BADA6900436BB7 /* ChatBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBoxView.swift; sourceTree = "<group>"; };
+		E7A0804829BB6186003C818D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E7D5A97E29B106F000825AFD /* PersonalGPT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalGPT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7D5A98129B106F000825AFD /* PersonalGPTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalGPTApp.swift; sourceTree = "<group>"; };
 		E7D5A98329B106F000825AFD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -134,6 +137,7 @@
 		E7D5A97529B106F000825AFD = {
 			isa = PBXGroup;
 			children = (
+				E7A0804829BB6186003C818D /* README.md */,
 				E782F01529B3B537006E72BF /* Shared */,
 				E7D5A99729B1073C00825AFD /* Packages */,
 				E7D5A98029B106F000825AFD /* PersonalGPT */,
@@ -327,6 +331,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7A0804929BB6186003C818D /* README.md in Resources */,
 				E7D5A98929B106F300825AFD /* Preview Assets.xcassets in Resources */,
 				E7D5A98629B106F300825AFD /* Assets.xcassets in Resources */,
 			);
@@ -336,6 +341,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7A0804A29BB6186003C818D /* README.md in Resources */,
 				E7D5A9B729B1350D00825AFD /* Preview Assets.xcassets in Resources */,
 				E7D5A9B429B1350D00825AFD /* Assets.xcassets in Resources */,
 			);
