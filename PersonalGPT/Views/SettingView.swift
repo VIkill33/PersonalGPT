@@ -27,7 +27,7 @@ struct SettingView: View {
                                 Text(String(Double($0)/10)).tag(Double($0)/10)
                             }
                         }
-                    }
+                    } 
                 }
                 Section(header: Text("Roles")) {
                     #if os(iOS)
@@ -47,10 +47,10 @@ struct SettingView: View {
                     assistantPrompt_SettingView()
                     #endif
                 }
-                Section(header: Text("API Key"), footer: Text("You can paste your own API key here.")) {
+                Section(header: Text("API Key"), footer: Text("You can paste your own API key here, or use author's for free :)")) {
                     SecureField("API key", text: $settings.api_key)
                     Button(action: {
-                        settings.api_key = ""
+                        settings.api_key = "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"
                     }, label: {
                         Text("Reset API key")
                     })

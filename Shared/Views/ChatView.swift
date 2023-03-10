@@ -23,6 +23,7 @@ struct ChatView: View {
     @State var promptText = ""
     @State var generatedText = ""
     @State var isLoading = false
+    @State var isShowSelectCircle = false
     
     var simpleDrag: some Gesture {
         DragGesture()
@@ -41,8 +42,8 @@ struct ChatView: View {
                     ObservableScrollView(scrollOffset: $scrollOffset) { proxy in
                         ForEach(user.chats) { chat in
                             if chat.answers != "" {
-                                ChatBoxView(chatRole: .user, chatString: chat.messsages["content"] as! String, regenerateAnswer: self.generateText, promptText: $promptText)
-                                ChatBoxView(chatRole: .assistant, chatString: chat.answers, promptString: chat.messsages["content"] as! String, regenerateAnswer: self.generateText, promptText: $promptText)
+                                ChatBoxView(chatRole: .user, chatString: chat.messsages["content"] as! String, regenerateAnswer: self.generateText, promptText: $promptText, isShowSelectCircle: $isShowSelectCircle)
+                                ChatBoxView(chatRole: .assistant, chatString: chat.answers, promptString: chat.messsages["content"] as! String, regenerateAnswer: self.generateText, promptText: $promptText, isShowSelectCircle: $isShowSelectCircle)
                             }
                         }
                     }

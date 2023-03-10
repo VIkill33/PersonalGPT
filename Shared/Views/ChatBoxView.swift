@@ -22,6 +22,8 @@ struct ChatBoxView: View {
     var promptString: String = ""
     var regenerateAnswer: (api_type, String) -> Void
     @Binding var promptText: String
+    @Binding var isShowSelectCircle: Bool
+    @State var isSelected: Bool = false
     let boxRadius = 10.0
     let boxPaddingLength = 10.0
     var body: some View {
@@ -29,54 +31,86 @@ struct ChatBoxView: View {
         case .user:
             HStack {
                 Spacer()
-                Markdown(chatString)
-                    .markdownTextStyle {
-                        ForegroundColor(.white)
-                    }
-                    .padding(boxPaddingLength)
-                    .background {
-                        RoundedRectangle(cornerRadius: boxRadius)
-                            .fill(Color.blue)
-                    }
-                    .contextMenu {
-                        Button("Copy") {
-                            copy2pasteboard(chatString)
+                Group {
+                    Markdown(chatString)
+                        .markdownTextStyle {
+                            ForegroundColor(.white)
+                        }
+                        .padding(boxPaddingLength)
+                        .background {
+                            RoundedRectangle(cornerRadius: boxRadius)
+                                .fill(Color.blue)
+                        }
+                        .contextMenu {
+                            Button("Copy") {
+                                copy2pasteboard(chatString)
 #if os(iOS)
-                            let toast = Toast.text("Copy to clipborad successfully")
-                            toast.show()
+                                let toast = Toast.text("Copy to clipborad successfully")
+                                toast.show()
 #endif
+                            }
+                            Button("Regenerate Answer") {
+                                promptText = promptString
+                                regenerateAnswer(.chat, promptString)
+                            }
+                            Button("More...") {
+                                isShowSelectCircle = true
+                            }
                         }
-                        Button("Regenerate Answer") {
-                            promptText = promptString
-                            regenerateAnswer(.chat, promptString)
-                        }
-                        Button("More...") {
-                            
+                    if isShowSelectCircle {
+                        if isSelected {
+                            Text("\(Image(systemName: "checkmark.circle.fill"))")
+                                .foregroundColor(.blue)
+                        } else {
+                            Text("\(Image(systemName: "circle"))")
+                                .foregroundColor(Color("secondarySystemBackground"))
                         }
                     }
+                }
+                .onTapGesture {
+                    if isShowSelectCircle {
+                        isSelected.toggle()
+                    }
+                }
             }
             .padding([.top, .horizontal])
         case .assistant:
             HStack {
-                Markdown(chatString)
-                    .padding(boxPaddingLength)
-                    .background {
-                        RoundedRectangle(cornerRadius: boxRadius)
-                            .fill(Color("secondarySystemBackground"))
+                Group {
+                    if isShowSelectCircle {
+                        if isSelected {
+                            Text("\(Image(systemName: "checkmark.circle.fill"))")
+                                .foregroundColor(.blue)
+                        } else {
+                            Text("\(Image(systemName: "circle"))")
+                                .foregroundColor(Color("secondarySystemBackground"))
+                        }
                     }
-                    .contextMenu {
-                        Button("Copy") {
-                            copy2pasteboard(chatString)
+                    Markdown(chatString)
+                        .padding(boxPaddingLength)
+                        .background {
+                            RoundedRectangle(cornerRadius: boxRadius)
+                                .fill(Color("secondarySystemBackground"))
+                        }
+                        .contextMenu {
+                            Button("Copy") {
+                                copy2pasteboard(chatString)
 #if os(iOS)
-                            let toast = Toast.text("Copy to clipborad successfully")
-                            toast.show()
+                                let toast = Toast.text("Copy to clipborad successfully")
+                                toast.show()
 #endif
+                            }
+                            Button("Regenerate Answer") {
+                                promptText = promptString
+                                regenerateAnswer(.chat, promptString)
+                            }
                         }
-                        Button("Regenerate Answer") {
-                            promptText = promptString
-                            regenerateAnswer(.chat, promptString)
-                        }
+                }
+                .onTapGesture {
+                    if isShowSelectCircle {
+                        isSelected.toggle()
                     }
+                }
                 Spacer()
             }
             .padding([.top, .horizontal])
