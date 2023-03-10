@@ -15,7 +15,7 @@ enum api_type {
 }
 
 extension ChatView {
-    func generateText(_ apiType: api_type = .chat) {
+    func generateText(_ apiType: api_type = .chat) -> Void {
         DispatchQueue.main.async {
             isLoading = true
         }

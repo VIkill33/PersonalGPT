@@ -19,6 +19,8 @@
 		E782F01C29B3C0D0006E72BF /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E782F01B29B3C0D0006E72BF /* SettingView.swift */; };
 		E794730629B9FCA600436BB7 /* ObservableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E794730529B9FCA600436BB7 /* ObservableScrollView.swift */; };
 		E794730729B9FCA600436BB7 /* ObservableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E794730529B9FCA600436BB7 /* ObservableScrollView.swift */; };
+		E794730929BADA6900436BB7 /* ChatBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E794730829BADA6900436BB7 /* ChatBoxView.swift */; };
+		E794730A29BADA6900436BB7 /* ChatBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E794730829BADA6900436BB7 /* ChatBoxView.swift */; };
 		E7D5A98229B106F000825AFD /* PersonalGPTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A98129B106F000825AFD /* PersonalGPTApp.swift */; };
 		E7D5A98429B106F000825AFD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A98329B106F000825AFD /* ContentView.swift */; };
 		E7D5A98629B106F300825AFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7D5A98529B106F300825AFD /* Assets.xcassets */; };
@@ -52,6 +54,7 @@
 		E782F01829B3B58D006E72BF /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		E782F01B29B3C0D0006E72BF /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		E794730529B9FCA600436BB7 /* ObservableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableScrollView.swift; sourceTree = "<group>"; };
+		E794730829BADA6900436BB7 /* ChatBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBoxView.swift; sourceTree = "<group>"; };
 		E7D5A97E29B106F000825AFD /* PersonalGPT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalGPT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7D5A98129B106F000825AFD /* PersonalGPTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalGPTApp.swift; sourceTree = "<group>"; };
 		E7D5A98329B106F000825AFD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -111,10 +114,11 @@
 		E782F01629B3B55A006E72BF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E782F01729B3B575006E72BF /* Extensions */,
 				E7D5A99529B1071900825AFD /* ChatView.swift */,
 				E7D5A9CB29B1435800825AFD /* WelcomeView.swift */,
 				E794730529B9FCA600436BB7 /* ObservableScrollView.swift */,
+				E782F01729B3B575006E72BF /* Extensions */,
+				E794730829BADA6900436BB7 /* ChatBoxView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -344,6 +348,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E794730929BADA6900436BB7 /* ChatBoxView.swift in Sources */,
 				E7D5A98B29B106F300825AFD /* Persistence.swift in Sources */,
 				E782F01C29B3C0D0006E72BF /* SettingView.swift in Sources */,
 				E76D2ABC29B8460700F32703 /* Menus.swift in Sources */,
@@ -364,6 +369,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E794730A29BADA6900436BB7 /* ChatBoxView.swift in Sources */,
 				E7D5A9B929B1350D00825AFD /* Persistence.swift in Sources */,
 				E7D5A9B229B1350B00825AFD /* ContentView.swift in Sources */,
 				E76D2ABD29B8460700F32703 /* Menus.swift in Sources */,
@@ -518,7 +524,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.23;
+				MARKETING_VERSION = 1.24;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vikill.PersonalGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -548,7 +554,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.23;
+				MARKETING_VERSION = 1.24;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vikill.PersonalGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

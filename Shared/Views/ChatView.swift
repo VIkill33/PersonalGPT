@@ -33,9 +33,11 @@ struct ChatView: View {
             }
     }
     
+    #if os(iOS)
     init() {
         UIScrollView.appearance().bounces = false
     }
+    #endif
     
     var body: some View {
         VStack {
@@ -44,16 +46,8 @@ struct ChatView: View {
                     ObservableScrollView(scrollOffset: $scrollOffset) { proxy in
                         ForEach(user.chats) { chat in
                             if chat.answers != "" {
-                                TextField("", text: .constant(chat.messsages["content"] as! String))
-                                    .messageStyle()
-                                Divider()
-                                if settings.isMarkdown {
-                                    Markdown(chat.answers)
-                                        .padding([.horizontal, .bottom])
-                                } else {
-                                    TextEditor(text: .constant(chat.answers))
-                                        .answerStyle()
-                                }
+                                ChatBoxView(chatRole: .user, chatString: chat.messsages["content"] as! String, regenerateAnswer: self.generateText)
+                                ChatBoxView(chatRole: .assistant, chatString: chat.answers, regenerateAnswer: self.generateText)
                             }
                         }
                     }
