@@ -18,7 +18,9 @@ SwiftUI ChatGPT app with API keys, using model ChatGPT-3.5
     + [macOS](#macos-1)
   * [Acknowledgements](#acknowledgements)
 ## Updates
+
 2023-3-10
+
 adjust UI to iMesaage-like
 ## ScreenShots
 ### iOS
