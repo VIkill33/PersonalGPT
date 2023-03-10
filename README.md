@@ -24,9 +24,10 @@ SwiftUI ChatGPT app with API keys, using model ChatGPT-3.5
 Darkmode
 
 <img src="https://user-images.githubusercontent.com/78488529/224233932-682ed9ac-ace8-4e6c-9a78-d5ea617f6f33.jpeg" width="255" height="550"> 
+
 ### macOS
-<img src="https://user-images.githubusercontent.com/78488529/224234572-96fcb8dd-a953-4f8a-ab15-251a72b7b2d0.jpg" width="322" height="344">
-<img src="https://user-images.githubusercontent.com/78488529/224234579-6ab19b69-f6a6-421e-ba93-555c7ef90f2b.jpg" width="227" height="336">
+<img src="https://user-images.githubusercontent.com/78488529/224234572-96fcb8dd-a953-4f8a-ab15-251a72b7b2d0.jpg" width="322" height="344"> <img src="https://user-images.githubusercontent.com/78488529/224234579-6ab19b69-f6a6-421e-ba93-555c7ef90f2b.jpg" width="227" height="336">
+
 ## It Supports
 - Consecutive chat
 - Answers display in markdown way
