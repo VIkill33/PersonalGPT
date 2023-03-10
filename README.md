@@ -8,6 +8,7 @@ SwiftUI ChatGPT app with API keys, using model ChatGPT-3.5
 </p>
 
 - [PersonalGPT](#personalgpt)
+  * [Updates](#Updates)
   * [ScreenShots](#screenshots)
     + [iOS](#ios)
     + [macOS](#macos)
@@ -16,7 +17,9 @@ SwiftUI ChatGPT app with API keys, using model ChatGPT-3.5
     + [iOS](#ios-1)
     + [macOS](#macos-1)
   * [Acknowledgements](#acknowledgements)
-
+## Updates
+2023-3-10
+adjust UI to iMesaage-like
 ## ScreenShots
 ### iOS
 <img src="https://user-images.githubusercontent.com/78488529/224233891-06eece24-dbdf-4209-9141-0ac2d31d7b1e.PNG" width="255" height="550"> <img src="https://user-images.githubusercontent.com/78488529/224233907-0026df21-0b61-41ca-9b35-0939885e3cb0.PNG" width="255" height="550"> <img src="https://user-images.githubusercontent.com/78488529/224233922-def8ca39-8b08-4ecb-bc87-387ea74d1916.PNG" width="255" height="550"> 
