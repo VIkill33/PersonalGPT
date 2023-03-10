@@ -12,7 +12,7 @@ class Settings: ObservableObject {
     @Published var hasAppBeenUpdated: Bool = false
     @Published var hasCheckedAppBeenUpdated: Bool = false
     @AppStorage("temperature") var temperature: Double = 1.0
-    @AppStorage("api_key") var api_key: String = "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"
+    @AppStorage("api_key") var api_key: String = ""
     @AppStorage("isSystemPrompt") var isSystemPrompt: Bool = false
     @AppStorage("isAssistantPrompt") var isAssistantPrompt: Bool = false
     @AppStorage("systemPrompt") var systemPrompt: String = ""

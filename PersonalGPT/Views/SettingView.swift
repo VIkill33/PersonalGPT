@@ -47,10 +47,10 @@ struct SettingView: View {
                     assistantPrompt_SettingView()
                     #endif
                 }
-                Section(header: Text("API Key"), footer: Text("You can paste your own API key here, or use author's for free :)")) {
+                Section(header: Text("API Key"), footer: Text("You can paste your own API key here.")) {
                     SecureField("API key", text: $settings.api_key)
                     Button(action: {
-                        settings.api_key = "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"
+                        settings.api_key = ""
                     }, label: {
                         Text("Reset API key")
                     })

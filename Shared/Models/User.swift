@@ -31,6 +31,7 @@ struct Chat: Identifiable {
     var messsages: [String: Any]
     var answers: String
     var id =  UUID()
+    var isSelected: Bool = false
     init(messsages: [String : Any], answers: String) {
         self.messsages = messsages
         self.answers = answers
