@@ -8,10 +8,11 @@
 import SwiftUI
 
 class Settings: ObservableObject {
-    @AppStorage("isMarkdown") var isMarkdown: Bool = true
     @AppStorage("isFirstLauch") var isFirstLauch: Bool = true
+    @Published var hasAppBeenUpdated: Bool = false
+    @Published var hasCheckedAppBeenUpdated: Bool = false
     @AppStorage("temperature") var temperature: Double = 1.0
-    @AppStorage("api_key") var api_key: String = "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"
+    @AppStorage("api_key") var api_key: String = ""
     @AppStorage("isSystemPrompt") var isSystemPrompt: Bool = false
     @AppStorage("isAssistantPrompt") var isAssistantPrompt: Bool = false
     @AppStorage("systemPrompt") var systemPrompt: String = ""

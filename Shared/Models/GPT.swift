@@ -15,7 +15,7 @@ enum api_type {
 }
 
 extension ChatView {
-    func generateText(_ apiType: api_type = .chat) -> Void {
+    func generateText(_ apiType: api_type = .chat, prompt_text: String) -> Void {
         DispatchQueue.main.async {
             isLoading = true
         }
@@ -54,9 +54,8 @@ extension ChatView {
                 }
             }
             
-            user.chats.append(Chat(messsages: ["content": promptText, "role": "user"], answers: ""))
+            user.chats.append(Chat(messsages: ["content": prompt_text, "role": "user"], answers: ""))
             // user.chat.messsages.append(["content": promptText, "role": "user"])
-            let messsages: [String: Any] = ["role": "user", "content": promptText]
             
             parameters = [
                 "model": "gpt-3.5-turbo",
@@ -83,7 +82,6 @@ extension ChatView {
                             let text = choices.map { $0["text"].stringValue }.joined()
                             DispatchQueue.main.async {
                                 generatedText = trimStr(text)
-                                promptText_shown = promptText
                                 promptText = ""
                             }
                         }
@@ -96,9 +94,9 @@ extension ChatView {
                                 // 处理得到的消息内容
                                 DispatchQueue.main.async {
                                     generatedText = trimStr(message)
+                                    user.chats[user.chats.count - 1].messsages["content"] = prompt_text
                                     user.chats[user.chats.count - 1].answers = generatedText
                                     print(user.chats.last?.answers)
-                                    promptText_shown = promptText
                                     promptText = ""
                                 }
                             }

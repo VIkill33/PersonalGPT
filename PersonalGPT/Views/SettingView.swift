@@ -20,11 +20,6 @@ struct SettingView: View {
             Form {
                 Section(footer: Text("What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.")) {
                     HStack {
-                        Text("Markdown")
-                        Spacer()
-                        Toggle("", isOn: $settings.isMarkdown)
-                    }
-                    HStack {
                         Text("Temperature")
                         Spacer()
                         Picker("", selection: $settings.temperature) {
@@ -52,10 +47,10 @@ struct SettingView: View {
                     assistantPrompt_SettingView()
                     #endif
                 }
-                Section(header: Text("API Key"), footer: Text("You can paste your own API key here, or use author's for free :)")) {
+                Section(header: Text("API Key"), footer: Text("You can paste your own API key here.")) {
                     SecureField("API key", text: $settings.api_key)
                     Button(action: {
-                        settings.api_key = "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"
+                        settings.api_key = ""
                     }, label: {
                         Text("Reset API key")
                     })

@@ -19,10 +19,8 @@ struct ChatView: View {
         case promptText
     }
     @FocusState private var focusedField: Field?
-    @State var isShowButtonGroups: Bool = true
     @State var scrollOffset = CGFloat.zero
     @State var promptText = ""
-    @State var promptText_shown = ""
     @State var generatedText = ""
     @State var isLoading = false
     
@@ -33,11 +31,8 @@ struct ChatView: View {
             }
     }
     
-    #if os(iOS)
-    init() {
-        UIScrollView.appearance().bounces = false
-    }
-    #endif
+    let currentVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+    let lastVersion = UserDefaults.standard.string(forKey: "lastVersion") ?? "unknown"
     
     var body: some View {
         VStack {
@@ -46,71 +41,18 @@ struct ChatView: View {
                     ObservableScrollView(scrollOffset: $scrollOffset) { proxy in
                         ForEach(user.chats) { chat in
                             if chat.answers != "" {
-                                ChatBoxView(chatRole: .user, chatString: chat.messsages["content"] as! String, regenerateAnswer: self.generateText)
-                                ChatBoxView(chatRole: .assistant, chatString: chat.answers, regenerateAnswer: self.generateText)
+                                ChatBoxView(chatRole: .user, chatString: chat.messsages["content"] as! String, regenerateAnswer: self.generateText, promptText: $promptText)
+                                ChatBoxView(chatRole: .assistant, chatString: chat.answers, promptString: chat.messsages["content"] as! String, regenerateAnswer: self.generateText, promptText: $promptText)
                             }
                         }
                     }
                     .onChange(of: scrollOffset, perform: { [scrollOffset] newOffset in
                         if newOffset > scrollOffset {
                             // scroll down
-                            withAnimation {
-                                isShowButtonGroups = false
-                            }
                         } else {
                             // scroll up
-                            withAnimation {
-                                isShowButtonGroups = true
-                            }
                         }
                     })
-                    if isShowButtonGroups {
-                        VStack {
-                            // MARK:  Paste, regenerate & markdown buttons
-                            Spacer()
-                            ZStack {
-                                HStack {
-                                    Button(action: {
-#if os(iOS)
-                                        UIPasteboard.general.string = generatedText
-                                        let toast = Toast.text("Copy to clipborad successfully")
-                                        toast.show()
-#endif
-#if os(macOS)
-                                        let pasteBoard = NSPasteboard.general
-                                        pasteBoard.clearContents()
-                                        pasteBoard.setString(generatedText, forType: .string)
-#endif
-                                    }, label: {
-                                        Image(systemName: "doc.on.clipboard.fill")
-                                    })
-                                    .buttonStyle(.borderless)
-                                    .padding()
-                                    Spacer()
-                                    Button(action: {
-                                        settings.isMarkdown.toggle()
-                                    }, label: {
-                                        if settings.isMarkdown {
-                                            Image(systemName: "t.square.fill")
-                                        } else {
-                                            Image(systemName: "m.square.fill")
-                                        }
-                                    })
-                                    .buttonStyle(.borderless)
-                                    .padding()
-                                }
-                                Button(action: {
-                                    promptText = promptText_shown
-                                    //user.chat.answers.remove(at: user.chat.answers.count - 1)
-                                    generateText()
-                                }, label: {
-                                    Text("Regenerate Answer")
-                                })
-                                .buttonStyle(.borderless)
-                                .padding()
-                            }
-                        }
-                    }
                 }
                 else {
                     Spacer()
@@ -127,7 +69,7 @@ struct ChatView: View {
                     .textFieldStyle(.roundedBorder)
                     .onSubmit {
                         if !isLoading {
-                            generateText()
+                            generateText(prompt_text: promptText)
                         }
                     }
                 if isLoading {
@@ -136,7 +78,7 @@ struct ChatView: View {
                 } else {
                     Button(action: {
                         focusedField = nil
-                        generateText()
+                        generateText(prompt_text: promptText)
                     }) {
                         Image(systemName: "paperplane.fill")
                     }
@@ -149,6 +91,17 @@ struct ChatView: View {
         
         .sheet(isPresented: $settings.isFirstLauch) {
             WelcomeView(isFirstLauch: $settings.isFirstLauch)
+        }
+        .onAppear {
+            // check if app has been updated
+            print("old version: \(lastVersion)")
+            print("current version: \(currentVersion)")
+            settings.hasAppBeenUpdated = lastVersion != currentVersion
+            if settings.hasAppBeenUpdated && !settings.hasCheckedAppBeenUpdated {
+                settings.isFirstLauch = true
+                settings.hasCheckedAppBeenUpdated = true
+            }
+            UserDefaults.standard.set(currentVersion, forKey: "lastVersion")
         }
     }
     

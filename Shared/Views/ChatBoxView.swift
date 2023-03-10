@@ -7,6 +7,9 @@
 
 import SwiftUI
 import MarkdownUI
+#if os(iOS)
+import Toast
+#endif
 
 enum chat_role {
     case user
@@ -16,11 +19,11 @@ enum chat_role {
 struct ChatBoxView: View {
     var chatRole: chat_role
     var chatString: String
-    var regenerateAnswer: (api_type) -> Void
-    var shouldShowMenu = true
+    var promptString: String = ""
+    var regenerateAnswer: (api_type, String) -> Void
+    @Binding var promptText: String
     let boxRadius = 10.0
     let boxPaddingLength = 10.0
-    let
     var body: some View {
         switch chatRole {
         case .user:
@@ -35,7 +38,22 @@ struct ChatBoxView: View {
                         RoundedRectangle(cornerRadius: boxRadius)
                             .fill(Color.blue)
                     }
-                    .contextMenu(shouldShowMenu ? menuItems : nil)
+                    .contextMenu {
+                        Button("Copy") {
+                            copy2pasteboard(chatString)
+#if os(iOS)
+                            let toast = Toast.text("Copy to clipborad successfully")
+                            toast.show()
+#endif
+                        }
+                        Button("Regenerate Answer") {
+                            promptText = promptString
+                            regenerateAnswer(.chat, promptString)
+                        }
+                        Button("More...") {
+                            
+                        }
+                    }
             }
             .padding([.top, .horizontal])
         case .assistant:
@@ -46,7 +64,19 @@ struct ChatBoxView: View {
                         RoundedRectangle(cornerRadius: boxRadius)
                             .fill(Color("secondarySystemBackground"))
                     }
-                    .contextMenu(shouldShowMenu ? menuItems : nil)
+                    .contextMenu {
+                        Button("Copy") {
+                            copy2pasteboard(chatString)
+#if os(iOS)
+                            let toast = Toast.text("Copy to clipborad successfully")
+                            toast.show()
+#endif
+                        }
+                        Button("Regenerate Answer") {
+                            promptText = promptString
+                            regenerateAnswer(.chat, promptString)
+                        }
+                    }
                 Spacer()
             }
             .padding([.top, .horizontal])
@@ -54,18 +84,13 @@ struct ChatBoxView: View {
     }
 }
 
-
-
-func selectHearts() {
-    // Act on hearts selection.
-}
-func selectClubs() { }
-func selectSpades() { }
-func selectDiamonds() { }
-
-let menuItems = ContextMenu {
-    Button("Copy", action: selectHearts)
-    Button("♣️ - Clubs", action: selectClubs)
-    Button("♠️ - Spades", action: selectSpades)
-    Button("♦️ - Diamonds", action: selectDiamonds)
+public func copy2pasteboard(_ copy_string: String) {
+#if os(iOS)
+    UIPasteboard.general.string = copy_string
+#endif
+#if os(macOS)
+    let pasteBoard = NSPasteboard.general
+    pasteBoard.clearContents()
+    pasteBoard.setString(copy_string, forType: .string)
+#endif
 }
