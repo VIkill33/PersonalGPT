@@ -31,8 +31,10 @@ Darkmode
 ## It Supports
 - Consecutive chat
 - Answers display in markdown way
-- Copy last answer to pasteboard
+- Copy answers to pasteboard
 - Regenerate answer
+- Save dialogues screenshot(in progress)
+- Save dialogues in coredata & iCloud(in progress)
 - More features in future...
 ## Usage
 ### iOS
