@@ -25,7 +25,7 @@ struct ChatBoxView: View {
     var regenerateAnswer: (api_type, String) -> Void
     var chatIndex: Int
     @Binding var promptText: String
-    @Binding var isShowSelectCircle: Bool
+    @Binding var status: ChatView_status
     @State var isSelected: Bool = false
     let boxRadius = 10.0
     let boxPaddingLength = 10.0
@@ -61,11 +61,11 @@ struct ChatBoxView: View {
                             Button("More...") {
                                 user.unselectAllChats()
                                 withAnimation {
-                                    isShowSelectCircle = true
+                                    status = .select
                                 }
                             }
                         }
-                    if isShowSelectCircle {
+                    if status == .select {
                         if isSelected {
                             Text("\(Image(systemName: "checkmark.circle.fill"))")
                                 .foregroundColor(.blue)
@@ -76,20 +76,23 @@ struct ChatBoxView: View {
                     }
                 }
                 .onTapGesture {
-                    if isShowSelectCircle {
+                    if status == .select {
                         user.chats[chatIndex].isPromptSelected.toggle()
                         isSelected.toggle()
                     }
                 }
             }
             .padding([.top, .horizontal])
-            .onChange(of: isShowSelectCircle) { _ in
-                isSelected = false
+            .onChange(of: status) { newStatus in
+                if newStatus == .chat {
+                    // Exit snapshot mode, unselect all chatbox
+                    isSelected = false
+                }
             }
         case .assistant:
             HStack {
                 Group {
-                    if isShowSelectCircle {
+                    if status == .select {
                         if isSelected {
                             Text("\(Image(systemName: "checkmark.circle.fill"))")
                                 .foregroundColor(.blue)
@@ -119,13 +122,13 @@ struct ChatBoxView: View {
                             Button("More...") {
                                 user.unselectAllChats()
                                 withAnimation {
-                                    isShowSelectCircle = true
+                                    status = .select
                                 }
                             }
                         }
                 }
                 .onTapGesture {
-                    if isShowSelectCircle {
+                    if status == .select {
                         user.chats[chatIndex].isAnswerSelected.toggle()
                         isSelected.toggle()
                     }
@@ -133,8 +136,11 @@ struct ChatBoxView: View {
                 Spacer(minLength: minSpacerWidth)
             }
             .padding([.top, .horizontal])
-            .onChange(of: isShowSelectCircle) { _ in
-                isSelected = false
+            .onChange(of: status) { newStatus in
+                if newStatus == .chat {
+                    // Exit snapshot mode, unselect all chatbox
+                    isSelected = false
+                }
             }
         }
     }

@@ -13,14 +13,14 @@ import UIKit
 #if os(macOS)
 extension View {
     func snapshot(origin: CGPoint, targetSize: CGSize) -> NSImage? {
-        let controller = NSHostingController(rootView: self)
+        let controller = NSHostingController(rootView: self.edgesIgnoringSafeArea(.vertical))
+        let view = controller.view
         //let targetSize = controller.view.intrinsicContentSize
         let contentRect = NSRect(origin: origin, size: targetSize)
         
-        
         let window = NSWindow(
             contentRect: contentRect,
-            styleMask: [.borderless],
+            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
             backing: .buffered,
             defer: false
         )

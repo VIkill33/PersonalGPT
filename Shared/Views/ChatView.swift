@@ -15,16 +15,13 @@ import Toast
 struct ChatView: View {
     @EnvironmentObject var user: User
     @EnvironmentObject var settings: Settings
-    private enum Field: Int, CaseIterable {
-        case promptText
-    }
-    @FocusState private var focusedField: Field?
+    @FocusState var focusedField: Field?
     @State var scrollOffset = CGFloat.zero
     @State var promptText = ""
     @State var generatedText = ""
     @State var isLoading = false
-    @State var isShowSelectCircle = false
-    @State var isSnapShot = false
+    @State var status: ChatView_status = .chat
+    @State var snapshot_proxy: [GeometryProxy] = []
     
     var simpleDrag: some Gesture {
         DragGesture()
@@ -36,20 +33,30 @@ struct ChatView: View {
     let currentVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
     let lastVersion = UserDefaults.standard.string(forKey: "lastVersion") ?? "unknown"
     
+    
     var body: some View {
         GeometryReader { proxy in
             VStack {
                 ZStack {
                     if generatedText != "" {
                         ObservableScrollView(scrollOffset: $scrollOffset) { proxy in
-                            ForEach(user.chats.indices, id: \.self) { index in
-                                if user.chats[index].answers != "" {
-                                    ChatBoxView(chatRole: .user, chatString: user.chats[index].messsages["content"] as! String, chatDate: user.chats[index].date, regenerateAnswer: self.generateText, chatIndex: index, promptText: $promptText, isShowSelectCircle: $isShowSelectCircle)
-                                    ChatBoxView(chatRole: .assistant, chatString: user.chats[index].answers, chatDate: user.chats[index].date, regenerateAnswer: self.generateText, chatIndex: index, promptText: $promptText, isShowSelectCircle: $isShowSelectCircle)
+                            ChatContentView(promptText: $promptText, status: $status, user: user, generateText: self.generateText(_:prompt_text:))
+                            .background(
+                                ZStack {
+                                    GeometryReader {geo in
+                                        Color.clear
+                                            .onChange(of: status) { _ in
+                                                snapshot_proxy = []
+                                                snapshot_proxy.append(geo)
+                                                print(status)
+                                                print("chat height = \(geo.size.height)")
+                                            }
+                                    }
                                 }
-                            }
+                            )
                         }
                         .onChange(of: scrollOffset, perform: { [scrollOffset] newOffset in
+                            // print("scroll offset = \(newOffset)")
                             if newOffset > scrollOffset {
                                 // scroll down
                             } else {
@@ -66,62 +73,11 @@ struct ChatView: View {
                 }
                 .gesture(simpleDrag)
                 Divider()
-                if isShowSelectCircle {
-                    HStack(alignment: .center) {
-                        Button(action: {
-                            user.unselectAllChats()
-                            withAnimation {
-                                isShowSelectCircle = false
-                            }
-                        }, label: {
-                            Text("Cancel")
-                        })
-                        Button(action: {
-                            isSnapShot.toggle()
-                        }, label: {
-                            Text("\(Image(systemName: "square.and.arrow.up.on.square.fill")) Snapshot")
-                        })
-                        NavigationLink("preview") {
-                            //snapshotView(user: user)
-                        }
-                    }
-                    .padding()
-                } else {
-                    HStack {
-                        TextField("Enter prompt", text: $promptText)
-                            .focused($focusedField, equals: .promptText)
-                            .textFieldStyle(.roundedBorder)
-                            .onSubmit {
-                                if !isLoading {
-                                    generateText(prompt_text: promptText)
-                                }
-                            }
-                        if isLoading {
-                            ProgressView()
-                                .padding(.horizontal)
-                        } else {
-                            Button(action: {
-                                focusedField = nil
-                                generateText(prompt_text: promptText)
-                            }) {
-                                Image(systemName: "paperplane.fill")
-                            }
-                            .padding()
-                        }
-                    }
-                    .disabled(isLoading)
-                    .padding()
-                }
+                BottomBar(status: $status, promptText: $promptText, isLoading: $isLoading, snapshot_proxy: $snapshot_proxy, scrollOffset: $scrollOffset, user: user, generateText: self.generateText(_:prompt_text:))
             }
             
             .sheet(isPresented: $settings.isFirstLauch) {
                 WelcomeView(isFirstLauch: $settings.isFirstLauch)
-            }
-            .sheet(isPresented: $isSnapShot) {
-                VStack {
-                    snapshotView(user: user, isSnapshot: $isSnapShot)
-                        .frame(minWidth: 300.0, minHeight: 400.0)
-                }
             }
             .onAppear {
                 // check if app has been updated
@@ -137,6 +93,132 @@ struct ChatView: View {
         }
     }
     
+}
+
+struct ChatContentView: View {
+    
+    @Binding var promptText: String
+    @Binding var status: ChatView_status
+    @ObservedObject var user: User
+    var generateText: (api_type, String) -> Void
+    
+    var body: some View {
+            VStack {
+                ForEach(user.chats.indices, id: \.self) { index in
+                    if user.chats[index].answers != "" {
+                        if status != .snapshot_preview || user.chats[index].isPromptSelected {
+                            ChatBoxView(chatRole: .user, chatString: user.chats[index].messsages["content"] as! String, chatDate: user.chats[index].date, regenerateAnswer: self.generateText, chatIndex: index, promptText: $promptText, status: $status)
+                        }
+                        if status != .snapshot_preview || user.chats[index].isAnswerSelected {
+                            ChatBoxView(chatRole: .assistant, chatString: user.chats[index].answers, chatDate: user.chats[index].date, regenerateAnswer: self.generateText, chatIndex: index, promptText: $promptText, status: $status)
+                        }
+                    }
+                }
+            }
+    }
+}
+
+struct BottomBar: View {
+    @Binding var status: ChatView_status
+    @Binding var promptText: String
+    @FocusState var focusedField: Field?
+    @Binding var isLoading: Bool
+    @Binding var snapshot_proxy: [GeometryProxy]
+    @Binding var scrollOffset: CGFloat
+    @ObservedObject var user: User
+    var generateText: (api_type, String) -> Void
+    var body: some View {
+        switch status {
+        case .chat:
+            HStack {
+                TextField("Enter prompt", text: $promptText)
+                    .focused($focusedField, equals: .promptText)
+                    .textFieldStyle(.roundedBorder)
+                    .onSubmit {
+                        if !isLoading {
+                            generateText(.chat ,promptText)
+                        }
+                    }
+                if isLoading {
+                    ProgressView()
+                        .padding(.horizontal)
+                } else {
+                    Button(action: {
+                        focusedField = nil
+                        generateText(.chat ,promptText)
+                    }) {
+                        Image(systemName: "paperplane.fill")
+                    }
+                    .padding()
+                }
+            }
+            .disabled(isLoading)
+            .padding()
+        case .select:
+            HStack(alignment: .center) {
+                Button(action: {
+                    user.unselectAllChats()
+                    withAnimation {
+                        status = .chat
+                    }
+                }, label: {
+                    Text("Cancel")
+                })
+                Spacer()
+                Button(action: {
+                    status = .snapshot_preview
+                }, label: {
+                    Text("Snapshot Preview")
+                })
+            }
+            .padding()
+        case .snapshot_preview:
+            HStack(alignment: .center) {
+                Button(action: {
+                    withAnimation {
+                        status = .select
+                    }
+                }, label: {
+                    Text("Cancel")
+                })
+                Spacer()
+                Button(action: {
+                    // take snapshot
+                    if #available(macOS 13.0, *) {
+#if os(macOS)
+                        var capture_point = snapshot_proxy[0].frame(in: .global).origin
+                        // var capture_point = CGPoint.zero
+                        let capture_size = snapshot_proxy[0].size
+                        
+                        let content = ChatContentView(promptText: $promptText, status: $status, user: user, generateText: self.generateText).frame(width: capture_size.width)
+                        let renderer = ImageRenderer(content: content)
+                        renderer.scale = 2.0
+                        let capture = renderer.nsImage
+                        
+                        if let url = showSavePanel() {
+                            savePNG(image: capture ?? NSImage(), path: url)
+                        }
+#endif
+                    } else {
+                        // Fallback on earlier versions
+                    }
+                }, label: {
+                    Text("Snapshot")
+                })
+            }
+            .padding()
+        }
+    }
+}
+
+enum ChatView_status {
+    case chat
+    case select
+    case snapshot_preview
+}
+
+enum Field: Int, CaseIterable {
+    case promptText
 }
 
 extension ChatView {

@@ -12,10 +12,11 @@ struct snapshotView: View {
     @ObservedObject var user: User
     @Binding var isSnapshot: Bool
     @State var isCapture: Bool = false
+    @State var capture_proxy_size: CGSize = CGSize(width: 0, height: 0)
     var body: some View {
-        GeometryReader { geo_proxy in
+        GeometryReader { outsideProxy in
             VStack {
-                captureView(user: user, isCapture: $isCapture)
+                captureView(user: user, isCapture: $isCapture, capture_proxy_size: $capture_proxy_size)
                 HStack {
                     Button("Done", action: {
                         isSnapshot = false
@@ -24,17 +25,16 @@ struct snapshotView: View {
                     Button(action: {
                         isCapture = true
                         if #available(macOS 13.0, *) {
-    #if os(macOS)
-                            let capture = captureView(user: user, isCapture: $isCapture).snapshot(origin: .zero, targetSize: CGSize(width: 300, height: 400))
+#if os(macOS)
+                            let capture = captureView(user: user, isCapture: $isCapture, capture_proxy_size: $capture_proxy_size).snapshot(origin: .zero, targetSize: capture_proxy_size)
                             if let url = showSavePanel() {
                                 savePNG(image: capture!, path: url)
                             }
-    #endif
+#endif
                         } else {
                             // Fallback on earlier versions
                         }
-                    }, label: {
-                        Text("\(Image(systemName: "square.and.arrow.up.on.square.fill")) Snapshot")
+                    }, label: {                        Text("\(Image(systemName: "square.and.arrow.up.on.square.fill")) Snapshot")
                     })
                     .padding()
                 }
@@ -46,35 +46,42 @@ struct snapshotView: View {
 struct captureView: View {
     @ObservedObject var user: User
     @Binding var isCapture: Bool
+    @Binding var capture_proxy_size: CGSize
     @State var isShowSelectCircle = false
     @State var promptText = ""
-    @State private var contentHeight: CGFloat = 0
     let boxRadius = 10.0
     let boxPaddingLength = 10.0
     let minSpacerWidth = 20.0
     var body: some View {
-        let content =
         VStack {
-            ForEach(user.chats.indices, id: \.self) { index in
-                if user.chats[index].answers != "" {
-                    if user.chats[index].isPromptSelected {
-                        captureChatBoxView(chatRole: .user, chatString: user.chats[index].messsages["content"] as! String)
-                    }
-                    if user.chats[index].isAnswerSelected {
-                        captureChatBoxView(chatRole: .assistant, chatString: user.chats[index].answers)
+            ScrollView {
+                VStack {
+                    ForEach(user.chats.indices, id: \.self) { index in
+                        if user.chats[index].answers != "" {
+                            if user.chats[index].isPromptSelected {
+                                captureChatBoxView(chatRole: .user, chatString: user.chats[index].messsages["content"] as! String)
+                            }
+                            if user.chats[index].isAnswerSelected {
+                                captureChatBoxView(chatRole: .assistant, chatString: user.chats[index].answers)
+                            }
+                        }
                     }
                 }
-            }
-        }
-        .padding()
-        .disabled(true)
-        return GeometryReader { capture_proxy in
-            ScrollView {
-                content
-            }
-            .onAppear {
-                print("capture width = \(capture_proxy.size.width)")
-                print("capture height = \(capture_proxy.size.height)")
+                .background(
+                    ZStack {
+                        // only in background/overlay can you get the height of a content in scrollview
+                        GeometryReader { proxy in
+                            Color.clear
+                                .onAppear {
+                                    capture_proxy_size = proxy.size
+                                    print("proxy.size.height")
+                                    print(proxy.size.height)
+                                }
+                        }
+                    }
+                )
+                .padding()
+                .disabled(true)
             }
             .onChange(of: isCapture) { newValue in
                 if newValue {
