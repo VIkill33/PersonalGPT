@@ -28,7 +28,7 @@ struct WelcomeView: View {
                 .font(.title.bold())
             Spacer()
             Text("Created By Vikill & ChatGPT")
-            Text("powered by ChatGPT 3.5")
+            Text("powered by ChatGPT-3.5-Turbo")
                 .font(.footnote)
                 .foregroundColor(.secondary)
             Text("This app is for learning and communication purposes only.")

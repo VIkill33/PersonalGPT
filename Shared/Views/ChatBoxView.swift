@@ -17,20 +17,25 @@ enum chat_role {
 }
 
 struct ChatBoxView: View {
+    @EnvironmentObject var user: User
     var chatRole: chat_role
     var chatString: String
     var promptString: String = ""
+    var chatDate: Date
     var regenerateAnswer: (api_type, String) -> Void
+    var chatIndex: Int
     @Binding var promptText: String
     @Binding var isShowSelectCircle: Bool
     @State var isSelected: Bool = false
     let boxRadius = 10.0
     let boxPaddingLength = 10.0
+    let minSpacerWidth = 20.0
+    let appearDate = Date()
     var body: some View {
         switch chatRole {
         case .user:
             HStack {
-                Spacer()
+                Spacer(minLength: minSpacerWidth)
                 Group {
                     Markdown(chatString)
                         .markdownTextStyle {
@@ -54,7 +59,10 @@ struct ChatBoxView: View {
                                 regenerateAnswer(.chat, promptString)
                             }
                             Button("More...") {
-                                isShowSelectCircle = true
+                                user.unselectAllChats()
+                                withAnimation {
+                                    isShowSelectCircle = true
+                                }
                             }
                         }
                     if isShowSelectCircle {
@@ -69,11 +77,15 @@ struct ChatBoxView: View {
                 }
                 .onTapGesture {
                     if isShowSelectCircle {
+                        user.chats[chatIndex].isPromptSelected.toggle()
                         isSelected.toggle()
                     }
                 }
             }
             .padding([.top, .horizontal])
+            .onChange(of: isShowSelectCircle) { _ in
+                isSelected = false
+            }
         case .assistant:
             HStack {
                 Group {
@@ -104,16 +116,26 @@ struct ChatBoxView: View {
                                 promptText = promptString
                                 regenerateAnswer(.chat, promptString)
                             }
+                            Button("More...") {
+                                user.unselectAllChats()
+                                withAnimation {
+                                    isShowSelectCircle = true
+                                }
+                            }
                         }
                 }
                 .onTapGesture {
                     if isShowSelectCircle {
+                        user.chats[chatIndex].isAnswerSelected.toggle()
                         isSelected.toggle()
                     }
                 }
-                Spacer()
+                Spacer(minLength: minSpacerWidth)
             }
             .padding([.top, .horizontal])
+            .onChange(of: isShowSelectCircle) { _ in
+                isSelected = false
+            }
         }
     }
 }
