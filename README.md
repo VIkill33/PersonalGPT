@@ -19,6 +19,10 @@ SwiftUI ChatGPT app with API keys, using model ChatGPT-3.5
   * [Acknowledgements](#acknowledgements)
 ## Updates
 
+2023-3-14
+
+support snapshot chats
+
 2023-3-10
 
 adjust UI to iMessage-like
@@ -38,7 +42,11 @@ Darkmode
 - Answers display in markdown way
 - Copy answers to pasteboard
 - Regenerate answer
-- Save dialogues screenshot(in progress)
+- Save dialogues screenshot
+
+![屏幕录制2023-03-14 01 08 50-2](https://user-images.githubusercontent.com/78488529/224788915-92a407f8-d73e-4835-8406-70914490274d.gif)
+
+
 - Save dialogues in coredata & iCloud(in progress)
 - More features in future...
 ## Usage
