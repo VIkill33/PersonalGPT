@@ -67,13 +67,7 @@ struct BottomBar: View {
                 })
                 #endif
                 #if os(iOS)
-                //ShareLink(item: snapshot(), preview: SharePreview("chat", image: snapshot()))
-                Button(action: {
-                    // take snapshot
-                    take_snapshot()
-                }, label: {
-                    Text("\(Image(systemName: "square.and.arrow.up.on.square.fill")) Snapshot")
-                })
+                ShareLink(item: take_snapshot(), preview: SharePreview("chat", image: take_snapshot()))
                 #endif
             }
             .padding()
@@ -125,11 +119,11 @@ extension BottomBar {
     }
 #endif
 #if os(iOS)
-    func take_snapshot() {
+    func take_snapshot() -> Image {
         //var capture_point = snapshot_proxy[0].frame(in: .global).origin
         var capture_point = CGPoint.zero
-        var capture_size = snapshot_proxy[0].size
-        let qrcode_width = capture_size.width / 8
+        // var capture_size = snapshot_proxy[0].size
+        let qrcode_width = UIScreen.main.bounds.width / 8
         
         let content = ZStack {
             Color.primary.colorInvert().edgesIgnoringSafeArea(.all)
@@ -154,14 +148,8 @@ extension BottomBar {
         }
         let renderer = ImageRenderer(content: content)
         renderer.scale = 2.0
-        let image = renderer.uiImage
-        UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
+        let image = renderer.uiImage ?? UIImage()
+        return Image(uiImage: image)
     }
 #endif
-}
-
-struct SnapshotView: View {
-    var body: some View {
-        EmptyView()
-    }
 }
