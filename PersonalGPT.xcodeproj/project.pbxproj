@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E70078F429BD918600E1E47B /* snapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70078F329BD918600E1E47B /* snapshotView.swift */; };
-		E70078F529BD918600E1E47B /* snapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70078F329BD918600E1E47B /* snapshotView.swift */; };
 		E70078F829BD93D600E1E47B /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70078F629BD93D600E1E47B /* ImageSaver.swift */; };
+		E70078FA29BEDCFF00E1E47B /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70078F929BEDCFF00E1E47B /* BottomBar.swift */; };
+		E70078FB29BEDCFF00E1E47B /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70078F929BEDCFF00E1E47B /* BottomBar.swift */; };
+		E70078FD29BEF22600E1E47B /* snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70078FC29BEF22600E1E47B /* snapshot.swift */; };
+		E70078FE29BEF22600E1E47B /* snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70078FC29BEF22600E1E47B /* snapshot.swift */; };
+		E700790029BF592A00E1E47B /* ChatContentTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70078FF29BF592A00E1E47B /* ChatContentTextView.swift */; };
 		E729D55329B226890084F483 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = E729D55229B226890084F483 /* MarkdownUI */; };
 		E729D55529B226D60084F483 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = E729D55429B226D60084F483 /* MarkdownUI */; };
 		E76D2AB829B7AFB500F32703 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76D2AB729B7AFB500F32703 /* Settings.swift */; };
@@ -54,8 +57,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E70078F329BD918600E1E47B /* snapshotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = snapshotView.swift; sourceTree = "<group>"; };
 		E70078F629BD93D600E1E47B /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
+		E70078F929BEDCFF00E1E47B /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
+		E70078FC29BEF22600E1E47B /* snapshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = snapshot.swift; sourceTree = "<group>"; };
+		E70078FF29BF592A00E1E47B /* ChatContentTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatContentTextView.swift; sourceTree = "<group>"; };
 		E76D2AB729B7AFB500F32703 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		E76D2ABB29B8460700F32703 /* Menus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menus.swift; sourceTree = "<group>"; };
 		E782F01829B3B58D006E72BF /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
@@ -124,10 +129,10 @@
 			children = (
 				E7D5A99529B1071900825AFD /* ChatView.swift */,
 				E7D5A9CB29B1435800825AFD /* WelcomeView.swift */,
-				E70078F329BD918600E1E47B /* snapshotView.swift */,
 				E794730529B9FCA600436BB7 /* ObservableScrollView.swift */,
-				E782F01729B3B575006E72BF /* Extensions */,
 				E794730829BADA6900436BB7 /* ChatBoxView.swift */,
+				E70078F929BEDCFF00E1E47B /* BottomBar.swift */,
+				E782F01729B3B575006E72BF /* Extensions */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -135,6 +140,7 @@
 		E782F01729B3B575006E72BF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E70078FC29BEF22600E1E47B /* snapshot.swift */,
 				E782F01829B3B58D006E72BF /* extensions.swift */,
 			);
 			path = Extensions;
@@ -196,6 +202,7 @@
 			children = (
 				E7D5A98329B106F000825AFD /* ContentView.swift */,
 				E782F01B29B3C0D0006E72BF /* SettingView.swift */,
+				E70078FF29BF592A00E1E47B /* ChatContentTextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -362,14 +369,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				E794730929BADA6900436BB7 /* ChatBoxView.swift in Sources */,
+				E700790029BF592A00E1E47B /* ChatContentTextView.swift in Sources */,
 				E7D5A98B29B106F300825AFD /* Persistence.swift in Sources */,
 				E782F01C29B3C0D0006E72BF /* SettingView.swift in Sources */,
 				E76D2ABC29B8460700F32703 /* Menus.swift in Sources */,
+				E70078FA29BEDCFF00E1E47B /* BottomBar.swift in Sources */,
 				E7D5A98429B106F000825AFD /* ContentView.swift in Sources */,
 				E7D5A99629B1071900825AFD /* ChatView.swift in Sources */,
 				E7D5A98229B106F000825AFD /* PersonalGPTApp.swift in Sources */,
 				E7D5A9CF29B1B8D400825AFD /* User.swift in Sources */,
-				E70078F429BD918600E1E47B /* snapshotView.swift in Sources */,
+				E70078FD29BEF22600E1E47B /* snapshot.swift in Sources */,
 				E782F01929B3B58D006E72BF /* extensions.swift in Sources */,
 				E7D5A98E29B106F300825AFD /* PersonalGPT.xcdatamodeld in Sources */,
 				E7D5A9A529B10AA900825AFD /* GPT.swift in Sources */,
@@ -385,14 +394,15 @@
 			files = (
 				E794730A29BADA6900436BB7 /* ChatBoxView.swift in Sources */,
 				E7D5A9B929B1350D00825AFD /* Persistence.swift in Sources */,
+				E70078FE29BEF22600E1E47B /* snapshot.swift in Sources */,
 				E7D5A9B229B1350B00825AFD /* ContentView.swift in Sources */,
 				E70078F829BD93D600E1E47B /* ImageSaver.swift in Sources */,
 				E76D2ABD29B8460700F32703 /* Menus.swift in Sources */,
 				E7D5A9C129B1354400825AFD /* ChatView.swift in Sources */,
 				E7D5A9B029B1350B00825AFD /* MacPersonalGPTApp.swift in Sources */,
 				E76D2AB929B7AFB500F32703 /* Settings.swift in Sources */,
+				E70078FB29BEDCFF00E1E47B /* BottomBar.swift in Sources */,
 				E7D5A9D029B1B9A300825AFD /* User.swift in Sources */,
-				E70078F529BD918600E1E47B /* snapshotView.swift in Sources */,
 				E782F01A29B3B7AC006E72BF /* extensions.swift in Sources */,
 				E7D5A9BC29B1350D00825AFD /* MacPersonalGPT.xcdatamodeld in Sources */,
 				E7D5A9C929B135DE00825AFD /* GPT.swift in Sources */,

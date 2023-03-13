@@ -23,13 +23,11 @@ struct MacPersonalGPTApp: App {
         .commands {
             Menus(user: self.user)
         }
-#if os(macOS)
         SwiftUI.Settings {
             SettingView()
                 .environmentObject(user)
                 .environmentObject(settings)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
-#endif
     }
 }
