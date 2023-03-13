@@ -123,7 +123,8 @@ extension BottomBar {
         //var capture_point = snapshot_proxy[0].frame(in: .global).origin
         var capture_point = CGPoint.zero
         // var capture_size = snapshot_proxy[0].size
-        let qrcode_width = UIScreen.main.bounds.width / 8
+        let screen_width = UIScreen.main.bounds.width
+        let qrcode_width = screen_width / 8
         
         let content = ZStack {
             Color.primary.colorInvert().edgesIgnoringSafeArea(.all)
@@ -146,6 +147,7 @@ extension BottomBar {
                 }
             }
         }
+            .frame(width: screen_width)
         let renderer = ImageRenderer(content: content)
         renderer.scale = 2.0
         let image = renderer.uiImage ?? UIImage()

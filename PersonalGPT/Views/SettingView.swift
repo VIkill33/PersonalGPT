@@ -55,6 +55,9 @@ struct SettingView: View {
                         Text("Reset API key")
                     })
                 }
+                Section(header: Text("About"), footer: Text("This project has been open sourced on GitHub.")) {
+                    Link("View in Github", destination: URL(string: "https://github.com/VIkill33/PersonalGPT")!)
+                }
                 Section {
                     Button(action: {
                         user.chats = []
