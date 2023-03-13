@@ -73,7 +73,7 @@ extension ChatView {
         AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { response in
                 isLoading = false
-                print(response)
+                //print(response)
                     switch apiType {
                     case .completion:
                         if let value = response.value {

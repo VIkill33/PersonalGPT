@@ -20,7 +20,7 @@ struct ChatBoxView: View {
     @EnvironmentObject var user: User
     var chatRole: chat_role
     var chatString: String
-    var promptString: String = ""
+    @State var promptString: String = ""
     var chatDate: Date
     var regenerateAnswer: (api_type, String) -> Void
     var chatIndex: Int
@@ -56,8 +56,8 @@ struct ChatBoxView: View {
 #endif
                             }
                             Button("Regenerate Answer") {
-                                promptText = promptString
-                                regenerateAnswer(.chat, promptString)
+                                promptText = user.chats[chatIndex].messsages["content"] as! String
+                                regenerateAnswer(.chat, promptText)
                             }
                             Button("More...") {
                                 user.unselectAllChats()
@@ -117,8 +117,8 @@ struct ChatBoxView: View {
 #endif
                             }
                             Button("Regenerate Answer") {
-                                promptText = promptString
-                                regenerateAnswer(.chat, promptString)
+                                promptText = user.chats[chatIndex].messsages["content"] as! String
+                                regenerateAnswer(.chat, promptText)
                             }
                             Button("More...") {
                                 user.unselectAllChats()
