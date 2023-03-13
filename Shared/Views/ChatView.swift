@@ -101,16 +101,17 @@ struct ChatContentView: View {
     @Binding var status: ChatView_status
     @ObservedObject var user: User
     var generateText: (api_type, String) -> Void
+    @State var isHideUnselectChats: Bool = false
     
     var body: some View {
             VStack {
                 ForEach(user.chats.indices, id: \.self) { index in
                     if user.chats[index].answers != "" {
-                        if status != .snapshot_preview || user.chats[index].isPromptSelected {
-                            ChatBoxView(chatRole: .user, chatString: user.chats[index].messsages["content"] as! String, chatDate: user.chats[index].date, regenerateAnswer: self.generateText, chatIndex: index, promptText: $promptText, status: $status)
+                        if !isHideUnselectChats || user.chats[index].isPromptSelected {
+                            ChatBoxView(chatRole: .user, chatString: user.chats[index].messsages["content"] as! String, chatDate: user.chats[index].date, regenerateAnswer: self.generateText, chatIndex: index, promptText: $promptText, status: $status, isHideUnselectChats: isHideUnselectChats)
                         }
-                        if status != .snapshot_preview || user.chats[index].isAnswerSelected {
-                            ChatBoxView(chatRole: .assistant, chatString: user.chats[index].answers, chatDate: user.chats[index].date, regenerateAnswer: self.generateText, chatIndex: index, promptText: $promptText, status: $status)
+                        if !isHideUnselectChats || user.chats[index].isAnswerSelected {
+                            ChatBoxView(chatRole: .assistant, chatString: user.chats[index].answers, chatDate: user.chats[index].date, regenerateAnswer: self.generateText, chatIndex: index, promptText: $promptText, status: $status, isHideUnselectChats: isHideUnselectChats)
                         }
                     }
                 }
@@ -166,47 +167,15 @@ struct BottomBar: View {
                 })
                 Spacer()
                 Button(action: {
-                    status = .snapshot_preview
+                    // take snapshot
+                    take_snapshot()
                 }, label: {
-                    Text("Snapshot Preview")
+                    Text("\(Image(systemName: "camera.fill")) Snapshot")
                 })
             }
             .padding()
         case .snapshot_preview:
-            HStack(alignment: .center) {
-                Button(action: {
-                    withAnimation {
-                        status = .select
-                    }
-                }, label: {
-                    Text("Cancel")
-                })
-                Spacer()
-                Button(action: {
-                    // take snapshot
-                    if #available(macOS 13.0, *) {
-#if os(macOS)
-                        var capture_point = snapshot_proxy[0].frame(in: .global).origin
-                        // var capture_point = CGPoint.zero
-                        let capture_size = snapshot_proxy[0].size
-                        
-                        let content = ChatContentView(promptText: $promptText, status: $status, user: user, generateText: self.generateText).frame(width: capture_size.width)
-                        let renderer = ImageRenderer(content: content)
-                        renderer.scale = 2.0
-                        let capture = renderer.nsImage
-                        
-                        if let url = showSavePanel() {
-                            savePNG(image: capture ?? NSImage(), path: url)
-                        }
-#endif
-                    } else {
-                        // Fallback on earlier versions
-                    }
-                }, label: {
-                    Text("Snapshot")
-                })
-            }
-            .padding()
+            EmptyView()
         }
     }
 }
@@ -214,16 +183,36 @@ struct BottomBar: View {
 enum ChatView_status {
     case chat
     case select
-    case snapshot_preview
+    case snapshot_preview // useless
 }
 
 enum Field: Int, CaseIterable {
     case promptText
 }
 
-extension ChatView {
+extension BottomBar {
     func take_snapshot() {
-        return
+        if #available(macOS 13.0, *) {
+#if os(macOS)
+            var capture_point = snapshot_proxy[0].frame(in: .global).origin
+            // var capture_point = CGPoint.zero
+            let capture_size = snapshot_proxy[0].size
+            
+            let content = ZStack {
+                Color.primary.colorInvert().edgesIgnoringSafeArea(.all)
+                ChatContentView(promptText: $promptText, status: $status, user: user, generateText: self.generateText, isHideUnselectChats: true).frame(width: capture_size.width)
+            }
+            let renderer = ImageRenderer(content: content)
+            renderer.scale = 2.0
+            let capture = renderer.nsImage
+            
+            if let url = showSavePanel() {
+                savePNG(image: capture ?? NSImage(), path: url)
+            }
+#endif
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }
 

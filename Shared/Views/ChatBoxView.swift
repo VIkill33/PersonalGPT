@@ -26,6 +26,7 @@ struct ChatBoxView: View {
     var chatIndex: Int
     @Binding var promptText: String
     @Binding var status: ChatView_status
+    var isHideUnselectChats: Bool = false
     @State var isSelected: Bool = false
     let boxRadius = 10.0
     let boxPaddingLength = 10.0
@@ -65,7 +66,7 @@ struct ChatBoxView: View {
                                 }
                             }
                         }
-                    if status == .select {
+                    if status == .select && !isHideUnselectChats {
                         if isSelected {
                             Text("\(Image(systemName: "checkmark.circle.fill"))")
                                 .foregroundColor(.blue)
@@ -92,7 +93,7 @@ struct ChatBoxView: View {
         case .assistant:
             HStack {
                 Group {
-                    if status == .select {
+                    if status == .select && !isHideUnselectChats {
                         if isSelected {
                             Text("\(Image(systemName: "checkmark.circle.fill"))")
                                 .foregroundColor(.blue)

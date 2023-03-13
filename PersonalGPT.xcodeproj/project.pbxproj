@@ -26,8 +26,6 @@
 		E794730A29BADA6900436BB7 /* ChatBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E794730829BADA6900436BB7 /* ChatBoxView.swift */; };
 		E7A0804929BB6186003C818D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E7A0804829BB6186003C818D /* README.md */; };
 		E7A0804A29BB6186003C818D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E7A0804829BB6186003C818D /* README.md */; };
-		E7A0805829BBB9F9003C818D /* snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A0805729BBB9F9003C818D /* snapshot.swift */; };
-		E7A0805929BBB9F9003C818D /* snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A0805729BBB9F9003C818D /* snapshot.swift */; };
 		E7D5A98229B106F000825AFD /* PersonalGPTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A98129B106F000825AFD /* PersonalGPTApp.swift */; };
 		E7D5A98429B106F000825AFD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A98329B106F000825AFD /* ContentView.swift */; };
 		E7D5A98629B106F300825AFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7D5A98529B106F300825AFD /* Assets.xcassets */; };
@@ -65,7 +63,6 @@
 		E794730529B9FCA600436BB7 /* ObservableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableScrollView.swift; sourceTree = "<group>"; };
 		E794730829BADA6900436BB7 /* ChatBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBoxView.swift; sourceTree = "<group>"; };
 		E7A0804829BB6186003C818D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		E7A0805729BBB9F9003C818D /* snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = snapshot.swift; sourceTree = "<group>"; };
 		E7D5A97E29B106F000825AFD /* PersonalGPT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalGPT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7D5A98129B106F000825AFD /* PersonalGPTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalGPTApp.swift; sourceTree = "<group>"; };
 		E7D5A98329B106F000825AFD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -139,7 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				E782F01829B3B58D006E72BF /* extensions.swift */,
-				E7A0805729BBB9F9003C818D /* snapshot.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -374,7 +370,6 @@
 				E7D5A98229B106F000825AFD /* PersonalGPTApp.swift in Sources */,
 				E7D5A9CF29B1B8D400825AFD /* User.swift in Sources */,
 				E70078F429BD918600E1E47B /* snapshotView.swift in Sources */,
-				E7A0805829BBB9F9003C818D /* snapshot.swift in Sources */,
 				E782F01929B3B58D006E72BF /* extensions.swift in Sources */,
 				E7D5A98E29B106F300825AFD /* PersonalGPT.xcdatamodeld in Sources */,
 				E7D5A9A529B10AA900825AFD /* GPT.swift in Sources */,
@@ -398,7 +393,6 @@
 				E76D2AB929B7AFB500F32703 /* Settings.swift in Sources */,
 				E7D5A9D029B1B9A300825AFD /* User.swift in Sources */,
 				E70078F529BD918600E1E47B /* snapshotView.swift in Sources */,
-				E7A0805929BBB9F9003C818D /* snapshot.swift in Sources */,
 				E782F01A29B3B7AC006E72BF /* extensions.swift in Sources */,
 				E7D5A9BC29B1350D00825AFD /* MacPersonalGPT.xcdatamodeld in Sources */,
 				E7D5A9C929B135DE00825AFD /* GPT.swift in Sources */,
