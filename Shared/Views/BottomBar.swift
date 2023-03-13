@@ -91,10 +91,28 @@ extension BottomBar {
             var capture_point = snapshot_proxy[0].frame(in: .global).origin
             // var capture_point = CGPoint.zero
             let capture_size = snapshot_proxy[0].size
+            let qrcode_width = capture_size.width / 8
             
             let content = ZStack {
                 Color.primary.colorInvert().edgesIgnoringSafeArea(.all)
-                ChatContentView(promptText: $promptText, status: $status, user: user, generateText: self.generateText, isHideUnselectChats: true).frame(width: capture_size.width)
+                VStack {
+                    ChatContentView(promptText: $promptText, status: $status, user: user, generateText: self.generateText, isHideUnselectChats: true).frame(width: capture_size.width)
+                    HStack {
+                        Spacer()
+                        VStack {
+                            Image("github_qrcode")
+                                .resizable()
+                                .frame(width: qrcode_width, height: qrcode_width)
+                            Text("ChatBot3.5 by Vikill")
+                                .font(.footnote)
+                                .foregroundColor(.secondary)
+                            Text("Powered by ChatGPT-3.5-Turbo")
+                                .font(.footnote)
+                                .foregroundColor(.secondary)
+                        }
+                        .padding()
+                    }
+                }
             }
             let renderer = ImageRenderer(content: content)
             renderer.scale = 2.0
@@ -111,29 +129,39 @@ extension BottomBar {
         //var capture_point = snapshot_proxy[0].frame(in: .global).origin
         var capture_point = CGPoint.zero
         var capture_size = snapshot_proxy[0].size
-        print(capture_point)
-        print(capture_size)
-        let capture = ChatContent_Text_View(promptText: $promptText, status: $status, user: user, generateText: self.generateText, isHideUnselectChats: true).takeScreenshot(origin: capture_point, size: capture_size)
-        UIImageWriteToSavedPhotosAlbum(capture, nil, nil, nil)
-    }
-#endif
-#if os(iOS)
-    func snapshot() -> Image {
-        //var capture_point = snapshot_proxy[0].frame(in: .global).origin
-        // var capture_point = CGPoint.zero
-        print("!!!call snapshot")
-        user.print_all_chats()
+        let qrcode_width = capture_size.width / 8
+        
         let content = ZStack {
             Color.primary.colorInvert().edgesIgnoringSafeArea(.all)
-            //ChatContentView(promptText: $promptText, status: $status, user: user, generateText: self.generateText, isHideUnselectChats: true).frame(width: UIScreen.main.bounds.width)
-            Markdown("132test")
+            VStack {
+                ChatContent_Text_View(promptText: $promptText, status: $status, user: user, generateText: self.generateText, isHideUnselectChats: true)
+                HStack {
+                    Spacer()
+                    VStack {
+                        Image("github_qrcode")
+                            .resizable()
+                            .frame(width: qrcode_width, height: qrcode_width)
+                        Text("ChatBot3.5 by Vikill")
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                        Text("Powered by ChatGPT-3.5-Turbo")
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                    }
+                    .padding()
+                }
+            }
         }
         let renderer = ImageRenderer(content: content)
         renderer.scale = 2.0
         let image = renderer.uiImage
         UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
-        let capture = Image(uiImage: renderer.uiImage!)
-        return capture
     }
 #endif
+}
+
+struct SnapshotView: View {
+    var body: some View {
+        EmptyView()
+    }
 }
