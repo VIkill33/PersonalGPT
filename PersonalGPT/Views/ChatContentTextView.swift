@@ -1,26 +1,19 @@
 //
-//  ChatBoxView.swift
+//  ChatContentTextView.swift
 //  PersonalGPT
 //
-//  Created by Vikill Blacks on 2023/3/10.
+//  Created by Vikill Blacks on 2023/3/13.
 //
 
 import SwiftUI
-import MarkdownUI
-#if os(iOS)
 import Toast
-#endif
 
-enum chat_role {
-    case user
-    case assistant
-}
 
-struct ChatBoxView: View {
+struct ChatBox_Text_View: View {
     @EnvironmentObject var user: User
     var chatRole: chat_role
     var chatString: String
-    @State var promptString: String = ""
+    var promptString: String = ""
     var chatDate: Date
     var regenerateAnswer: (api_type, String) -> Void
     var chatIndex: Int
@@ -38,10 +31,8 @@ struct ChatBoxView: View {
             HStack {
                 Spacer(minLength: minSpacerWidth)
                 Group {
-                    Markdown(chatString)
-                        .markdownTextStyle {
-                            ForegroundColor(.white)
-                        }
+                    Text(chatString)
+                        .foregroundColor(.white)
                         .padding(boxPaddingLength)
                         .background {
                             RoundedRectangle(cornerRadius: boxRadius)
@@ -56,8 +47,8 @@ struct ChatBoxView: View {
 #endif
                             }
                             Button("Regenerate Answer") {
-                                promptText = user.chats[chatIndex].messsages["content"] as! String
-                                regenerateAnswer(.chat, promptText)
+                                promptText = promptString
+                                regenerateAnswer(.chat, promptString)
                             }
                             Button("More...") {
                                 user.unselectAllChats()
@@ -102,7 +93,7 @@ struct ChatBoxView: View {
                                 .foregroundColor(Color("secondarySystemBackground"))
                         }
                     }
-                    Markdown(chatString)
+                    Text(chatString)
                         .padding(boxPaddingLength)
                         .background {
                             RoundedRectangle(cornerRadius: boxRadius)
@@ -117,8 +108,8 @@ struct ChatBoxView: View {
 #endif
                             }
                             Button("Regenerate Answer") {
-                                promptText = user.chats[chatIndex].messsages["content"] as! String
-                                regenerateAnswer(.chat, promptText)
+                                promptText = promptString
+                                regenerateAnswer(.chat, promptString)
                             }
                             Button("More...") {
                                 user.unselectAllChats()
@@ -147,13 +138,27 @@ struct ChatBoxView: View {
     }
 }
 
-public func copy2pasteboard(_ copy_string: String) {
-#if os(iOS)
-    UIPasteboard.general.string = copy_string
-#endif
-#if os(macOS)
-    let pasteBoard = NSPasteboard.general
-    pasteBoard.clearContents()
-    pasteBoard.setString(copy_string, forType: .string)
-#endif
+
+struct ChatContent_Text_View: View {
+    
+    @Binding var promptText: String
+    @Binding var status: ChatView_status
+    @ObservedObject var user: User
+    var generateText: (api_type, String) -> Void
+    @State var isHideUnselectChats: Bool = false
+    
+    var body: some View {
+            VStack {
+                ForEach(user.chats.indices, id: \.self) { index in
+                    if user.chats[index].answers != "" {
+                        if !isHideUnselectChats || user.chats[index].isPromptSelected {
+                            ChatBox_Text_View(chatRole: .user, chatString: user.chats[index].messsages["content"] as! String, chatDate: user.chats[index].date, regenerateAnswer: self.generateText, chatIndex: index, promptText: $promptText, status: $status, isHideUnselectChats: isHideUnselectChats)
+                        }
+                        if !isHideUnselectChats || user.chats[index].isAnswerSelected {
+                            ChatBox_Text_View(chatRole: .assistant, chatString: user.chats[index].answers, chatDate: user.chats[index].date, regenerateAnswer: self.generateText, chatIndex: index, promptText: $promptText, status: $status, isHideUnselectChats: isHideUnselectChats)
+                        }
+                    }
+                }
+            }
+    }
 }

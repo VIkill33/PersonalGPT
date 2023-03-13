@@ -73,7 +73,7 @@ extension ChatView {
         AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { response in
                 isLoading = false
-                print(response)
+                //print(response)
                     switch apiType {
                     case .completion:
                         if let value = response.value {
@@ -96,6 +96,7 @@ extension ChatView {
                                     generatedText = trimStr(message)
                                     user.chats[user.chats.count - 1].messsages["content"] = prompt_text
                                     user.chats[user.chats.count - 1].answers = generatedText
+                                    user.chats[user.chats.count - 1].date = Date()
                                     print(user.chats.last?.answers)
                                     promptText = ""
                                 }

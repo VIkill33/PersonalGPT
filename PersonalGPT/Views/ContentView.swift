@@ -9,6 +9,8 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    @EnvironmentObject var user: User
+    @EnvironmentObject var settings: Settings
     var body: some View {
         #if os(macOS)
         ChatView()

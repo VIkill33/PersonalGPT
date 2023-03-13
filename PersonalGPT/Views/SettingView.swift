@@ -27,7 +27,7 @@ struct SettingView: View {
                                 Text(String(Double($0)/10)).tag(Double($0)/10)
                             }
                         }
-                    }
+                    } 
                 }
                 Section(header: Text("Roles")) {
                     #if os(iOS)
@@ -54,6 +54,9 @@ struct SettingView: View {
                     }, label: {
                         Text("Reset API key")
                     })
+                }
+                Section(header: Text("About"), footer: Text("This project has been open sourced on GitHub.")) {
+                    Link("View in Github", destination: URL(string: "https://github.com/VIkill33/PersonalGPT")!)
                 }
                 Section {
                     Button(action: {
