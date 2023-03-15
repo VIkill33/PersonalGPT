@@ -21,24 +21,22 @@ SwiftUI ChatGPT app with API keys, using model ChatGPT-3.5
 
 2023-3-16
 
-support edit questions\n
-add alert toast when submit/reset API keys
+- support edit questions
+- add alert toast when submit/reset API keys
 
 2023-3-15
 
-support choose GPT models
-
-support display error toast
-
-support toast on macOS
+- support choose GPT models
+- support display error toast
+- support toast on macOS
 
 2023-3-14
 
-support snapshot chats
+- support snapshot chats
 
 2023-3-10
 
-adjust UI to iMessage-like
+- adjust UI to iMessage-like
 ## ScreenShots
 ### iOS
 <img src="https://user-images.githubusercontent.com/78488529/224233891-06eece24-dbdf-4209-9141-0ac2d31d7b1e.PNG" width="255" height="550"> <img src="https://user-images.githubusercontent.com/78488529/224233907-0026df21-0b61-41ca-9b35-0939885e3cb0.PNG" width="255" height="550"> <img src="https://user-images.githubusercontent.com/78488529/225263002-3698d5dc-d9c5-44f3-80ec-f95a01142cfb.jpeg" width="255" height="550"> 
