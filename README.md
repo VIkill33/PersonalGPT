@@ -19,6 +19,11 @@ SwiftUI ChatGPT app with API keys, using model ChatGPT-3.5
   * [Acknowledgements](#acknowledgements)
 ## Updates
 
+2023-3-16
+
+support edit questions\n
+add alert toast when submit/reset API keys
+
 2023-3-15
 
 support choose GPT models
