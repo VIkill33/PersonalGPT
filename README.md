@@ -39,7 +39,7 @@ SwiftUI ChatGPT app with API keys, using model ChatGPT-3.5
 - adjust UI to iMessage-like
 ## ScreenShots
 ### iOS
-<img src="https://user-images.githubusercontent.com/78488529/224233891-06eece24-dbdf-4209-9141-0ac2d31d7b1e.PNG" width="255" height="550"> <img src="https://user-images.githubusercontent.com/78488529/224233907-0026df21-0b61-41ca-9b35-0939885e3cb0.PNG" width="255" height="550"> <img src="https://user-images.githubusercontent.com/78488529/225263002-3698d5dc-d9c5-44f3-80ec-f95a01142cfb.jpeg" width="255" height="550"> 
+<img src="https://user-images.githubusercontent.com/78488529/224233891-06eece24-dbdf-4209-9141-0ac2d31d7b1e.PNG" width="255" height="550"> <img src="https://user-images.githubusercontent.com/78488529/225388468-84cb633a-503f-45e4-9a27-2e3ed254bb69.PNG" width="255" height="550"> <img src="https://user-images.githubusercontent.com/78488529/225263002-3698d5dc-d9c5-44f3-80ec-f95a01142cfb.jpeg" width="255" height="550"> 
 
 Darkmode
 
