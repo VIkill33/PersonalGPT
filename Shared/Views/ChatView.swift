@@ -8,9 +8,7 @@
 import SwiftUI
 import MarkdownUI
 import Combine
-#if os(iOS)
-import Toast
-#endif
+import AlertToast
 
 struct ChatView: View {
     @EnvironmentObject var user: User
@@ -20,6 +18,8 @@ struct ChatView: View {
     @State var promptText = ""
     @State var generatedText = ""
     @State var isLoading = false
+    @State var toastTitle = ""
+    @State var toastSubtitle = ""
     @State var status: ChatView_status = .chat
     @State var snapshot_proxy: [GeometryProxy] = []
     
@@ -74,6 +74,12 @@ struct ChatView: View {
                 .gesture(simpleDrag)
                 Divider()
                 BottomBar(status: $status, promptText: $promptText, isLoading: $isLoading, snapshot_proxy: $snapshot_proxy, scrollOffset: $scrollOffset, user: user, generateText: self.generateText(_:prompt_text:))
+            }
+            .toast(isPresenting: $settings.isShowErrorToast) {
+                AlertToast(displayMode: .hud, type: .error(.red), title: toastTitle, subTitle: toastSubtitle)
+            }
+            .toast(isPresenting: $settings.isShowCopyToast) {
+                AlertToast(displayMode: .hud, type: .regular, title: "Copy to clipborad successfully")
             }
             
             .sheet(isPresented: $settings.isFirstLauch) {

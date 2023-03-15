@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Toast
 
 
 struct ChatBox_Text_View: View {
@@ -41,10 +40,7 @@ struct ChatBox_Text_View: View {
                         .contextMenu {
                             Button("Copy") {
                                 copy2pasteboard(chatString)
-#if os(iOS)
-                                let toast = Toast.text("Copy to clipborad successfully")
-                                toast.show()
-#endif
+                                
                             }
                             Button("Regenerate Answer") {
                                 promptText = promptString
@@ -102,10 +98,7 @@ struct ChatBox_Text_View: View {
                         .contextMenu {
                             Button("Copy") {
                                 copy2pasteboard(chatString)
-#if os(iOS)
-                                let toast = Toast.text("Copy to clipborad successfully")
-                                toast.show()
-#endif
+                                
                             }
                             Button("Regenerate Answer") {
                                 promptText = promptString

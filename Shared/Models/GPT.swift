@@ -14,6 +14,16 @@ enum api_type {
     case chat
 }
 
+enum Models: String, CaseIterable, Identifiable {
+    case gpt4 = "gpt-4"
+    case gpt40314 = "gpt-4-0314"
+    case gpt432k = "gpt-4-32k"
+    case gpt432k0314 = "gpt-4-32k-0314"
+    case gpt35turbo = "gpt-3.5-turbo"
+    case gpt35turbo0301 = "gpt-3.5-turbo-0301"
+    var id: String {self.rawValue}
+}
+
 extension ChatView {
     func generateText(_ apiType: api_type = .chat, prompt_text: String) -> Void {
         DispatchQueue.main.async {
@@ -58,7 +68,7 @@ extension ChatView {
             // user.chat.messsages.append(["content": promptText, "role": "user"])
             
             parameters = [
-                "model": "gpt-3.5-turbo",
+                "model": settings.model.rawValue,
                 "messages": user.messageArray(),
                 "max_tokens": 1000,
                 "user": user.id.uuidString
@@ -73,7 +83,7 @@ extension ChatView {
         AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { response in
                 isLoading = false
-                //print(response)
+                print(response)
                     switch apiType {
                     case .completion:
                         if let value = response.value {
@@ -99,6 +109,23 @@ extension ChatView {
                                     user.chats[user.chats.count - 1].date = Date()
                                     print(user.chats.last?.answers)
                                     promptText = ""
+                                }
+                            } else {
+                                var error_message = "Oops, something went wrong!"
+                                var error_type = ""
+                                if let error = json["error"].dictionary,
+                                   let message = error["message"]?.string,
+                                   let type = error["type"]?.string {
+                                    let components = message.components(separatedBy: ".")
+                                    error_message = components.first ?? message
+                                    error_type = type
+                                    print(message)
+                                    print(type)
+                                }
+                                DispatchQueue.main.async {
+                                    toastTitle = error_message
+                                    toastSubtitle = error_type
+                                    settings.isShowErrorToast = true
                                 }
                             }
                         }

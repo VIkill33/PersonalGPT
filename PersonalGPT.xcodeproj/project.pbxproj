@@ -13,6 +13,8 @@
 		E70078FD29BEF22600E1E47B /* snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70078FC29BEF22600E1E47B /* snapshot.swift */; };
 		E70078FE29BEF22600E1E47B /* snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70078FC29BEF22600E1E47B /* snapshot.swift */; };
 		E700790029BF592A00E1E47B /* ChatContentTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70078FF29BF592A00E1E47B /* ChatContentTextView.swift */; };
+		E700790329C1B1A800E1E47B /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = E700790229C1B1A800E1E47B /* AlertToast */; };
+		E700790529C1B40E00E1E47B /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = E700790429C1B40E00E1E47B /* AlertToast */; };
 		E729D55329B226890084F483 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = E729D55229B226890084F483 /* MarkdownUI */; };
 		E729D55529B226D60084F483 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = E729D55429B226D60084F483 /* MarkdownUI */; };
 		E76D2AB829B7AFB500F32703 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76D2AB729B7AFB500F32703 /* Settings.swift */; };
@@ -39,7 +41,6 @@
 		E7D5A99E29B108CB00825AFD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E7D5A99D29B108CB00825AFD /* Alamofire */; };
 		E7D5A9A129B108EA00825AFD /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = E7D5A9A029B108EA00825AFD /* SwiftyJSON */; };
 		E7D5A9A529B10AA900825AFD /* GPT.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A9A429B10AA900825AFD /* GPT.swift */; };
-		E7D5A9A829B133DB00825AFD /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = E7D5A9A729B133DB00825AFD /* Toast */; };
 		E7D5A9B029B1350B00825AFD /* MacPersonalGPTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A9AF29B1350B00825AFD /* MacPersonalGPTApp.swift */; };
 		E7D5A9B229B1350B00825AFD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A9B129B1350B00825AFD /* ContentView.swift */; };
 		E7D5A9B429B1350D00825AFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7D5A9B329B1350D00825AFD /* Assets.xcassets */; };
@@ -95,9 +96,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7D5A9A829B133DB00825AFD /* Toast in Frameworks */,
 				E7D5A9A129B108EA00825AFD /* SwiftyJSON in Frameworks */,
 				E7D5A99E29B108CB00825AFD /* Alamofire in Frameworks */,
+				E700790329C1B1A800E1E47B /* AlertToast in Frameworks */,
 				E729D55329B226890084F483 /* MarkdownUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -107,6 +108,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E729D55529B226D60084F483 /* MarkdownUI in Frameworks */,
+				E700790529C1B40E00E1E47B /* AlertToast in Frameworks */,
 				E7D5A9C429B1357200825AFD /* SwiftyJSON in Frameworks */,
 				E7D5A9C629B1357500825AFD /* Alamofire in Frameworks */,
 			);
@@ -267,8 +269,8 @@
 			packageProductDependencies = (
 				E7D5A99D29B108CB00825AFD /* Alamofire */,
 				E7D5A9A029B108EA00825AFD /* SwiftyJSON */,
-				E7D5A9A729B133DB00825AFD /* Toast */,
 				E729D55229B226890084F483 /* MarkdownUI */,
+				E700790229C1B1A800E1E47B /* AlertToast */,
 			);
 			productName = PersonalGPT;
 			productReference = E7D5A97E29B106F000825AFD /* PersonalGPT.app */;
@@ -291,6 +293,7 @@
 				E7D5A9C329B1357200825AFD /* SwiftyJSON */,
 				E7D5A9C529B1357500825AFD /* Alamofire */,
 				E729D55429B226D60084F483 /* MarkdownUI */,
+				E700790429C1B40E00E1E47B /* AlertToast */,
 			);
 			productName = MacPersonalGPT;
 			productReference = E7D5A9AD29B1350B00825AFD /* MacPersonalGPT.app */;
@@ -326,9 +329,9 @@
 			packageReferences = (
 				E7D5A99C29B108CB00825AFD /* XCRemoteSwiftPackageReference "Alamofire" */,
 				E7D5A99F29B108EA00825AFD /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
-				E7D5A9A629B133DB00825AFD /* XCRemoteSwiftPackageReference "toast-swift" */,
 				E729D55129B226890084F483 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
 				E794730029B9F9D800436BB7 /* XCRemoteSwiftPackageReference "trackable-scroll-view" */,
+				E700790129C1B1A800E1E47B /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
 			productRefGroup = E7D5A97F29B106F000825AFD /* Products */;
 			projectDirPath = "";
@@ -684,6 +687,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E700790129C1B1A800E1E47B /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		E729D55129B226890084F483 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui.git";
@@ -716,17 +727,19 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		E7D5A9A629B133DB00825AFD /* XCRemoteSwiftPackageReference "toast-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/BastiaanJansen/toast-swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E700790229C1B1A800E1E47B /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E700790129C1B1A800E1E47B /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
+		};
+		E700790429C1B40E00E1E47B /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E700790129C1B1A800E1E47B /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
+		};
 		E729D55229B226890084F483 /* MarkdownUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E729D55129B226890084F483 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
@@ -746,11 +759,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E7D5A99F29B108EA00825AFD /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
-		};
-		E7D5A9A729B133DB00825AFD /* Toast */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E7D5A9A629B133DB00825AFD /* XCRemoteSwiftPackageReference "toast-swift" */;
-			productName = Toast;
 		};
 		E7D5A9C329B1357200825AFD /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;

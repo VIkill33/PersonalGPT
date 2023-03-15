@@ -6,28 +6,29 @@
 //
 
 import SwiftUI
-#if os(iOS)
-import Toast
-#endif
+import AlertToast
 
 struct SettingView: View {
     @EnvironmentObject var settings: Settings
     @EnvironmentObject var user: User
     let values = stride(from: 0.0, to: 2.0, by: 0.1).map{String(format: "%.1f", $0)}
     let step: Double = 0.1
+    let models: [String] = ["gpt-4", "gpt-4-0314", "gpt-4-32k", "gpt-4-32k-0314", "gpt-3.5-turbo", "gpt-3.5-turbo-0301"]
     var body: some View {
         VStack(alignment: .leading) {
             Form {
                 Section(footer: Text("What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.")) {
-                    HStack {
-                        Text("Temperature")
-                        Spacer()
-                        Picker("", selection: $settings.temperature) {
-                            ForEach(0...20, id: \.self) {
-                                Text(String(Double($0)/10)).tag(Double($0)/10)
-                            }
+                    Picker("Model", selection: $settings.model) {
+                        ForEach(Models.allCases) { model in
+                            Text(model.rawValue)
+                                .tag(model)
                         }
-                    } 
+                    }
+                    Picker("Temperature", selection: $settings.temperature) {
+                        ForEach(0...20, id: \.self) {
+                            Text(String(Double($0)/10)).tag(Double($0)/10)
+                        }
+                    }
                 }
                 Section(header: Text("Roles")) {
                     #if os(iOS)
@@ -61,10 +62,7 @@ struct SettingView: View {
                 Section {
                     Button(action: {
                         user.chats = []
-                        #if os(iOS)
-                        let toast = Toast.text("Clear all chats successfully")
-                        toast.show()
-                        #endif
+                        settings.isShowClearToast = true
                     }, label: {
                         Text("Clear History")
                     })
@@ -75,6 +73,9 @@ struct SettingView: View {
             .customFormStyle()
             .frame(minWidth: 300.0, minHeight: 700.0)
             #endif
+        }
+        .toast(isPresenting: $settings.isShowClearToast) {
+            AlertToast(displayMode: .hud, type: .regular, title: "Clear all chats successfully")
         }
     }
 }

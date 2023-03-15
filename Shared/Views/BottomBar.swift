@@ -19,6 +19,9 @@ struct BottomBar: View {
     @Binding var snapshot_proxy: [GeometryProxy]
     @Binding var scrollOffset: CGFloat
     @StateObject var user: User
+    @State private var isShowCopyTosat = false
+    @EnvironmentObject var settings: Settings
+    
     var generateText: (api_type, String) -> Void
     var body: some View {
         switch status {
@@ -100,7 +103,7 @@ extension BottomBar {
                             Text("ChatBot3.5 by Vikill")
                                 .font(.footnote)
                                 .foregroundColor(.secondary)
-                            Text("Powered by ChatGPT-3.5-Turbo")
+                            Text("Powered by \(settings.model.rawValue.uppercased())")
                                 .font(.footnote)
                                 .foregroundColor(.secondary)
                         }
@@ -139,7 +142,7 @@ extension BottomBar {
                         Text("ChatBot3.5 by Vikill")
                             .font(.footnote)
                             .foregroundColor(.secondary)
-                        Text("Powered by ChatGPT-3.5-Turbo")
+                        Text("Powered by \(settings.model.rawValue.uppercased())")
                             .font(.footnote)
                             .foregroundColor(.secondary)
                     }

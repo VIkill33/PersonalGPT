@@ -7,9 +7,7 @@
 
 import SwiftUI
 import MarkdownUI
-#if os(iOS)
-import Toast
-#endif
+import AlertToast
 
 enum chat_role {
     case user
@@ -18,6 +16,7 @@ enum chat_role {
 
 struct ChatBoxView: View {
     @EnvironmentObject var user: User
+    @EnvironmentObject var settings: Settings
     var chatRole: chat_role
     var chatString: String
     @State var promptString: String = ""
@@ -50,10 +49,7 @@ struct ChatBoxView: View {
                         .contextMenu {
                             Button("Copy") {
                                 copy2pasteboard(chatString)
-#if os(iOS)
-                                let toast = Toast.text("Copy to clipborad successfully")
-                                toast.show()
-#endif
+                                settings.isShowCopyToast = true
                             }
                             Button("Regenerate Answer") {
                                 promptText = user.chats[chatIndex].messsages["content"] as! String
@@ -111,10 +107,7 @@ struct ChatBoxView: View {
                         .contextMenu {
                             Button("Copy") {
                                 copy2pasteboard(chatString)
-#if os(iOS)
-                                let toast = Toast.text("Copy to clipborad successfully")
-                                toast.show()
-#endif
+                                settings.isShowCopyToast = true
                             }
                             Button("Regenerate Answer") {
                                 promptText = user.chats[chatIndex].messsages["content"] as! String
