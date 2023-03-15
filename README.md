@@ -22,7 +22,9 @@ SwiftUI ChatGPT app with API keys, using model ChatGPT-3.5
 2023-3-15
 
 support choose GPT models
+
 support display error toast
+
 support toast on macOS
 
 2023-3-14
