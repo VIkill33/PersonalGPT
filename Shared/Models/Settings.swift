@@ -13,6 +13,8 @@ class Settings: ObservableObject {
     @Published var isShowErrorToast: Bool = false
     @Published var isShowCopyToast: Bool = false
     @Published var isShowClearToast: Bool = false
+    @Published var isShowSubmitAPIToast: Bool = false
+    @Published var isShowResetAPIToast: Bool = false
     @AppStorage("isFirstLauch") var isFirstLauch: Bool = true
     @AppStorage("modelIndex") var model: Models = .gpt35turbo
     @AppStorage("temperature") var temperature: Double = 1.0

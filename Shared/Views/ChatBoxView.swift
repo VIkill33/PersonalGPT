@@ -47,20 +47,37 @@ struct ChatBoxView: View {
                                 .fill(Color.blue)
                         }
                         .contextMenu {
-                            Button("Copy") {
+                            Button(action: {
                                 copy2pasteboard(chatString)
                                 settings.isShowCopyToast = true
-                            }
-                            Button("Regenerate Answer") {
+                            }, label: {
+                                HStack {
+                                    Text("Copy")
+                                    Image(systemName: "doc.on.doc.fill")
+                                }
+                            })
+                            Button(action: {
+                                promptText = user.chats[chatIndex].messsages["content"] as! String
+                            }, label: {
+                                Text("Edit")
+                                Image(systemName: "square.and.pencil")
+                            })
+                            Button(action: {
                                 promptText = user.chats[chatIndex].messsages["content"] as! String
                                 regenerateAnswer(.chat, promptText)
-                            }
-                            Button("More...") {
+                            }, label: {
+                                Text("Regenerate Answer")
+                                Image(systemName: "arrow.clockwise")
+                            })
+                            Button(action: {
                                 user.unselectAllChats()
                                 withAnimation {
                                     status = .select
                                 }
-                            }
+                            }, label: {
+                                Text("More...")
+                                Image(systemName: "ellipsis.circle")
+                            })
                         }
                     if status == .select && !isHideUnselectChats {
                         if isSelected {
@@ -105,20 +122,31 @@ struct ChatBoxView: View {
                                 .fill(Color("secondarySystemBackground"))
                         }
                         .contextMenu {
-                            Button("Copy") {
+                            Button(action: {
                                 copy2pasteboard(chatString)
                                 settings.isShowCopyToast = true
-                            }
-                            Button("Regenerate Answer") {
+                            }, label: {
+                                HStack {
+                                    Text("Copy")
+                                    Image(systemName: "doc.on.doc.fill")
+                                }
+                            })
+                            Button(action: {
                                 promptText = user.chats[chatIndex].messsages["content"] as! String
                                 regenerateAnswer(.chat, promptText)
-                            }
-                            Button("More...") {
+                            }, label: {
+                                Text("Regenerate Answer")
+                                Image(systemName: "arrow.clockwise")
+                            })
+                            Button(action: {
                                 user.unselectAllChats()
                                 withAnimation {
                                     status = .select
                                 }
-                            }
+                            }, label: {
+                                Text("More...")
+                                Image(systemName: "ellipsis.circle")
+                            })
                         }
                 }
                 .onTapGesture {

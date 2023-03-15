@@ -79,7 +79,7 @@ struct ChatView: View {
                 AlertToast(displayMode: .hud, type: .error(.red), title: toastTitle, subTitle: toastSubtitle)
             }
             .toast(isPresenting: $settings.isShowCopyToast) {
-                AlertToast(displayMode: .hud, type: .regular, title: "Copy to clipborad successfully")
+                AlertToast(displayMode: .hud, type: .regular, title: "Copy To Clipborad Successfully")
             }
             
             .sheet(isPresented: $settings.isFirstLauch) {

@@ -53,8 +53,12 @@ struct SettingView: View {
                 }
                 Section(header: Text("API Key"), footer: Text("You can paste your own API key here.")) {
                     SecureField("API key", text: $settings.api_key)
+                        .onSubmit {
+                            settings.isShowSubmitAPIToast = true
+                        }
                     Button(action: {
                         settings.api_key = ""
+                        settings.isShowResetAPIToast = true
                     }, label: {
                         Text("Reset API key")
                     })
@@ -78,7 +82,13 @@ struct SettingView: View {
             #endif
         }
         .toast(isPresenting: $settings.isShowClearToast) {
-            AlertToast(displayMode: .hud, type: .regular, title: "Clear all chats successfully")
+            AlertToast(displayMode: .hud, type: .regular, title: "Clear All Chats Successfully")
+        }
+        .toast(isPresenting: $settings.isShowSubmitAPIToast) {
+            AlertToast(displayMode: .hud, type: .regular, title: "API Key Saved Successfully")
+        }
+        .toast(isPresenting: $settings.isShowResetAPIToast) {
+            AlertToast(displayMode: .hud, type: .regular, title: "Reset API Key Successfully")
         }
     }
 }
