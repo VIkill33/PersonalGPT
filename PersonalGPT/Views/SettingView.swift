@@ -14,16 +14,19 @@ struct SettingView: View {
     let values = stride(from: 0.0, to: 2.0, by: 0.1).map{String(format: "%.1f", $0)}
     let step: Double = 0.1
     let models: [String] = ["gpt-4", "gpt-4-0314", "gpt-4-32k", "gpt-4-32k-0314", "gpt-3.5-turbo", "gpt-3.5-turbo-0301"]
+    let model_temp_description = "Not all models are avalible now. Check out which models your API apply to on [openai.com](https://openai.com)"
     var body: some View {
         VStack(alignment: .leading) {
             Form {
-                Section(footer: Text("What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.")) {
+                Section(footer: Text(.init(model_temp_description))) {
                     Picker("Model", selection: $settings.model) {
                         ForEach(Models.allCases) { model in
                             Text(model.rawValue)
                                 .tag(model)
                         }
                     }
+                }
+                Section(footer: Text("What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.")) {
                     Picker("Temperature", selection: $settings.temperature) {
                         ForEach(0...20, id: \.self) {
                             Text(String(Double($0)/10)).tag(Double($0)/10)
