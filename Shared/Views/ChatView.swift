@@ -85,6 +85,9 @@ struct ChatView: View {
             .sheet(isPresented: $settings.isFirstLauch) {
                 WelcomeView(isFirstLauch: $settings.isFirstLauch)
             }
+            .sheet(isPresented: $settings.hasAppBeenUpdated) {
+                WhatsNewView()
+            }
             .onAppear {
                 // check if app has been updated
                 print("old version: \(lastVersion)")

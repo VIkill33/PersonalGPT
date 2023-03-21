@@ -555,7 +555,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.05;
+				MARKETING_VERSION = 2.06;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vikill.PersonalGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -587,7 +587,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.05;
+				MARKETING_VERSION = 2.06;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vikill.PersonalGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
