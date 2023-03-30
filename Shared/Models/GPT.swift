@@ -9,9 +9,9 @@ import SwiftUI
 import Alamofire
 import SwiftyJSON
 
-enum api_type {
-    case completion
-    case chat
+public enum api_type: String {
+    case openai
+    case api2d
 }
 
 enum Models: String, CaseIterable, Identifiable {
@@ -25,32 +25,45 @@ enum Models: String, CaseIterable, Identifiable {
 }
 
 extension ChatView {
-    func generateText(_ apiType: api_type = .chat, prompt_text: String) -> Void {
+    func generateText(prompt_text: String) -> Void {
         DispatchQueue.main.async {
             isLoading = true
         }
-        
+        var apiType = settings.apiType
         var apiKey: String
         var url: String
         var parameters: [String: Any]
         var headers: HTTPHeaders
         
         switch apiType {
-        case .completion:
-            apiKey = settings.api_key
-            url = "https://api.openai.com/v1/completions"
+        case .api2d:
+            apiKey = settings.api2d_key
+            url = "https://openai.api2d.net/v1/chat/completions"
+            
+            if user.chats.isEmpty {
+                if settings.isSystemPrompt {
+                    user.chats.append(Chat(messsages: ["role": "system", "content": settings.systemPrompt], answers: ""))
+                }
+                if settings.isAssistantPrompt {
+                    user.chats.append(Chat(messsages: ["role": "assistant", "content": settings.assistantPrompt], answers: ""))
+                }
+            }
+            
+            user.chats.append(Chat(messsages: ["content": prompt_text, "role": "user"], answers: ""))
+            // user.chat.messsages.append(["content": promptText, "role": "user"])
             
             parameters = [
-                "model": "text-davinci-003",
-                "prompt": promptText,
-                "max_tokens": 1000
+                "model": settings.model.rawValue,
+                "messages": user.messageArray(),
+                "max_tokens": 1000,
+                "user": user.id.uuidString
             ]
             
             headers = [
                 "Content-Type": "application/json",
                 "Authorization": "Bearer \(apiKey)"
             ]
-        case .chat:
+        case .openai:
             
             apiKey = settings.api_key
             url = "https://api.openai.com/v1/chat/completions"
@@ -84,18 +97,6 @@ extension ChatView {
             .responseJSON { response in
                 isLoading = false
                 print(response)
-                    switch apiType {
-                    case .completion:
-                        if let value = response.value {
-                            let json = JSON(value)
-                            let choices = json["choices"].arrayValue
-                            let text = choices.map { $0["text"].stringValue }.joined()
-                            DispatchQueue.main.async {
-                                generatedText = trimStr(text)
-                                promptText = ""
-                            }
-                        }
-                    case .chat:
                         if let data = response.data {
                             let json = try! JSON(data: data)
                             if let choices = json["choices"].array,
@@ -129,7 +130,7 @@ extension ChatView {
                                 }
                             }
                         }
-                    }
+                    
             }
     }
 }

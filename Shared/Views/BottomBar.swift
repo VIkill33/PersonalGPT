@@ -22,7 +22,7 @@ struct BottomBar: View {
     @State private var isShowCopyTosat = false
     @EnvironmentObject var settings: Settings
     
-    var generateText: (api_type, String) -> Void
+    var generateText: (String) -> Void
     var body: some View {
         switch status {
         case .chat:
@@ -32,7 +32,7 @@ struct BottomBar: View {
                     .textFieldStyle(.roundedBorder)
                     .onSubmit {
                         if !isLoading {
-                            generateText(.chat ,promptText)
+                            generateText(promptText)
                         }
                     }
                 if isLoading {
@@ -41,7 +41,7 @@ struct BottomBar: View {
                 } else {
                     Button(action: {
                         focusedField = nil
-                        generateText(.chat ,promptText)
+                        generateText(promptText)
                     }) {
                         Image(systemName: "paperplane.fill")
                     }

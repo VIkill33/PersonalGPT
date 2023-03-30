@@ -40,7 +40,7 @@ struct ChatView: View {
                 ZStack {
                     if generatedText != "" {
                         ObservableScrollView(scrollOffset: $scrollOffset) { proxy in
-                            ChatContentView(promptText: $promptText, status: $status, user: user, generateText: self.generateText(_:prompt_text:))
+                            ChatContentView(promptText: $promptText, status: $status, user: user, generateText: self.generateText(prompt_text:))
                             .background(
                                 ZStack {
                                     GeometryReader {geo in
@@ -73,7 +73,7 @@ struct ChatView: View {
                 }
                 .gesture(simpleDrag)
                 Divider()
-                BottomBar(status: $status, promptText: $promptText, isLoading: $isLoading, snapshot_proxy: $snapshot_proxy, scrollOffset: $scrollOffset, user: user, generateText: self.generateText(_:prompt_text:))
+                BottomBar(status: $status, promptText: $promptText, isLoading: $isLoading, snapshot_proxy: $snapshot_proxy, scrollOffset: $scrollOffset, user: user, generateText: self.generateText(prompt_text:))
             }
             .toast(isPresenting: $settings.isShowErrorToast) {
                 AlertToast(displayMode: .hud, type: .error(.red), title: toastTitle, subTitle: toastSubtitle)
@@ -109,7 +109,7 @@ struct ChatContentView: View {
     @Binding var promptText: String
     @Binding var status: ChatView_status
     @ObservedObject var user: User
-    var generateText: (api_type, String) -> Void
+    var generateText: (String) -> Void
     @State var isHideUnselectChats: Bool = false
     
     var body: some View {

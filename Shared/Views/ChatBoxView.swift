@@ -21,7 +21,7 @@ struct ChatBoxView: View {
     var chatString: String
     @State var promptString: String = ""
     var chatDate: Date
-    var regenerateAnswer: (api_type, String) -> Void
+    var regenerateAnswer: (String) -> Void
     var chatIndex: Int
     @Binding var promptText: String
     @Binding var status: ChatView_status
@@ -64,7 +64,7 @@ struct ChatBoxView: View {
                             })
                             Button(action: {
                                 promptText = user.chats[chatIndex].messsages["content"] as! String
-                                regenerateAnswer(.chat, promptText)
+                                regenerateAnswer(promptText)
                             }, label: {
                                 Text("Regenerate Answer")
                                 Image(systemName: "arrow.clockwise")
@@ -133,7 +133,7 @@ struct ChatBoxView: View {
                             })
                             Button(action: {
                                 promptText = user.chats[chatIndex].messsages["content"] as! String
-                                regenerateAnswer(.chat, promptText)
+                                regenerateAnswer(promptText)
                             }, label: {
                                 Text("Regenerate Answer")
                                 Image(systemName: "arrow.clockwise")

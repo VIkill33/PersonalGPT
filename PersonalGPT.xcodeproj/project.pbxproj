@@ -133,6 +133,7 @@
 				E7D5A9CB29B1435800825AFD /* WelcomeView.swift */,
 				E794730529B9FCA600436BB7 /* ObservableScrollView.swift */,
 				E794730829BADA6900436BB7 /* ChatBoxView.swift */,
+				E782F01B29B3C0D0006E72BF /* SettingView.swift */,
 				E70078F929BEDCFF00E1E47B /* BottomBar.swift */,
 				E782F01729B3B575006E72BF /* Extensions */,
 			);
@@ -203,7 +204,6 @@
 			isa = PBXGroup;
 			children = (
 				E7D5A98329B106F000825AFD /* ContentView.swift */,
-				E782F01B29B3C0D0006E72BF /* SettingView.swift */,
 				E70078FF29BF592A00E1E47B /* ChatContentTextView.swift */,
 			);
 			path = Views;

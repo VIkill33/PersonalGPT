@@ -19,6 +19,8 @@ class Settings: ObservableObject {
     @AppStorage("modelIndex") var model: Models = .gpt35turbo
     @AppStorage("temperature") var temperature: Double = 1.0
     @AppStorage("api_key") var api_key: String = ""
+    @AppStorage("api2d_key") var api2d_key: String = ""
+    @AppStorage("apiType") var apiType: api_type = .openai
     @AppStorage("isSystemPrompt") var isSystemPrompt: Bool = false
     @AppStorage("isAssistantPrompt") var isAssistantPrompt: Bool = false
     @AppStorage("systemPrompt") var systemPrompt: String = ""
