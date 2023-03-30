@@ -61,9 +61,9 @@ struct WhatsNewView: View {
             Text("What's New")
                 .font(.title.bold())
             Spacer()
-            Markdown("2023-3-16\n- Support editing questions\n- Add alert toast when submit/reset API keys\n\n2023-3-15\n- Support choosing GPT models\n- Support error alert toast\n- Support alert toast on macOS\n\n2023-3-14\n- Support Snapshot of chats\n\n2023-3-10\n- Adjust UI to iMessage-like")
+            Markdown(NSLocalizedString("2023-3-30\n- Support API2D\n\n2023-3-16\n- Support editing questions\n- Add alert toast when submit/reset API keys\n\n2023-3-15\n- Support choosing GPT models\n- Support error alert toast\n- Support alert toast on macOS\n\n2023-3-14\n- Support Snapshot of chats\n\n2023-3-10\n- Adjust UI to iMessage-like", comment: ""))
         }
-        .frame(minWidth: 200.0, minHeight: 400.0)
+        .frame(minWidth: 300.0, minHeight: 500.0)
         .padding()
     }
 }

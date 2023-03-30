@@ -1,0 +1,57 @@
+/* 
+  Localizable.strings
+  PersonalGPT
+
+  Created by Vikill Blacks on 2023/3/31.
+  
+*/
+// MARK: Setting View
+"Not all models are avalible now. Check out which models your API apply to on [openai.com](https://openai.com)" = "当前并非所有模型可用。在[openai.com](https://openai.com)上查看你的 API 可用哪些模型";
+"Model" = "模型";
+"What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic." = "在0到2之间选择发散度，较高的值（如0.8）会使输出更加随机，而较低的值（如0.2）会使其更加集中和确定。";
+"Temperature" = "发散度";
+"Roles" = "角色设定";
+"System" = "系统（System）";
+"Assistant" = "助手（Assistant）";
+//"API Key" = "";
+"You can paste your own API key here." = "你可以把你的API Key粘贴在这里。国内用户选择API2D，则无需打开网络代理即可正常使用。";
+"API Type" = "API 类型";
+//"Open AI" = "";
+//"API2D" = "";
+"Reset API key" = "重设API key";
+//"API2D key" = "";
+"Reset API2D key" = "重设API2D key";
+"About" = "关于";
+"This project has been open sourced on GitHub." = "本项目已在GitHub开源。";
+"Clear History" = "清除历史";
+"Clear All Chats Successfully" = "成功清除历史";
+"API Key Saved Successfully" = "成功保存API Key";
+"Reset API Key Successfully" = "成功重设API Key";
+"System Prompt" = "系统（System）提示词";
+"Assistant Prompt" = "助手（Assistant）提示词";
+
+// MARK: ChatBoxView
+"Copy" = "复制";
+"Edit" = "编辑";
+"Regenerate Answer" = "重新生成回答";
+"More..." = "选择...";
+
+// MARK: BottomBar
+"Enter prompt" = "输入提示词";
+"Cancel" = "取消";
+"chat" = "ChatBot对话截图";
+"Snapshot" = "保存截图";
+"Share" = "分享截图";
+
+// MARK: ImageSaver
+"Save your image" = "保存对话截图";
+"Choose a folder and a name to store the image." = "选择保存路径";
+"Image file name:" = "文件名：";
+
+// MARK: WelcomeView
+"Welcome to ChatBOT" = "欢迎使用 ChatBOT";
+"Created By Vikill & ChatGPT" = "";
+"powered by ChatGPT-3.5-Turbo" = "";
+"What's New" = "更新记录";
+"This app is for learning and communication purposes only." = "本App仅供学习交流使用。";
+"2023-3-30\n- Support API2D\n\n2023-3-16\n- Support editing questions\n- Add alert toast when submit/reset API keys\n\n2023-3-15\n- Support choosing GPT models\n- Support error alert toast\n- Support alert toast on macOS\n\n2023-3-14\n- Support Snapshot of chats\n\n2023-3-10\n- Adjust UI to iMessage-like" = "2023-3-30\n- 支持 API2D 接口（国内用户选择此接口，无需打开网络代理即可正常使用）\n\n2023-3-16\n- 支持编辑问题\n- 在提交/重置 API Key时添加提示\n\n2023-3-15\n- 支持选择 GPT 模型\n- 支持错误提示\n- 支持macOS上的提示\n\n2023-3-14\n- 支持聊天快照\n\n2023-3-10\n- 调整界面以类似 iMessage 的方式呈现";

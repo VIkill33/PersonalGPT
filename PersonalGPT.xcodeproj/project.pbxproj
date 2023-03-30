@@ -55,6 +55,8 @@
 		E7D5A9CD29B1448600825AFD /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A9CB29B1435800825AFD /* WelcomeView.swift */; };
 		E7D5A9CF29B1B8D400825AFD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A9CE29B1B8D400825AFD /* User.swift */; };
 		E7D5A9D029B1B9A300825AFD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A9CE29B1B8D400825AFD /* User.swift */; };
+		E7E6FECF29D5FBCE00C86D64 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7E6FED229D5FBCE00C86D64 /* Localizable.strings */; };
+		E7E6FED029D5FBCE00C86D64 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7E6FED229D5FBCE00C86D64 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +91,8 @@
 		E7D5A9BD29B1350D00825AFD /* MacPersonalGPT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacPersonalGPT.entitlements; sourceTree = "<group>"; };
 		E7D5A9CB29B1435800825AFD /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		E7D5A9CE29B1B8D400825AFD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E7E6FED129D5FBCE00C86D64 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		E7E6FED329D5FBD000C86D64 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,7 @@
 		E782F01529B3B537006E72BF /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E7E6FECB29D5FB9500C86D64 /* Localizations */,
 				E782F01629B3B55A006E72BF /* Views */,
 				E7D5A9A329B10A0900825AFD /* Models */,
 			);
@@ -250,6 +255,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E7E6FECB29D5FB9500C86D64 /* Localizations */ = {
+			isa = PBXGroup;
+			children = (
+				E7E6FED229D5FBCE00C86D64 /* Localizable.strings */,
+			);
+			path = Localizations;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -324,6 +337,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = E7D5A97529B106F000825AFD;
 			packageReferences = (
@@ -349,6 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7A0804929BB6186003C818D /* README.md in Resources */,
+				E7E6FECF29D5FBCE00C86D64 /* Localizable.strings in Resources */,
 				E7D5A98929B106F300825AFD /* Preview Assets.xcassets in Resources */,
 				E7D5A98629B106F300825AFD /* Assets.xcassets in Resources */,
 			);
@@ -359,6 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7A0804A29BB6186003C818D /* README.md in Resources */,
+				E7E6FED029D5FBCE00C86D64 /* Localizable.strings in Resources */,
 				E7D5A9B729B1350D00825AFD /* Preview Assets.xcassets in Resources */,
 				E7D5A9B429B1350D00825AFD /* Assets.xcassets in Resources */,
 			);
@@ -416,6 +432,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E7E6FED229D5FBCE00C86D64 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E7E6FED129D5FBCE00C86D64 /* zh-Hans */,
+				E7E6FED329D5FBD000C86D64 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E7D5A99029B106F300825AFD /* Debug */ = {
@@ -555,7 +583,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.06;
+				MARKETING_VERSION = 2.07;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vikill.PersonalGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -587,7 +615,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.06;
+				MARKETING_VERSION = 2.07;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vikill.PersonalGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -616,7 +644,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.02;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vikill.MacPersonalGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -645,7 +673,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.02;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vikill.MacPersonalGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;

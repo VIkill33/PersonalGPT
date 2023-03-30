@@ -66,11 +66,16 @@ struct BottomBar: View {
                     // take snapshot
                     take_snapshot()
                 }, label: {
-                    Text("\(Image(systemName: "square.and.arrow.up.on.square.fill")) Snapshot")
+                    HStack {
+                        Text("\(Image(systemName: "square.and.arrow.up.on.square.fill"))")
+                        Text("Snapshot")
+                    }
                 })
                 #endif
                 #if os(iOS)
-                ShareLink(item: take_snapshot(), preview: SharePreview("chat", image: take_snapshot()))
+                ShareLink(item: take_snapshot(), preview: SharePreview("chat", image: take_snapshot())) {
+                    Label("Share", systemImage: "square.and.arrow.up.on.square.fill")
+                }
                 #endif
             }
             .padding()

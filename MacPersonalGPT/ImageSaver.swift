@@ -12,9 +12,9 @@ func showSavePanel() -> URL? {
     savePanel.allowedContentTypes = [.png]
     savePanel.canCreateDirectories = true
     savePanel.isExtensionHidden = false
-    savePanel.title = "Save your image"
-    savePanel.message = "Choose a folder and a name to store the image."
-    savePanel.nameFieldLabel = "Image file name:"
+    savePanel.title = NSLocalizedString("Save your image", comment: "")
+    savePanel.message = NSLocalizedString("Choose a folder and a name to store the image.", comment: "")
+    savePanel.nameFieldLabel = NSLocalizedString("Image file name:", comment: "")
     
     let response = savePanel.runModal()
     return response == .OK ? savePanel.url : nil
