@@ -104,11 +104,13 @@ extension ChatView {
                                let message = firstChoice["message"]["content"].string {
                                 // 处理得到的消息内容
                                 DispatchQueue.main.async {
-                                    generatedText = trimStr(message)
+                                    // generatedText = trimStr(message)
+                                    generatedText = message // previous version of gpt's api return with extra "\n\n" in answers' head, but it seems to be solved
                                     user.chats[user.chats.count - 1].messsages["content"] = prompt_text
                                     user.chats[user.chats.count - 1].answers = generatedText
                                     user.chats[user.chats.count - 1].date = Date()
                                     print(user.chats.last?.answers)
+                                    user.chats.append(Chat(messsages: ["role": "assistant", "content": generatedText], answers: ""))
                                     promptText = ""
                                 }
                             } else {

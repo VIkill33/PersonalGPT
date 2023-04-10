@@ -14,7 +14,7 @@
 "System" = "系统（System）";
 "Assistant" = "助手（Assistant）";
 //"API Key" = "";
-"You can paste your own API key here." = "你可以把你的API Key粘贴在这里。国内用户选择API2D，则无需打开网络代理即可正常使用。";
+"You can paste your own API key here." = "你可以把你的API Key粘贴在这里。\n国内用户选择API2D，则无需打开网络代理即可正常使用。";
 "API Type" = "API 类型";
 //"Open AI" = "";
 //"API2D" = "";
