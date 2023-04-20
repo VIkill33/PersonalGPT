@@ -162,6 +162,7 @@ extension ChatView {
                     }
                 case .complete(_):
                     DispatchQueue.main.async {
+                        user.chats.append(Chat(messsages: ["role": "assistant", "content": generatedText], answers: ""))
                         isLoading = false
                         promptText = ""
                         generatedText = ""
