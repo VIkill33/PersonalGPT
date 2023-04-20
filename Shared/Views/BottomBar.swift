@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MarkdownUI
+import OmenTextField
 #if os(iOS)
 import UIKit
 #endif
@@ -27,30 +28,13 @@ struct BottomBar: View {
         switch status {
         case .chat:
             HStack {
-                TextField("Enter prompt", text: $promptText)
-                    .focused(focusedField, equals: .promptText, key: "m")
-                    .textFieldStyle(.roundedBorder)
-                    .onSubmit {
-                        if !isLoading {
-                            Task {
-                                await generateText(promptText)
-                            }
-                        }
+                OmenTextField("Enter Prompt", text: $promptText, isFocused: $settings.isFocused, onCommit: {
+                if !isLoading {
+                    Task {
+                        await generateText(promptText)
                     }
-                if isLoading {
-                    ProgressView()
-                        .padding(.horizontal)
-                } else {
-                    Button(action: {
-                        focusedField.wrappedValue = nil
-                        Task {
-                            await generateText(promptText)
-                        }
-                    }) {
-                        Image(systemName: "paperplane.fill")
-                    }
-                    .padding()
                 }
+            })
             }
             .disabled(isLoading)
             .padding()

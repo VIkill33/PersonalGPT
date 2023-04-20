@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "omentextfield",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kitlangton/OmenTextField.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "2792ad40a34b5944399c6d90d1fb78f428585573"
+      }
+    },
+    {
       "identity" : "swift-markdown-ui",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/gonzalezreal/swift-markdown-ui.git",

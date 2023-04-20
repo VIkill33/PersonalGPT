@@ -57,6 +57,8 @@
 		E7D5A9D029B1B9A300825AFD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A9CE29B1B8D400825AFD /* User.swift */; };
 		E7E6FECF29D5FBCE00C86D64 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7E6FED229D5FBCE00C86D64 /* Localizable.strings */; };
 		E7E6FED029D5FBCE00C86D64 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7E6FED229D5FBCE00C86D64 /* Localizable.strings */; };
+		E7F33B8B29F1A4B700DEF8A0 /* OmenTextField in Frameworks */ = {isa = PBXBuildFile; productRef = E7F33B8A29F1A4B700DEF8A0 /* OmenTextField */; };
+		E7F33B8D29F1A51600DEF8A0 /* OmenTextField in Frameworks */ = {isa = PBXBuildFile; productRef = E7F33B8C29F1A51600DEF8A0 /* OmenTextField */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +104,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7D5A9A129B108EA00825AFD /* SwiftyJSON in Frameworks */,
+				E7F33B8B29F1A4B700DEF8A0 /* OmenTextField in Frameworks */,
 				E7D5A99E29B108CB00825AFD /* Alamofire in Frameworks */,
 				E700790329C1B1A800E1E47B /* AlertToast in Frameworks */,
 				E729D55329B226890084F483 /* MarkdownUI in Frameworks */,
@@ -113,6 +116,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E729D55529B226D60084F483 /* MarkdownUI in Frameworks */,
+				E7F33B8D29F1A51600DEF8A0 /* OmenTextField in Frameworks */,
 				E700790529C1B40E00E1E47B /* AlertToast in Frameworks */,
 				E7D5A9C429B1357200825AFD /* SwiftyJSON in Frameworks */,
 				E7D5A9C629B1357500825AFD /* Alamofire in Frameworks */,
@@ -286,6 +290,7 @@
 				E7D5A9A029B108EA00825AFD /* SwiftyJSON */,
 				E729D55229B226890084F483 /* MarkdownUI */,
 				E700790229C1B1A800E1E47B /* AlertToast */,
+				E7F33B8A29F1A4B700DEF8A0 /* OmenTextField */,
 			);
 			productName = PersonalGPT;
 			productReference = E7D5A97E29B106F000825AFD /* PersonalGPT.app */;
@@ -309,6 +314,7 @@
 				E7D5A9C529B1357500825AFD /* Alamofire */,
 				E729D55429B226D60084F483 /* MarkdownUI */,
 				E700790429C1B40E00E1E47B /* AlertToast */,
+				E7F33B8C29F1A51600DEF8A0 /* OmenTextField */,
 			);
 			productName = MacPersonalGPT;
 			productReference = E7D5A9AD29B1350B00825AFD /* MacPersonalGPT.app */;
@@ -348,6 +354,7 @@
 				E729D55129B226890084F483 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
 				E794730029B9F9D800436BB7 /* XCRemoteSwiftPackageReference "trackable-scroll-view" */,
 				E700790129C1B1A800E1E47B /* XCRemoteSwiftPackageReference "AlertToast" */,
+				E7F33B8929F1A4B700DEF8A0 /* XCRemoteSwiftPackageReference "OmenTextField" */,
 			);
 			productRefGroup = E7D5A97F29B106F000825AFD /* Products */;
 			projectDirPath = "";
@@ -585,7 +592,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.07;
+				MARKETING_VERSION = 2.08;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vikill.PersonalGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -617,7 +624,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.07;
+				MARKETING_VERSION = 2.08;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vikill.PersonalGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -647,7 +654,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.02;
+				MARKETING_VERSION = 1.03;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vikill.MacPersonalGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -677,7 +684,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.02;
+				MARKETING_VERSION = 1.03;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vikill.MacPersonalGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -759,6 +766,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		E7F33B8929F1A4B700DEF8A0 /* XCRemoteSwiftPackageReference "OmenTextField" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kitlangton/OmenTextField.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -801,6 +816,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E7D5A99C29B108CB00825AFD /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		E7F33B8A29F1A4B700DEF8A0 /* OmenTextField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E7F33B8929F1A4B700DEF8A0 /* XCRemoteSwiftPackageReference "OmenTextField" */;
+			productName = OmenTextField;
+		};
+		E7F33B8C29F1A51600DEF8A0 /* OmenTextField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E7F33B8929F1A4B700DEF8A0 /* XCRemoteSwiftPackageReference "OmenTextField" */;
+			productName = OmenTextField;
 		};
 /* End XCSwiftPackageProductDependency section */
 

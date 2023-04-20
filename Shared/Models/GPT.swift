@@ -118,57 +118,6 @@ extension ChatView {
         } catch let error {
             print(error)
         }
-        /*
-        request.responseStreamString { (stream) in
-            switch stream.event {
-            case let .stream(result):
-                switch result {
-                case let .success(data):
-                    let string = data
-                    // print(string)
-                    var message = findContent(form: string, of: "\"content\":\"", endBefore: "\"},\"index\"")
-                    if string.prefix(4) == "data" {
-                        // 处理得到的消息内容
-                        DispatchQueue.main.async {
-                            if message.contains("\\n")  {
-                                var testStr = message
-                                generatedText += message.dropLast(4)
-                                /*
-                                 if message.prefix(1) != "\\" {
-                                 generatedText += message.prefix(1)
-                                 }
-                                 */
-                                generatedText += "  \n"
-                            } else {
-                                generatedText += message
-                            }
-                            user.chats[user.chats.count - 1].answers = generatedText
-                        }
-                    } else {
-                        var error_message = findContent(form: string, of: "\"message\": \"", endBefore: "\",\n")
-                        var error_type = findContent(form: string, of: "\"type\": \"", endBefore: "\",\n")
-                        error_message = error_message.count > 0 ? error_message : "Oops, something went wrong!"
-                        
-                        DispatchQueue.main.async {
-                            generatedText = error_message
-                            user.chats[user.chats.count - 1].answers = generatedText
-                            toastTitle = error_message
-                            toastSubtitle = error_type
-                            settings.isShowErrorToast = true
-                        }
-                    }
-                case let .failure(error):
-                    print(error)
-                }
-            case .complete(_):
-                DispatchQueue.main.async {
-                    isLoading = false
-                    promptText = ""
-                    generatedText = ""
-                }
-            }
-        }
-        */
     }
     
     func getStream(request: DataStreamRequest) async throws -> String {

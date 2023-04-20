@@ -32,7 +32,7 @@ struct ChatView: View {
     var simpleDrag: some Gesture {
         DragGesture()
             .onChanged { value in
-                focusedField = nil
+                settings.isFocused = false
             }
     }
     
@@ -66,7 +66,7 @@ struct ChatView: View {
                                         if isLoading {
                                             proxy.scrollTo(bottomID, anchor: .bottom)
                                         }
-                                        focusedField = .promptText
+                                        settings.isFocused = true
                                     }
                                 }
                         }
@@ -81,11 +81,18 @@ struct ChatView: View {
                         })
                 }
                 .onTapGesture {
-                    focusedField = nil
+                    settings.isFocused = false
                 }
                 .gesture(simpleDrag)
+                #if os(iOS)
                 Divider()
+                #endif
                 BottomBar(status: $status, promptText: $promptText,focusedField: $focusedField, isLoading: $isLoading, snapshot_proxy: $snapshot_proxy, scrollOffset: $scrollOffset, user: user, generateText: self.generateText(prompt_text:))
+                #if os(macOS)
+                    .background {
+                        Color.secondary.colorInvert()
+                    }
+                #endif
             }
             .toast(isPresenting: $settings.isShowErrorToast) {
                 AlertToast(displayMode: .hud, type: .error(.red), title: toastTitle, subTitle: toastSubtitle)
