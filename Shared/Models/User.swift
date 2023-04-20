@@ -10,10 +10,11 @@ import SwiftUI
 class User: ObservableObject {
     var id = UUID()
     @Published var chats: [Chat] = []
-    func messageArray() -> [[String: Any]] {
-        var message_array: [[String: Any]] = []
+    func messageArray() -> [[String: String]] {
+        var message_array: [[String: String]] = []
         for chat in chats {
-            message_array.append(chat.messsages)
+            let dict = chat.messsages
+            message_array.append(dict)
         }
         print(message_array)
         return message_array
@@ -39,13 +40,13 @@ class User: ObservableObject {
 }
 
 struct Chat: Identifiable {
-    var messsages: [String: Any]
+    var messsages: [String: String]
     var answers: String
     var id =  UUID()
     var date = Date()
     var isPromptSelected: Bool = false
     var isAnswerSelected: Bool = false
-    init(messsages: [String : Any], answers: String) {
+    init(messsages: [String : String], answers: String) {
         self.messsages = messsages
         self.answers = answers
         self.id = UUID()

@@ -14,7 +14,7 @@ import UIKit
 struct BottomBar: View {
     @Binding var status: ChatView_status
     @Binding var promptText: String
-    @FocusState var focusedField: Field?
+    var focusedField: FocusState<ChatView.Field?>.Binding
     @Binding var isLoading: Bool
     @Binding var snapshot_proxy: [GeometryProxy]
     @Binding var scrollOffset: CGFloat
@@ -22,17 +22,19 @@ struct BottomBar: View {
     @State private var isShowCopyTosat = false
     @EnvironmentObject var settings: Settings
     
-    var generateText: (String) -> Void
+    var generateText: (String) async -> Void
     var body: some View {
         switch status {
         case .chat:
             HStack {
                 TextField("Enter prompt", text: $promptText)
-                    .focused($focusedField, equals: .promptText)
+                    .focused(focusedField, equals: .promptText, key: "m")
                     .textFieldStyle(.roundedBorder)
                     .onSubmit {
                         if !isLoading {
-                            generateText(promptText)
+                            Task {
+                                await generateText(promptText)
+                            }
                         }
                     }
                 if isLoading {
@@ -40,8 +42,10 @@ struct BottomBar: View {
                         .padding(.horizontal)
                 } else {
                     Button(action: {
-                        focusedField = nil
-                        generateText(promptText)
+                        focusedField.wrappedValue = nil
+                        Task {
+                            await generateText(promptText)
+                        }
                     }) {
                         Image(systemName: "paperplane.fill")
                     }

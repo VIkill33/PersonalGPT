@@ -11,6 +11,12 @@ import Combine
 import AlertToast
 
 struct ChatView: View {
+    
+    enum Field: Int, CaseIterable {
+        case promptText
+    }
+    
+    @Namespace var bottomID
     @EnvironmentObject var user: User
     @EnvironmentObject var settings: Settings
     @FocusState var focusedField: Field?
@@ -38,23 +44,33 @@ struct ChatView: View {
         GeometryReader { proxy in
             VStack {
                 ZStack {
-                    if generatedText != "" {
                         ObservableScrollView(scrollOffset: $scrollOffset) { proxy in
                             ChatContentView(promptText: $promptText, status: $status, user: user, generateText: self.generateText(prompt_text:))
-                            .background(
-                                ZStack {
-                                    GeometryReader {geo in
-                                        Color.clear
-                                            .onChange(of: status) { _ in
-                                                snapshot_proxy = []
-                                                snapshot_proxy.append(geo)
-                                                print(status)
-                                                print("chat height = \(geo.size.height)")
-                                            }
+                                .background(
+                                    ZStack {
+                                        GeometryReader {geo in
+                                            Color.clear
+                                                .onChange(of: status) { _ in
+                                                    snapshot_proxy = []
+                                                    snapshot_proxy.append(geo)
+                                                    print(status)
+                                                    print("chat height = \(geo.size.height)")
+                                                }
+                                        }
+                                    }
+                                )
+                            Text("")
+                                .id(bottomID)
+                                .onChange(of: generatedText) { newValue in
+                                    DispatchQueue.main.async {
+                                        if isLoading {
+                                            proxy.scrollTo(bottomID, anchor: .bottom)
+                                        }
+                                        focusedField = .promptText
                                     }
                                 }
-                            )
                         }
+                    
                         .onChange(of: scrollOffset, perform: { [scrollOffset] newOffset in
                             // print("scroll offset = \(newOffset)")
                             if newOffset > scrollOffset {
@@ -63,17 +79,13 @@ struct ChatView: View {
                                 // scroll up
                             }
                         })
-                    }
-                    else {
-                        Spacer()
-                    }
                 }
                 .onTapGesture {
                     focusedField = nil
                 }
                 .gesture(simpleDrag)
                 Divider()
-                BottomBar(status: $status, promptText: $promptText, isLoading: $isLoading, snapshot_proxy: $snapshot_proxy, scrollOffset: $scrollOffset, user: user, generateText: self.generateText(prompt_text:))
+                BottomBar(status: $status, promptText: $promptText,focusedField: $focusedField, isLoading: $isLoading, snapshot_proxy: $snapshot_proxy, scrollOffset: $scrollOffset, user: user, generateText: self.generateText(prompt_text:))
             }
             .toast(isPresenting: $settings.isShowErrorToast) {
                 AlertToast(displayMode: .hud, type: .error(.red), title: toastTitle, subTitle: toastSubtitle)
@@ -109,7 +121,7 @@ struct ChatContentView: View {
     @Binding var promptText: String
     @Binding var status: ChatView_status
     @ObservedObject var user: User
-    var generateText: (String) -> Void
+    var generateText: (String) async -> Void
     @State var isHideUnselectChats: Bool = false
     
     var body: some View {
@@ -135,9 +147,7 @@ enum ChatView_status {
     case snapshot_preview // useless
 }
 
-enum Field: Int, CaseIterable {
-    case promptText
-}
+
 
 
 
