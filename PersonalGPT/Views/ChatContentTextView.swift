@@ -44,7 +44,7 @@ struct ChatBox_Text_View: View {
                             }
                             Button("Regenerate Answer") {
                                 promptText = promptString
-                                Task {
+                                Task(priority: .high) {
                                     await regenerateAnswer(promptString)
                                 }
                             }
@@ -104,7 +104,7 @@ struct ChatBox_Text_View: View {
                             }
                             Button("Regenerate Answer") {
                                 promptText = promptString
-                                Task {
+                                Task(priority: .high) {
                                     await regenerateAnswer(promptString)
                                 }
                             }

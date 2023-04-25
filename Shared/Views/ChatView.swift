@@ -11,7 +11,7 @@ import Combine
 import AlertToast
 
 struct ChatView: View {
-    
+    let generatedTextQueue = DispatchQueue(label: "com.example.app.generatedTextQueue")
     enum Field: Int, CaseIterable {
         case promptText
     }
@@ -61,7 +61,7 @@ struct ChatView: View {
                                 )
                             Text("")
                                 .id(bottomID)
-                                .onChange(of: generatedText) { newValue in
+                                .task(id: generatedText, priority: .background) {
                                     DispatchQueue.main.async {
                                         if isLoading {
                                             proxy.scrollTo(bottomID, anchor: .bottom)
@@ -119,6 +119,10 @@ struct ChatView: View {
                 UserDefaults.standard.set(currentVersion, forKey: "lastVersion")
             }
         }
+    }
+    
+    func handleChangeOfGeneratedText() async {
+        
     }
     
 }

@@ -25,7 +25,7 @@ enum Models: String, CaseIterable, Identifiable {
 }
 
 extension ChatView {
-    @MainActor
+    //@MainActor
     func generateText(prompt_text: String) async -> Void {
         lazy var alamoSession: Session = {
             let configuration = URLSessionConfiguration.default
@@ -51,7 +51,7 @@ extension ChatView {
         user.chats[user.chats.count - 1].answers = " "
         user.chats[user.chats.count - 1].date = Date()
         //}
-        var apiType = settings.apiType
+        let apiType = settings.apiType
         var apiKey: String
         var url: String
         var parameters: [String: Any]
@@ -121,6 +121,7 @@ extension ChatView {
     }
     
     func getStream(request: DataStreamRequest) async throws -> String {
+        var finalString: String = ""
         return try await withCheckedThrowingContinuation { continuation in
             request.responseStreamString { stream in
                 switch stream.event {
@@ -128,20 +129,16 @@ extension ChatView {
                     switch result {
                     case let .success(data):
                         let string = data
-                        // print(string)
-                        var message = findContent(form: string, of: "\"content\":\"", endBefore: "\"},\"index\"")
-                        if message.contains("\\\"") {
-                            message = message.replacingOccurrences(of: "\\\"", with: #"""#)
-                        }
-                        if message.contains("\\n") {
-                            message = message.replacingOccurrences(of: "\\n", with: "  \n")
-                        }
+                        finalString += string
+                        // print("🐶" + string + "🐱")
+                        var message = stream2Message(form: string)
+                        // print("MESSAGE = " + message)
                         if string.prefix(4) == "data" {
                             // 处理得到的消息内容
-                            DispatchQueue.main.async {
+                            // DispatchQueue.main.async {
                                 generatedText += message
                                 user.chats[user.chats.count - 1].answers = generatedText
-                            }
+                            //}
                         } else {
                             var error_message = findContent(form: string, of: "\"message\": \"", endBefore: "\",\n")
                             var error_type = findContent(form: string, of: "\"type\": \"", endBefore: "\",\n")
@@ -172,6 +169,22 @@ extension ChatView {
         }
     }
     
+}
+
+func stream2Message(form rawStr: String) -> String {
+    var rawStrArr = rawStr.components(separatedBy: "data")
+    var res = ""
+    for subRawStr in rawStrArr {
+        var subData = findContent(form: subRawStr, of: "\"content\":\"", endBefore: "\"},\"index\"")
+        if subData.contains("\\\"") {
+            subData = subData.replacingOccurrences(of: "\\\"", with: #"""#)
+        }
+        if subData.contains("\\n") {
+            subData = subData.replacingOccurrences(of: "\\n", with: "  \n")
+        }
+        res += subData
+    }
+    return res
 }
 
 func findContent(form rawStr: String, of content: String, endBefore endStr: String) -> String {

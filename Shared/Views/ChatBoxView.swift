@@ -64,7 +64,7 @@ struct ChatBoxView: View {
                             })
                             Button(action: {
                                 promptText = user.chats[chatIndex].messsages["content"] as! String
-                                Task {
+                                Task(priority: .high) {
                                     await regenerateAnswer(promptText)
                                 }
                             }, label: {
@@ -135,7 +135,7 @@ struct ChatBoxView: View {
                             })
                             Button(action: {
                                 promptText = user.chats[chatIndex].messsages["content"] as! String
-                                Task {
+                                Task(priority: .high) {
                                     await regenerateAnswer(promptText)
                                 }
                             }, label: {

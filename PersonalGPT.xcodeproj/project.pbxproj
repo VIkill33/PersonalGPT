@@ -22,6 +22,8 @@
 		E76D2ABA29B7BE0900F32703 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E782F01B29B3C0D0006E72BF /* SettingView.swift */; };
 		E76D2ABC29B8460700F32703 /* Menus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76D2ABB29B8460700F32703 /* Menus.swift */; };
 		E76D2ABD29B8460700F32703 /* Menus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76D2ABB29B8460700F32703 /* Menus.swift */; };
+		E76FCE3829F7A9D5004A1E67 /* GPTVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76FCE3729F7A9D5004A1E67 /* GPTVM.swift */; };
+		E76FCE3929F7A9D5004A1E67 /* GPTVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76FCE3729F7A9D5004A1E67 /* GPTVM.swift */; };
 		E782F01929B3B58D006E72BF /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E782F01829B3B58D006E72BF /* extensions.swift */; };
 		E782F01A29B3B7AC006E72BF /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E782F01829B3B58D006E72BF /* extensions.swift */; };
 		E782F01C29B3C0D0006E72BF /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E782F01B29B3C0D0006E72BF /* SettingView.swift */; };
@@ -68,6 +70,7 @@
 		E70078FF29BF592A00E1E47B /* ChatContentTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatContentTextView.swift; sourceTree = "<group>"; };
 		E76D2AB729B7AFB500F32703 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		E76D2ABB29B8460700F32703 /* Menus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menus.swift; sourceTree = "<group>"; };
+		E76FCE3729F7A9D5004A1E67 /* GPTVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPTVM.swift; sourceTree = "<group>"; };
 		E782F01829B3B58D006E72BF /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		E782F01B29B3C0D0006E72BF /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		E794730529B9FCA600436BB7 /* ObservableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableScrollView.swift; sourceTree = "<group>"; };
@@ -126,9 +129,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E76FCE3629F7A9B8004A1E67 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E76FCE3729F7A9D5004A1E67 /* GPTVM.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		E782F01529B3B537006E72BF /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E76FCE3629F7A9B8004A1E67 /* ViewModels */,
 				E7E6FECB29D5FB9500C86D64 /* Localizations */,
 				E782F01629B3B55A006E72BF /* Views */,
 				E7D5A9A329B10A0900825AFD /* Models */,
@@ -396,6 +408,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E76FCE3829F7A9D5004A1E67 /* GPTVM.swift in Sources */,
 				E794730929BADA6900436BB7 /* ChatBoxView.swift in Sources */,
 				E700790029BF592A00E1E47B /* ChatContentTextView.swift in Sources */,
 				E7D5A98B29B106F300825AFD /* Persistence.swift in Sources */,
@@ -420,6 +433,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E76FCE3929F7A9D5004A1E67 /* GPTVM.swift in Sources */,
 				E794730A29BADA6900436BB7 /* ChatBoxView.swift in Sources */,
 				E7D5A9B929B1350D00825AFD /* Persistence.swift in Sources */,
 				E70078FE29BEF22600E1E47B /* snapshot.swift in Sources */,

@@ -30,7 +30,7 @@ struct BottomBar: View {
             HStack {
                 OmenTextField("Enter Prompt", text: $promptText, isFocused: $settings.isFocused, onCommit: {
                 if !isLoading {
-                    Task {
+                    Task(priority: .high) {
                         await generateText(promptText)
                     }
                 }
