@@ -52,16 +52,36 @@ struct SettingView: View {
                     #endif
                 }
                 Section(header: Text("API Key"), footer: Text("You can paste your own API key here.")) {
-                    SecureField("API key", text: $settings.api_key)
-                        .onSubmit {
-                            settings.isShowSubmitAPIToast = true
-                        }
-                    Button(action: {
-                        settings.api_key = ""
-                        settings.isShowResetAPIToast = true
-                    }, label: {
-                        Text("Reset API key")
-                    })
+                    Picker("API Type", selection: $settings.apiType) {
+                        Text("Open AI")
+                            .tag(api_type.openai)
+                        Text("API2D")
+                            .tag(api_type.api2d)
+                    }
+                    switch settings.apiType {
+                    case .openai:
+                        SecureField("API key", text: $settings.api_key)
+                            .onSubmit {
+                                settings.isShowSubmitAPIToast = true
+                            }
+                        Button(action: {
+                            settings.api_key = ""
+                            settings.isShowResetAPIToast = true
+                        }, label: {
+                            Text("Reset API key")
+                        })
+                    case .api2d:
+                        SecureField("API2D key", text: $settings.api2d_key)
+                            .onSubmit {
+                                settings.isShowSubmitAPIToast = true
+                            }
+                        Button(action: {
+                            settings.api2d_key = ""
+                            settings.isShowResetAPIToast = true
+                        }, label: {
+                            Text("Reset API2D key")
+                        })
+                    }
                 }
                 Section(header: Text("About"), footer: Text("This project has been open sourced on GitHub.")) {
                     Link("View in Github", destination: URL(string: "https://github.com/VIkill33/PersonalGPT")!)

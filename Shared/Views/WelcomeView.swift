@@ -44,7 +44,7 @@ struct WelcomeView: View {
 struct WhatsNewView: View {
     @EnvironmentObject var settings: Settings
     var body: some View {
-        VStack {
+        ScrollView {
 #if os(macOS)
             HStack {
                 Spacer()
@@ -61,9 +61,41 @@ struct WhatsNewView: View {
             Text("What's New")
                 .font(.title.bold())
             Spacer()
-            Markdown("2023-3-16\n- Support editing questions\n- Add alert toast when submit/reset API keys\n\n2023-3-15\n- Support choosing GPT models\n- Support error alert toast\n- Support alert toast on macOS\n\n2023-3-14\n- Support Snapshot of chats\n\n2023-3-10\n- Adjust UI to iMessage-like")
+            Markdown(NSLocalizedString("""
+2023-6-2
+- Support automatically scroll down while generating answers
+
+2023-4-20
+- Support stream Response
+- Automatically scroll down after chat
+
+2023-3-30
+- Support API2D
+
+2023-3-16
+- Support editing questions
+- Add alert toast when submit/reset API keys
+
+2023-3-15
+- Support choosing GPT models
+- Support error alert toast
+- Support alert toast on macOS
+
+2023-3-14
+- Support Snapshot of chats
+
+2023-3-10
+- Adjust UI to iMessage-like
+""", comment: ""))
         }
-        .frame(minWidth: 200.0, minHeight: 400.0)
+        .frame(minWidth: 300.0, minHeight: 500.0)
         .padding()
     }
 }
+
+struct WhatsNewView_Previews: PreviewProvider {
+    static var previews: some View {
+        WhatsNewView()
+    }
+}
+

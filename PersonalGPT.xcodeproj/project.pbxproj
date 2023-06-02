@@ -22,6 +22,7 @@
 		E76D2ABA29B7BE0900F32703 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E782F01B29B3C0D0006E72BF /* SettingView.swift */; };
 		E76D2ABC29B8460700F32703 /* Menus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76D2ABB29B8460700F32703 /* Menus.swift */; };
 		E76D2ABD29B8460700F32703 /* Menus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76D2ABB29B8460700F32703 /* Menus.swift */; };
+		E76FCE3A29F7E87C004A1E67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7D5A98529B106F300825AFD /* Assets.xcassets */; };
 		E782F01929B3B58D006E72BF /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E782F01829B3B58D006E72BF /* extensions.swift */; };
 		E782F01A29B3B7AC006E72BF /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E782F01829B3B58D006E72BF /* extensions.swift */; };
 		E782F01C29B3C0D0006E72BF /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E782F01B29B3C0D0006E72BF /* SettingView.swift */; };
@@ -55,6 +56,10 @@
 		E7D5A9CD29B1448600825AFD /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A9CB29B1435800825AFD /* WelcomeView.swift */; };
 		E7D5A9CF29B1B8D400825AFD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A9CE29B1B8D400825AFD /* User.swift */; };
 		E7D5A9D029B1B9A300825AFD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5A9CE29B1B8D400825AFD /* User.swift */; };
+		E7E6FECF29D5FBCE00C86D64 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7E6FED229D5FBCE00C86D64 /* Localizable.strings */; };
+		E7E6FED029D5FBCE00C86D64 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7E6FED229D5FBCE00C86D64 /* Localizable.strings */; };
+		E7F33B8B29F1A4B700DEF8A0 /* OmenTextField in Frameworks */ = {isa = PBXBuildFile; productRef = E7F33B8A29F1A4B700DEF8A0 /* OmenTextField */; };
+		E7F33B8D29F1A51600DEF8A0 /* OmenTextField in Frameworks */ = {isa = PBXBuildFile; productRef = E7F33B8C29F1A51600DEF8A0 /* OmenTextField */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +94,9 @@
 		E7D5A9BD29B1350D00825AFD /* MacPersonalGPT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacPersonalGPT.entitlements; sourceTree = "<group>"; };
 		E7D5A9CB29B1435800825AFD /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		E7D5A9CE29B1B8D400825AFD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E7E6FED129D5FBCE00C86D64 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		E7E6FED329D5FBD000C86D64 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E7F33B5A29F14C5500DEF8A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +105,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7D5A9A129B108EA00825AFD /* SwiftyJSON in Frameworks */,
+				E7F33B8B29F1A4B700DEF8A0 /* OmenTextField in Frameworks */,
 				E7D5A99E29B108CB00825AFD /* Alamofire in Frameworks */,
 				E700790329C1B1A800E1E47B /* AlertToast in Frameworks */,
 				E729D55329B226890084F483 /* MarkdownUI in Frameworks */,
@@ -108,6 +117,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E729D55529B226D60084F483 /* MarkdownUI in Frameworks */,
+				E7F33B8D29F1A51600DEF8A0 /* OmenTextField in Frameworks */,
 				E700790529C1B40E00E1E47B /* AlertToast in Frameworks */,
 				E7D5A9C429B1357200825AFD /* SwiftyJSON in Frameworks */,
 				E7D5A9C629B1357500825AFD /* Alamofire in Frameworks */,
@@ -120,6 +130,7 @@
 		E782F01529B3B537006E72BF /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E7E6FECB29D5FB9500C86D64 /* Localizations */,
 				E782F01629B3B55A006E72BF /* Views */,
 				E7D5A9A329B10A0900825AFD /* Models */,
 			);
@@ -133,6 +144,7 @@
 				E7D5A9CB29B1435800825AFD /* WelcomeView.swift */,
 				E794730529B9FCA600436BB7 /* ObservableScrollView.swift */,
 				E794730829BADA6900436BB7 /* ChatBoxView.swift */,
+				E782F01B29B3C0D0006E72BF /* SettingView.swift */,
 				E70078F929BEDCFF00E1E47B /* BottomBar.swift */,
 				E782F01729B3B575006E72BF /* Extensions */,
 			);
@@ -203,7 +215,6 @@
 			isa = PBXGroup;
 			children = (
 				E7D5A98329B106F000825AFD /* ContentView.swift */,
-				E782F01B29B3C0D0006E72BF /* SettingView.swift */,
 				E70078FF29BF592A00E1E47B /* ChatContentTextView.swift */,
 			);
 			path = Views;
@@ -222,6 +233,7 @@
 		E7D5A9AE29B1350B00825AFD /* MacPersonalGPT */ = {
 			isa = PBXGroup;
 			children = (
+				E7F33B5A29F14C5500DEF8A0 /* Info.plist */,
 				E7D5A9AF29B1350B00825AFD /* MacPersonalGPTApp.swift */,
 				E7D5A9B129B1350B00825AFD /* ContentView.swift */,
 				E7D5A9B329B1350D00825AFD /* Assets.xcassets */,
@@ -250,6 +262,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E7E6FECB29D5FB9500C86D64 /* Localizations */ = {
+			isa = PBXGroup;
+			children = (
+				E7E6FED229D5FBCE00C86D64 /* Localizable.strings */,
+			);
+			path = Localizations;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -271,6 +291,7 @@
 				E7D5A9A029B108EA00825AFD /* SwiftyJSON */,
 				E729D55229B226890084F483 /* MarkdownUI */,
 				E700790229C1B1A800E1E47B /* AlertToast */,
+				E7F33B8A29F1A4B700DEF8A0 /* OmenTextField */,
 			);
 			productName = PersonalGPT;
 			productReference = E7D5A97E29B106F000825AFD /* PersonalGPT.app */;
@@ -294,6 +315,7 @@
 				E7D5A9C529B1357500825AFD /* Alamofire */,
 				E729D55429B226D60084F483 /* MarkdownUI */,
 				E700790429C1B40E00E1E47B /* AlertToast */,
+				E7F33B8C29F1A51600DEF8A0 /* OmenTextField */,
 			);
 			productName = MacPersonalGPT;
 			productReference = E7D5A9AD29B1350B00825AFD /* MacPersonalGPT.app */;
@@ -324,6 +346,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = E7D5A97529B106F000825AFD;
 			packageReferences = (
@@ -332,6 +355,7 @@
 				E729D55129B226890084F483 /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
 				E794730029B9F9D800436BB7 /* XCRemoteSwiftPackageReference "trackable-scroll-view" */,
 				E700790129C1B1A800E1E47B /* XCRemoteSwiftPackageReference "AlertToast" */,
+				E7F33B8929F1A4B700DEF8A0 /* XCRemoteSwiftPackageReference "OmenTextField" */,
 			);
 			productRefGroup = E7D5A97F29B106F000825AFD /* Products */;
 			projectDirPath = "";
@@ -349,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7A0804929BB6186003C818D /* README.md in Resources */,
+				E7E6FECF29D5FBCE00C86D64 /* Localizable.strings in Resources */,
 				E7D5A98929B106F300825AFD /* Preview Assets.xcassets in Resources */,
 				E7D5A98629B106F300825AFD /* Assets.xcassets in Resources */,
 			);
@@ -359,8 +384,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7A0804A29BB6186003C818D /* README.md in Resources */,
+				E7E6FED029D5FBCE00C86D64 /* Localizable.strings in Resources */,
 				E7D5A9B729B1350D00825AFD /* Preview Assets.xcassets in Resources */,
 				E7D5A9B429B1350D00825AFD /* Assets.xcassets in Resources */,
+				E76FCE3A29F7E87C004A1E67 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +443,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E7E6FED229D5FBCE00C86D64 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E7E6FED129D5FBCE00C86D64 /* zh-Hans */,
+				E7E6FED329D5FBD000C86D64 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E7D5A99029B106F300825AFD /* Debug */ = {
@@ -555,7 +594,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.06;
+				MARKETING_VERSION = 2.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vikill.PersonalGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -587,7 +626,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.06;
+				MARKETING_VERSION = 2.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vikill.PersonalGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -610,13 +649,14 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MacPersonalGPT/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.05;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vikill.MacPersonalGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -639,13 +679,14 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MacPersonalGPT/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.05;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vikill.MacPersonalGPT;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -727,6 +768,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		E7F33B8929F1A4B700DEF8A0 /* XCRemoteSwiftPackageReference "OmenTextField" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kitlangton/OmenTextField.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -769,6 +818,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E7D5A99C29B108CB00825AFD /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		E7F33B8A29F1A4B700DEF8A0 /* OmenTextField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E7F33B8929F1A4B700DEF8A0 /* XCRemoteSwiftPackageReference "OmenTextField" */;
+			productName = OmenTextField;
+		};
+		E7F33B8C29F1A51600DEF8A0 /* OmenTextField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E7F33B8929F1A4B700DEF8A0 /* XCRemoteSwiftPackageReference "OmenTextField" */;
+			productName = OmenTextField;
 		};
 /* End XCSwiftPackageProductDependency section */
 

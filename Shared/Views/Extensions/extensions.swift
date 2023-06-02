@@ -40,3 +40,25 @@ extension View {
     }
     
 }
+
+public extension View {
+    func focused(_ condition: FocusState<Bool>.Binding, key: KeyEquivalent, modifiers: EventModifiers = .command) -> some View {
+        focused(condition)
+            .background(Button("") {
+                condition.wrappedValue = true
+            }
+            .keyboardShortcut(key, modifiers: modifiers)
+            .hidden()
+            )
+    }
+
+    func focused<Value>(_ binding: FocusState<Value>.Binding, equals value: Value, key: KeyEquivalent, modifiers: EventModifiers = .command) -> some View where Value: Hashable {
+        focused(binding, equals: value)
+            .background(Button("") {
+                binding.wrappedValue = value
+            }
+            .keyboardShortcut(key, modifiers: modifiers)
+            .hidden()
+            )
+    }
+}

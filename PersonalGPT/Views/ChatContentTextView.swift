@@ -14,7 +14,7 @@ struct ChatBox_Text_View: View {
     var chatString: String
     var promptString: String = ""
     var chatDate: Date
-    var regenerateAnswer: (api_type, String) -> Void
+    var regenerateAnswer: (String) async -> Void
     var chatIndex: Int
     @Binding var promptText: String
     @Binding var status: ChatView_status
@@ -44,7 +44,9 @@ struct ChatBox_Text_View: View {
                             }
                             Button("Regenerate Answer") {
                                 promptText = promptString
-                                regenerateAnswer(.chat, promptString)
+                                Task(priority: .high) {
+                                    await regenerateAnswer(promptString)
+                                }
                             }
                             Button("More...") {
                                 user.unselectAllChats()
@@ -102,7 +104,9 @@ struct ChatBox_Text_View: View {
                             }
                             Button("Regenerate Answer") {
                                 promptText = promptString
-                                regenerateAnswer(.chat, promptString)
+                                Task(priority: .high) {
+                                    await regenerateAnswer(promptString)
+                                }
                             }
                             Button("More...") {
                                 user.unselectAllChats()
@@ -137,7 +141,7 @@ struct ChatContent_Text_View: View {
     @Binding var promptText: String
     @Binding var status: ChatView_status
     @ObservedObject var user: User
-    var generateText: (api_type, String) -> Void
+    var generateText: (String) async -> Void
     @State var isHideUnselectChats: Bool = false
     
     var body: some View {

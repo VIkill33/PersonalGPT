@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MarkdownUI
+import OmenTextField
 #if os(iOS)
 import UIKit
 #endif
@@ -14,7 +15,7 @@ import UIKit
 struct BottomBar: View {
     @Binding var status: ChatView_status
     @Binding var promptText: String
-    @FocusState var focusedField: Field?
+    var focusedField: FocusState<ChatView.Field?>.Binding
     @Binding var isLoading: Bool
     @Binding var snapshot_proxy: [GeometryProxy]
     @Binding var scrollOffset: CGFloat
@@ -22,31 +23,18 @@ struct BottomBar: View {
     @State private var isShowCopyTosat = false
     @EnvironmentObject var settings: Settings
     
-    var generateText: (api_type, String) -> Void
+    var generateText: (String) async -> Void
     var body: some View {
         switch status {
         case .chat:
             HStack {
-                TextField("Enter prompt", text: $promptText)
-                    .focused($focusedField, equals: .promptText)
-                    .textFieldStyle(.roundedBorder)
-                    .onSubmit {
-                        if !isLoading {
-                            generateText(.chat ,promptText)
-                        }
+                OmenTextField("Enter Prompt", text: $promptText, isFocused: $settings.isFocused, onCommit: {
+                if !isLoading {
+                    Task(priority: .high) {
+                        await generateText(promptText)
                     }
-                if isLoading {
-                    ProgressView()
-                        .padding(.horizontal)
-                } else {
-                    Button(action: {
-                        focusedField = nil
-                        generateText(.chat ,promptText)
-                    }) {
-                        Image(systemName: "paperplane.fill")
-                    }
-                    .padding()
                 }
+            })
             }
             .disabled(isLoading)
             .padding()
@@ -66,11 +54,16 @@ struct BottomBar: View {
                     // take snapshot
                     take_snapshot()
                 }, label: {
-                    Text("\(Image(systemName: "square.and.arrow.up.on.square.fill")) Snapshot")
+                    HStack {
+                        Text("\(Image(systemName: "square.and.arrow.up.on.square.fill"))")
+                        Text("Snapshot")
+                    }
                 })
                 #endif
                 #if os(iOS)
-                ShareLink(item: take_snapshot(), preview: SharePreview("chat", image: take_snapshot()))
+                ShareLink(item: take_snapshot(), preview: SharePreview("chat", image: take_snapshot())) {
+                    Label("Share", systemImage: "square.and.arrow.up.on.square.fill")
+                }
                 #endif
             }
             .padding()

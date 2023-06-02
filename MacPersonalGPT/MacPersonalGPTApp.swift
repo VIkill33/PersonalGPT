@@ -16,10 +16,13 @@ struct MacPersonalGPTApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .background(VisualEffect())
+                .ignoresSafeArea(.all)
                 .environmentObject(user)
                 .environmentObject(settings)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
+        .windowStyle(.hiddenTitleBar)
         .commands {
             Menus(user: self.user)
         }
@@ -30,4 +33,16 @@ struct MacPersonalGPTApp: App {
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
+}
+
+
+struct VisualEffect: NSViewRepresentable {
+    func makeNSView(context: Self.Context) -> NSView {
+        let VEView = NSVisualEffectView()
+        VEView.material = .mediumLight
+        // or VEView.appearance = NSAppearance(named: .aqua)
+        return VEView
+        
+    }
+  func updateNSView(_ nsView: NSView, context: Context) { }
 }

@@ -11,6 +11,12 @@ import Combine
 import AlertToast
 
 struct ChatView: View {
+    let generatedTextQueue = DispatchQueue(label: "com.example.app.generatedTextQueue")
+    enum Field: Int, CaseIterable {
+        case promptText
+    }
+    
+    @Namespace var bottomID
     @EnvironmentObject var user: User
     @EnvironmentObject var settings: Settings
     @FocusState var focusedField: Field?
@@ -26,7 +32,7 @@ struct ChatView: View {
     var simpleDrag: some Gesture {
         DragGesture()
             .onChanged { value in
-                focusedField = nil
+                settings.isFocused = false
             }
     }
     
@@ -38,42 +44,50 @@ struct ChatView: View {
         GeometryReader { proxy in
             VStack {
                 ZStack {
-                    if generatedText != "" {
                         ObservableScrollView(scrollOffset: $scrollOffset) { proxy in
-                            ChatContentView(promptText: $promptText, status: $status, user: user, generateText: self.generateText(_:prompt_text:))
-                            .background(
-                                ZStack {
-                                    GeometryReader {geo in
-                                        Color.clear
-                                            .onChange(of: status) { _ in
-                                                snapshot_proxy = []
-                                                snapshot_proxy.append(geo)
-                                                print(status)
-                                                print("chat height = \(geo.size.height)")
-                                            }
+                            ChatContentView(promptText: $promptText, status: $status, user: user, generateText: self.generateText(prompt_text:))
+                                .background(
+                                    ZStack {
+                                        GeometryReader {geo in
+                                            Color.clear
+                                                .onChange(of: status) { _ in
+                                                    snapshot_proxy = []
+                                                    snapshot_proxy.append(geo)
+                                                    print(status)
+                                                    print("chat height = \(geo.size.height)")
+                                                }
+                                        }
+                                    }
+                                )
+                            Text("")
+                                .id(bottomID)
+                                .onChange(of: generatedText) { _ in
+                                    proxy.scrollTo(bottomID)
+                                }
+                                .task(id: generatedText, priority: .background) {
+                                    DispatchQueue.main.async {
+                                        if isLoading {
+                                            proxy.scrollTo(bottomID, anchor: .bottom)
+                                        }
+                                        settings.isFocused = true
                                     }
                                 }
-                            )
                         }
-                        .onChange(of: scrollOffset, perform: { [scrollOffset] newOffset in
-                            // print("scroll offset = \(newOffset)")
-                            if newOffset > scrollOffset {
-                                // scroll down
-                            } else {
-                                // scroll up
-                            }
-                        })
-                    }
-                    else {
-                        Spacer()
-                    }
+                        
                 }
                 .onTapGesture {
-                    focusedField = nil
+                    settings.isFocused = false
                 }
                 .gesture(simpleDrag)
+                #if os(iOS)
                 Divider()
-                BottomBar(status: $status, promptText: $promptText, isLoading: $isLoading, snapshot_proxy: $snapshot_proxy, scrollOffset: $scrollOffset, user: user, generateText: self.generateText(_:prompt_text:))
+                #endif
+                BottomBar(status: $status, promptText: $promptText,focusedField: $focusedField, isLoading: $isLoading, snapshot_proxy: $snapshot_proxy, scrollOffset: $scrollOffset, user: user, generateText: self.generateText(prompt_text:))
+                #if os(macOS)
+                    .background {
+                        Color.secondary.colorInvert()
+                    }
+                #endif
             }
             .toast(isPresenting: $settings.isShowErrorToast) {
                 AlertToast(displayMode: .hud, type: .error(.red), title: toastTitle, subTitle: toastSubtitle)
@@ -102,6 +116,10 @@ struct ChatView: View {
         }
     }
     
+    func handleChangeOfGeneratedText() async {
+        
+    }
+    
 }
 
 struct ChatContentView: View {
@@ -109,7 +127,7 @@ struct ChatContentView: View {
     @Binding var promptText: String
     @Binding var status: ChatView_status
     @ObservedObject var user: User
-    var generateText: (api_type, String) -> Void
+    var generateText: (String) async -> Void
     @State var isHideUnselectChats: Bool = false
     
     var body: some View {
@@ -135,9 +153,7 @@ enum ChatView_status {
     case snapshot_preview // useless
 }
 
-enum Field: Int, CaseIterable {
-    case promptText
-}
+
 
 
 
