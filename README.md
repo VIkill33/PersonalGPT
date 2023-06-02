@@ -19,6 +19,14 @@ SwiftUI ChatGPT app with API keys, using model ChatGPT-3.5
   * [Acknowledgements](#acknowledgements)
 ## Updates
 
+2023-6-2
+
+- Support automatically scroll down while generating answers
+
+2023-4-20
+
+- Support stream Response
+
 2023-3-16
 
 - support edit questions
@@ -46,7 +54,11 @@ Darkmode
 <img src="https://user-images.githubusercontent.com/78488529/224233932-682ed9ac-ace8-4e6c-9a78-d5ea617f6f33.jpeg" width="255" height="550"> 
 
 ### macOS
-<img src="https://user-images.githubusercontent.com/78488529/224234572-96fcb8dd-a953-4f8a-ab15-251a72b7b2d0.jpg" width="322" height="344"> <img src="https://user-images.githubusercontent.com/78488529/225297912-59c35882-66e1-4c11-89ac-655bda16346a.jpg" width="227" height="336">
+<img src="https://github.com/VIkill33/PersonalGPT/assets/78488529/2e038de5-cb2e-4c32-b60e-6d93673d685e" width="322" height="344"> <img src="https://user-images.githubusercontent.com/78488529/225297912-59c35882-66e1-4c11-89ac-655bda16346a.jpg" width="227" height="336">
+
+Stream response & Automatically scroll down
+![屏幕录制2023-06-02 21 09 25](https://github.com/VIkill33/PersonalGPT/assets/78488529/1cb6bad0-852d-4326-961c-ceef3e8d16d7)
+
 
 ## It Supports
 - Consecutive chat
