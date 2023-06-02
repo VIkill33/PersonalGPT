@@ -61,6 +61,9 @@ struct ChatView: View {
                                 )
                             Text("")
                                 .id(bottomID)
+                                .onChange(of: generatedText) { _ in
+                                    proxy.scrollTo(bottomID)
+                                }
                                 .task(id: generatedText, priority: .background) {
                                     DispatchQueue.main.async {
                                         if isLoading {
@@ -70,15 +73,7 @@ struct ChatView: View {
                                     }
                                 }
                         }
-                    
-                        .onChange(of: scrollOffset, perform: { [scrollOffset] newOffset in
-                            // print("scroll offset = \(newOffset)")
-                            if newOffset > scrollOffset {
-                                // scroll down
-                            } else {
-                                // scroll up
-                            }
-                        })
+                        
                 }
                 .onTapGesture {
                     settings.isFocused = false
