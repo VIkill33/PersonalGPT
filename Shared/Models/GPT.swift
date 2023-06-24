@@ -175,7 +175,7 @@ func stream2Message(form rawStr: String) -> String {
     var rawStrArr = rawStr.components(separatedBy: "data")
     var res = ""
     for subRawStr in rawStrArr {
-        var subData = findContent(form: subRawStr, of: "\"content\":\"", endBefore: "\"},\"index\"")
+        var subData = findContent(form: subRawStr, of: "\"content\":\"", endBefore: "\"},\"finish_reason\"")
         if subData.contains("\\\"") {
             subData = subData.replacingOccurrences(of: "\\\"", with: #"""#)
         }

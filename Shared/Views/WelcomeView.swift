@@ -62,12 +62,14 @@ struct WhatsNewView: View {
                 .font(.title.bold())
             Spacer()
             Markdown(NSLocalizedString("""
+2023-6-24
+- Adapt to new version of models
+
 2023-6-2
 - Support automatically scroll down while generating answers
 
 2023-4-20
 - Support stream Response
-- Automatically scroll down after chat
 
 2023-3-30
 - Support API2D
