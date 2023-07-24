@@ -16,6 +16,7 @@ class Settings: ObservableObject {
     @Published var isShowSubmitAPIToast: Bool = false
     @Published var isShowResetAPIToast: Bool = false
     @Published var isFocused: Bool = true
+    @Published var fontSize: CGFloat = 16.0
     @AppStorage("isFirstLauch") var isFirstLauch: Bool = true
     @AppStorage("modelIndex") var model: Models = .gpt35turbo
     @AppStorage("temperature") var temperature: Double = 1.0

@@ -40,6 +40,7 @@ struct ChatBoxView: View {
                     Markdown(chatString)
                         .markdownTextStyle {
                             ForegroundColor(.white)
+                            FontSize(settings.fontSize)
                         }
                         .padding(boxPaddingLength)
                         .background {
@@ -118,6 +119,9 @@ struct ChatBoxView: View {
                         }
                     }
                     Markdown(chatString)
+                        .markdownTextStyle {
+                            FontSize(settings.fontSize)
+                        }
                         .padding(boxPaddingLength)
                         .background {
                             RoundedRectangle(cornerRadius: boxRadius)

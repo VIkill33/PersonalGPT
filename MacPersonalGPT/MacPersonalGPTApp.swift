@@ -24,7 +24,7 @@ struct MacPersonalGPTApp: App {
         }
         .windowStyle(.hiddenTitleBar)
         .commands {
-            Menus(user: self.user)
+            Menus(user: self.user, settings: self.settings)
         }
         SwiftUI.Settings {
             SettingView()
